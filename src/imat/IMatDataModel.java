@@ -5,23 +5,24 @@ import se.chalmers.cse.dat216.project.*;
 
 import java.util.List;
 
-public class IMatDataHandlerModel {
-    private static IMatDataHandlerModel instance = null;
+public class IMatDataModel {
+    private static IMatDataModel instance = null;
     private IMatDataHandler iMatDataHandler;
 
     /**
      * Does nothing
      */
-    protected IMatDataHandlerModel() {
+    protected IMatDataModel() {
     }
 
     /**
      * Returns the singleton of IMatDataHandlerModel
+     *
      * @return IMatDataHandlerModel
      */
-    public static IMatDataHandlerModel getInstance() {
+    public static IMatDataModel getInstance() {
         if (instance == null) {
-            instance = new IMatDataHandlerModel();
+            instance = new IMatDataModel();
             instance.init();
         }
         return instance;
@@ -65,27 +66,35 @@ public class IMatDataHandlerModel {
     public List<Order> getOrders() {
         return iMatDataHandler.getOrders();
     }
+
     public Product getProduct(int idNbr) {
         return iMatDataHandler.getProduct(idNbr);
     }
+
     public List<Product> getProducts() {
         return iMatDataHandler.getProducts();
     }
+
     public List<Product> getProducts(ProductCategory pc) {
         return iMatDataHandler.getProducts(pc);
     }
+
     public List<Product> findProducts(String s) {
         return iMatDataHandler.findProducts(s);
     }
+
     public void addProduct(Product p) {
         iMatDataHandler.addProduct(p);
     }
+
     public void removeProduct(Product p) {
         iMatDataHandler.removeProduct(p);
     }
+
     public void addFavorite(Product p) {
         iMatDataHandler.addFavorite(p);
     }
+
     public void removeFavorite(Product p) {
         iMatDataHandler.removeFavorite(p);
     }
