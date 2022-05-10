@@ -1,0 +1,27 @@
+@font-face {
+    -fx-font-family: "Sen";
+}
+
+.searchbar-text {
+    -fx-font-size: 16px;
+    -fx-font-family: "Sen";
+    -fx-text-fill: #F3F2F3;
+}
+
+.product-name {
+    -fx-font-size: 16px;
+    -fx-font-family: Sen;
+    -fx-text-fill: #062F42;
+    -fx-text-alignment: center;
+}
+
+.price-rec {
+    -fx-fill: #062F42;
+}
+
+.label-text {
+    -fx-font-size: 12px;
+    -fx-font-family: Sen-bold;
+    -fx-text-fill: #F3F2F3;
+    -fx-text-alignment: center;
+}
