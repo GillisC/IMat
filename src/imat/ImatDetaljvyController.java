@@ -15,18 +15,29 @@ public class ImatDetaljvyController {
     private Product product;
 
 
-    @FXML private AnchorPane detaljvyWindow;
-    @FXML private ImageView productImage;
-    @FXML private Label productName;
-    @FXML private Label productCategory;
-    @FXML private Label productWeight;
-    @FXML private Label productDetail;
-    @FXML private Label productHome;
-    @FXML private Label breadcrumbArrow;
-    @FXML private ImageView addToCartImage;
-    @FXML private ImageView closeImage;
+    @FXML
+    private AnchorPane detaljvyWindow;
+    @FXML
+    private ImageView productImage;
+    @FXML
+    private Label productName;
+    @FXML
+    private Label productCategory;
+    @FXML
+    private Label productWeight;
+    @FXML
+    private Label productDetail;
+    @FXML
+    private Label productHome;
+    @FXML
+    private Label breadcrumbArrow;
+    @FXML
+    private ImageView addToCartImage;
+    @FXML
+    private ImageView closeImage;
+}
 
-    public productItem(Product product) {
+/**    public productItem(Product product) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("imat_detaljvy.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -41,3 +52,4 @@ public class ImatDetaljvyController {
     }
 }
 
+**/
