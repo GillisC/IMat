@@ -36,17 +36,21 @@ public class IMatController implements Initializable {
         List<Product> matches = iMatDataModel.findProducts(searchTextField.getText());
         updateProductGrid(matches);
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //updateProductGrid(iMatDataModel.getProducts());
+        updateProductGrid(iMatDataModel.getProducts());
     }
 
     private void updateProductGrid(List<Product> products) {
         productGridPane.getChildren().clear();
-        for (Product p: products) {
-            productGridPane.getChildren().add(new ProductListItem(p));
+        for (int i = 0; i < productGridPane.getRowCount(); i++) {
+            for (int j = 0; j < productGridPane.getRowCount(); j++) {
+                productGridPane.add(new Button("Hello world!"), i, j);
+            }
         }
+
+        /*for (Product p: products) {
+            productGridPane.add(new Button("Hello world!"), 1, 0);
+        }*/
     }
 }
-
