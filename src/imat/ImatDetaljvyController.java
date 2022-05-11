@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class ImatDetaljvyController {
 
@@ -27,7 +28,16 @@ public class ImatDetaljvyController {
 
     public productItem(Product product) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("imat_detaljvy.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
 
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        this.product = product;
     }
 }
 
