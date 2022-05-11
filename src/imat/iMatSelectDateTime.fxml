@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootAnchorPane" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.iMatSelectDateTime">
+    <children>
+      <SplitPane dividerPositions="0.16295264623955433" orientation="VERTICAL" prefHeight="720.0" prefWidth="1080.0">
+        <items>
+          <AnchorPane id="AnchorPane1" fx:id="upperAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="1080.0" style="-fx-background-color: #062f42;">
+               <children>
+                  <Label layoutX="39.0" layoutY="24.0" prefHeight="66.0" prefWidth="132.0" style="-fx-background-color: 062F42;" text="IMAT" textAlignment="CENTER" textFill="#f3f2f3">
+                     <font>
+                        <Font name="Times New Roman Bold" size="40.0" />
+                     </font>
+                  </Label>
+                  <Ellipse fill="#f3f2f3" layoutX="244.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="#ed254e" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Ellipse fill="#f3f2f3" layoutX="425.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Ellipse fill="#f3f2f3" layoutX="612.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Ellipse fill="#f3f2f3" layoutX="796.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label layoutX="387.0" layoutY="63.0" prefHeight="28.0" prefWidth="77.0" text="Betalning" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="770.0" layoutY="66.0" prefHeight="22.0" prefWidth="66.0" text="Slutför" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="578.0" layoutY="63.0" prefHeight="28.0" prefWidth="83.0" text="Leverans" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="219.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/calendar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="399.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/credit-card.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="586.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/package-box.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="770.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/checked.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="897.0" layoutY="24.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="167.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="        Varukorg" textAlignment="RIGHT" textFill="#f3f2f3">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="905.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/cart.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="-44.0" layoutX="396.0" layoutY="55.0" startX="-79.0" stroke="#f3f2f3" strokeWidth="3.0" />
+                  <Line endX="-31.0" layoutX="570.0" layoutY="49.0" startX="-72.0" stroke="#f3f2f3" strokeWidth="3.0" />
+                  <Line endX="-43.0" layoutX="766.0" layoutY="54.0" startX="-81.0" stroke="#f3f2f3" strokeWidth="3.0" />
+                  <Label layoutX="212.0" layoutY="63.0" prefHeight="28.0" prefWidth="66.0" text="Välj tid" textAlignment="RIGHT" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane id="AnchoPane2" fx:id="underAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="1080.0">
+               <children>
+                        <Button fx:id="next1" layoutX="944.0" layoutY="532.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="120.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="Nästa" textAlignment="CENTER" textFill="#f3f2f3">
+                            <font>
+                                <Font name="Times New Roman" size="24.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="back1" layoutX="14.0" layoutY="532.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="120.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="Tillbaka" textAlignment="CENTER" textFill="#f3f2f3">
+                            <font>
+                                <Font name="Times New Roman" size="24.0" />
+                            </font>
+                        </Button>
+                  <Label layoutX="74.0" layoutY="58.0" prefHeight="80.0" prefWidth="412.0" text="Välj Leveransdag" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="74.0" layoutY="279.0" text="Välj Leveranstid" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="74.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="204.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdcdcd" height="95.0" layoutX="333.0" layoutY="142.0" stroke="#00000037" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <BoxBlur />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="474.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="606.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="744.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdcdcd" height="95.0" layoutX="474.0" layoutY="357.0" stroke="#00000037" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <BoxBlur />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="606.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="890.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="204.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="333.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="74.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="744.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Label layoutX="98.0" layoutY="391.0" text="9-10" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="498.0" layoutY="200.0" text="10 Jun" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="498.0" layoutY="156.0" text="Tors" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="360.0" layoutY="156.0" text="Ons" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="768.0" layoutY="156.0" text="Lör" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="630.0" layoutY="156.0" text="Fre" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="920.0" layoutY="156.0" text="Sön" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="357.0" layoutY="189.0" text="9 Jun" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="630.0" layoutY="200.0" text="11 Jun" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="98.0" layoutY="200.0" text="7 Jun" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="768.0" layoutY="200.0" text="12 Jun" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="920.0" layoutY="200.0" text="13 Jun" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="228.0" layoutY="156.0" text="Tis" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="228.0" layoutY="200.0" text="8 Jun" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="98.0" layoutY="156.0" text="Mån" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="353.0" layoutY="391.0" text="11-12" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="224.0" layoutY="391.0" text="10-11" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="494.0" layoutY="391.0" text="14-15" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="620.0" layoutY="391.0" text="15-16" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="760.0" layoutY="391.0" text="20-21" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+    </children>
+</AnchorPane>
