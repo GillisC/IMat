@@ -10,7 +10,7 @@ import se.chalmers.cse.dat216.project.Product;
 
 import java.io.IOException;
 
-public class VarukorgItemController extends AnchorPane {
+public class VarukorgItemController extends AnchorPane{
     private IMatDataModel dataModel;
     private Product product;
     @FXML private ImageView productImage;
@@ -23,27 +23,27 @@ public class VarukorgItemController extends AnchorPane {
     @FXML private Label productPrice;
 
     public VarukorgItemController(IMatDataModel dataModel, Product product){
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("recipe_listitem.fxml"));
-//        fxmlLoader.setRoot(this);
-//        fxmlLoader.setController(this);
-//
-//
-//
-//
-//        try {
-//            fxmlLoader.load();
-//        } catch (IOException exception) {
-//            throw new RuntimeException(exception);
-//        }
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("varukorgItem.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+
+
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
 
         this.dataModel = dataModel;
         this.product = product;
 
-        //productImage.setImage(dataModel.getFXImage(product));
+        productImage.setImage(dataModel.getFXImage(product));
         productName.setText(product.getName());
         productCategory.setText(String.valueOf(product.getCategory()));
         //antalLabel.setText(); //använda shoppingItem getAmount
-        productPrice.setText(product.getPrice() + "kr");
+        productPrice.setText(product.getPrice() + product.getUnit());
     }
 
     @FXML
