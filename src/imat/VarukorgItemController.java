@@ -16,7 +16,6 @@ public class VarukorgItemController extends AnchorPane{
     @FXML private ImageView productImage;
     @FXML private Label productName;
     @FXML private Label productCategory;
-    @FXML private Label productWeight;
     @FXML private ImageView addToCartButton;
     @FXML private ImageView removeFromCartButton;
     @FXML private Label antalLabel;
@@ -39,7 +38,7 @@ public class VarukorgItemController extends AnchorPane{
         this.dataModel = dataModel;
         this.product = product;
 
-        productImage.setImage(dataModel.getFXImage(product));
+        //productImage.setImage(dataModel.getFXImage(product));
         productName.setText(product.getName());
         productCategory.setText(String.valueOf(product.getCategory()));
         //antalLabel.setText(); //använda shoppingItem getAmount

@@ -99,8 +99,4 @@ public class IMatDataModel {
     public void removeFavorite(Product p) {
         iMatDataHandler.removeFavorite(p);
     }
-
-    public Image getFXImage (Product p){ return iMatDataHandler.getFXImage(p);
-    }
-
 }
