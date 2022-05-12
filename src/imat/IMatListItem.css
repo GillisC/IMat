@@ -6,7 +6,6 @@
 
 .product-name {
     -fx-font-size: 16px;
-    -fx-font-family: Sen;
     -fx-text-fill: #062F42;
     -fx-alignment: center;
     -fx-font-weight: bold;
@@ -31,4 +30,27 @@
     -fx-background-color: #F3F2F3;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+}
+
+.button {
+    -fx-background-color: #ED254E;
+    -fx-background-radius: 16px;
+}
+
+.small-rectangle {
+    -fx-fill: #F3F2F3;
+    -fx-background-radius: 2px;
+}
+
+.large-rectangle {
+    -fx-fill: #ED254E;
+    -fx-arc-height: 24px;
+    -fx-arc-width: 24px;
+}
+
+.amount-text {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F3F2F3;
+    -fx-alignment: center;
 }

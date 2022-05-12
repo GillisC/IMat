@@ -1,8 +1,10 @@
 package imat;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +22,8 @@ public class ProductListItem extends AnchorPane {
     @FXML Label productNameLabel;
     @FXML Label productPriceLabel;
     @FXML Label productUnitSuffixLabel;
+    @FXML Button addButton;
+    @FXML Button removeButton;
 
     public ProductListItem(Product product) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("imat_listitem.fxml"));
@@ -40,8 +44,14 @@ public class ProductListItem extends AnchorPane {
         productNameLabel.setText(product.getName());
         productPriceLabel.setText(product.getPrice() + " kr");
         productUnitSuffixLabel.setText("/" + product.getUnitSuffix());
-
     }
-
+    @FXML
+    private void handleAddAction(ActionEvent event) {
+        System.out.println("Added: " + product.getName());
+    }
+    @FXML
+    private void handleRemoveAction(ActionEvent event) {
+        System.out.println("Removed: " + product.getName());
+    }
 
 }
