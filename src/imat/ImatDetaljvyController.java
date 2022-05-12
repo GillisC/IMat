@@ -2,18 +2,17 @@ package imat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class ImatDetaljvyController {
 
     private Product product;
-
 
     @FXML
     private AnchorPane detaljvyWindow;
@@ -35,9 +34,13 @@ public class ImatDetaljvyController {
     private ImageView addToCartImage;
     @FXML
     private ImageView closeImage;
-}
+    @FXML
+    private Button addToCartButton;
+    @FXML
+    private Button closeButton;
 
-/**    public productItem(Product product) {
+
+ public void productItem(Product product) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("imat_detaljvy.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -49,7 +52,11 @@ public class ImatDetaljvyController {
         }
 
         this.product = product;
-    }
-}
+        productImage.setImage(productImage.getImage());
+        productName.setText(product.getName());
+        productCategory.setText(String.valueOf(product.getCategory()));
+        productWeight.setText(String.valueOf(product.getPrice()) + "/" + product.getUnit());
+        //Finns ingen detaljtext, eller vikt.. ändra vikttexten till kr/kg eller vafan
 
-**/
+ }
+}

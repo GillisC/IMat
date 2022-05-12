@@ -1,6 +1,7 @@
 package imat;
 
 
+import javafx.scene.image.Image;
 import se.chalmers.cse.dat216.project.*;
 
 import java.util.List;
@@ -98,5 +99,7 @@ public class IMatDataModel {
     public void removeFavorite(Product p) {
         iMatDataHandler.removeFavorite(p);
     }
+
+    public Image getFXImage (Product p){ return iMatDataHandler.getFXImage(p); }
 
 }
