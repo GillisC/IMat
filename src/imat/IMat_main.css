@@ -17,9 +17,19 @@
 }
 
 .search-button {
-    -fx-arc-height: 30px;
-    -fx-arc-width: 30px;
+    -fx-background-radius: 15px;
     -fx-background-color: #ED254E;
     -fx-font-size: 16px;
     -fx-text-fill: #F3F2F3;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+.search-button:hover {
+    -fx-background-color: #F34E70;
+}
+
+.search-bar {
+    -fx-background-radius: 15px;
+    -fx-font-size: 16px;
 }

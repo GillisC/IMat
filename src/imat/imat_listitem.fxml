@@ -4,18 +4,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="205.0" styleClass="anchor-pane-background" stylesheets="@IMatListItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="productImageView" fitHeight="120.0" fitWidth="120.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0" />
-      <Label fx:id="productNameLabel" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="180.0" styleClass="product-name" text="Äpple Jonagold Klass1" textAlignment="CENTER" AnchorPane.topAnchor="140.0">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Rectangle fill="DODGERBLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-rec" width="50.0" />
-      <Label fx:id="productPriceLabel" layoutX="4.0" layoutY="4.0" prefHeight="20.0" prefWidth="42.0" styleClass="label-text" text="17.95 kr" textFill="WHITE" />
-      <Label fx:id="productSuffixLabel" layoutX="4.0" layoutY="20.0" prefHeight="20.0" prefWidth="42.0" styleClass="label-text" text="/ kg" textFill="WHITE" />
+      <AnchorPane layoutX="13.0" layoutY="13.0" prefHeight="200.0" prefWidth="180.0" styleClass="anchor-pane-foreground">
+         <children>
+            <ImageView fx:id="productImageView" fitHeight="120.0" fitWidth="160.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="8.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-rec" width="60.0" />
+            <Label fx:id="productPriceLabel" layoutY="-1.0" prefHeight="18.0" prefWidth="60.0" styleClass="label-text" text="17:95 kr" />
+            <Label fx:id="productUnitSuffixLabel" layoutY="20.0" prefHeight="18.0" prefWidth="60.0" styleClass="label-text" text="/ kg" />
+            <Label fx:id="productNameLabel" layoutX="5.0" layoutY="128.0" prefHeight="18.0" prefWidth="170.0" styleClass="product-name" stylesheets="@IMatListItem.css" text="Exempel produkt Klass1" />
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</fx:root>

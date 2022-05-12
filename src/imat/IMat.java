@@ -14,8 +14,6 @@ public class IMat extends Application {
     public void start(Stage stage) throws Exception {
 
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("imat/resources/IMat");
-        // Font.loadFont(this.getClass().getResourceAsStream("Sen-Regular.ttf"), 40.0D);
-
         Parent root = FXMLLoader.load(getClass().getResource("imat_main.fxml"), bundle);
 
         Scene scene = new Scene(root, 1080, 720);
