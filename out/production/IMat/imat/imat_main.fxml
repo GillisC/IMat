@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMatController">
+   <children>
+      <Rectangle fill="#052139" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="darkblue-normal" width="1080.0" />
+   </children>
+</AnchorPane>
