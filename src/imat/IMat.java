@@ -16,7 +16,7 @@ public class IMat extends Application {
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("imat/resources/IMat");
         // Font.loadFont(this.getClass().getResourceAsStream("Sen-Regular.ttf"), 40.0D);
 
-        Parent root = FXMLLoader.load(getClass().getResource("imat_main.fxml"), bundle);
+        Parent root = FXMLLoader.load(getClass().getResource("varukorgItem.fxml"), bundle);
 
         Scene scene = new Scene(root, 1080, 720);
         stage.setTitle(bundle.getString("application.name"));
