@@ -23,6 +23,5 @@
          </image>
       </ImageView>
       <Label fx:id="productCategory" layoutX="130.0" layoutY="60.0" style="-fx-text-fill: #062F42;" text="Kategori" />
-      <Label fx:id="productWeight" layoutX="132.0" layoutY="77.0" style="-fx-text-fill: #062F42;" text="Vikt" />
    </children>
 </AnchorPane>
