@@ -1,7 +1,10 @@
 package imat;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -15,14 +18,16 @@ public class ProductListItem extends AnchorPane {
     private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     private Product product;
 
-    @FXML private ImageView productImageView;
-    @FXML private Label productNameLabel;
-    @FXML private Label productPriceLabel;
-    @FXML private Label productSuffixLabel;
+    @FXML ImageView productImageView;
+    @FXML Label productNameLabel;
+    @FXML Label productPriceLabel;
+    @FXML Label productUnitSuffixLabel;
+    @FXML Button addButton;
+    @FXML Button removeButton;
 
     public ProductListItem(Product product) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("imat_listitem.fxml"));
-        //fxmlLoader.setRoot(this);
+        fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
         try {
@@ -35,14 +40,18 @@ public class ProductListItem extends AnchorPane {
         this.product = product;
 
         Image image = iMatDataModel.getFXImage(product);
-        this.productImageView.setImage(image);
-
-        this.productNameLabel.setText(product.getName());
-
-        this.productPriceLabel.setText(String.valueOf(product.getPrice()));
-
-        this.productSuffixLabel.setText(product.getUnit());
+        productImageView.setImage(image);
+        productNameLabel.setText(product.getName());
+        productPriceLabel.setText(product.getPrice() + " kr");
+        productUnitSuffixLabel.setText("/" + product.getUnitSuffix());
     }
-
+    @FXML
+    private void handleAddAction(ActionEvent event) {
+        System.out.println("Added: " + product.getName());
+    }
+    @FXML
+    private void handleRemoveAction(ActionEvent event) {
+        System.out.println("Removed: " + product.getName());
+    }
 
 }

@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -28,7 +29,7 @@ public class IMatController implements Initializable {
     @FXML private TextField searchTextField;
     @FXML private Button searchButton;
     @FXML private ComboBox<String> sortComboBox;
-    @FXML private GridPane productGridPane;
+    @FXML private FlowPane productFlowPane;
     @FXML private FlowPane subCategoryFlowPane;
 
     @FXML
@@ -38,19 +39,18 @@ public class IMatController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        shoppingCartImageView.setImage(getImageFromUrl("imat/resources/ShoppingCartButton.png"));
+        profileImageView.setImage(getImageFromUrl("imat/resources/profileButton.png"));
         updateProductGrid(iMatDataModel.getProducts());
     }
-
+    public Image getImageFromUrl(String url) {
+        return new Image(url);
+    }
     private void updateProductGrid(List<Product> products) {
-        productGridPane.getChildren().clear();
-        for (int i = 0; i < productGridPane.getRowCount(); i++) {
-            for (int j = 0; j < productGridPane.getRowCount(); j++) {
-                productGridPane.add(new Button("Hello world!"), i, j);
-            }
+        productFlowPane.getChildren().clear();
+        for (Product product: products) {
+            productFlowPane.getChildren().add(new ProductListItem(product));
         }
 
-        /*for (Product p: products) {
-            productGridPane.add(new Button("Hello world!"), 1, 0);
-        }*/
     }
 }
