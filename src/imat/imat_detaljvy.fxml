@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="detaljvyWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="550.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="productImage" fitHeight="263.0" fitWidth="296.0" layoutX="129.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="productName" layoutX="43.0" layoutY="326.0" prefHeight="63.0" prefWidth="501.0" style="-fx-text-fill: #011936;" text="Banan EKO Fairtrade Klass1" textFill="#062f42" wrapText="true">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="productWeight" layoutX="70.0" layoutY="421.0" style="-fx-text-fill: #011936;" text="xx kr/st">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="productCategory" layoutX="70.0" layoutY="387.0" style="-fx-text-fill: #011936;" text="Frukt &amp; grönt">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="productDetail" layoutX="70.0" layoutY="456.0" prefHeight="62.0" prefWidth="476.0" style="-fx-text-fill: #011936;" text="Lorem ipsum dolor sit amet ">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="productHome" layoutX="51.0" layoutY="25.0" style="-fx-text-fill: #F1BF98;" text="hem">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="productCategory" layoutX="144.0" layoutY="25.0" style="-fx-text-fill: #F1BF98;" text="frukt &amp; grönt">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="breadcrumbsArrow" layoutX="118.0" layoutY="24.0" style="-fx-text-fill: #011936;" text="&gt;">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="closeButton" layoutX="481.0" layoutY="8.0" mnemonicParsing="false">
+         <graphic>
+            <ImageView fx:id="closeImage" fitHeight="41.01" fitWidth="41.01" pickOnBounds="true" preserveRatio="true">
+               <Image url="@resources/Close.png" />
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="addToCartButton" layoutX="430.0" layoutY="539.0" mnemonicParsing="false">
+         <graphic>
+            <ImageView fx:id="addToCartImage" fitHeight="89.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@resources/Add_to_cart_button.png" />
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
