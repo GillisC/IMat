@@ -1,0 +1,8 @@
+.text-name{
+    -fx-font-size: 20px;
+    -fx-font-family: "Sen";
+}
+.text-smaller{
+    -fx-font-size: 12px;
+    -fx-font-family: "Sen";
+}

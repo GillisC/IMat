@@ -100,6 +100,16 @@ public class IMatDataModel {
         iMatDataHandler.removeFavorite(p);
     }
 
-    public Image getFXImage (Product p){ return iMatDataHandler.getFXImage(p); }
+    public Image getFXImage(Product p) {
+        return iMatDataHandler.getFXImage(p);
+    }
+
+    public Image getFXImage(Product p, double width, double height) {
+        return iMatDataHandler.getFXImage(p, width, height);
+    }
+
+    public Image getFXImage(Product p, double requestedWidth, double requestedHeight, boolean preserveRatio) {
+        return iMatDataHandler.getFXImage(p, requestedWidth, requestedHeight, preserveRatio);
+    }
 
 }

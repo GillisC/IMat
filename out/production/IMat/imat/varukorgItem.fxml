@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="100.0" prefWidth="580.0" style="-fx-background-color: #F3F2F3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.VarukorgItemController">
+   <children>
+      <ImageView fx:id="productImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="productName" layoutX="122.0" layoutY="14.0" prefHeight="39.0" prefWidth="150.0" style="-fx-text-fill: #062F42;" text="Namn på produkt" wrapText="true" />
+      <Label fx:id="productPrice" layoutX="506.0" layoutY="41.0" style="-fx-text-fill: #062F42;" text="25 kr" />
+      <Label fx:id="antalLabel" layoutX="362.0" layoutY="41.0" style="-fx-text-fill: #062F42;" text="1 st" />
+      <ImageView fx:id="addToCartButton" fitHeight="32.0" fitWidth="32.0" layoutX="316.0" layoutY="34.0" onMouseClicked="#clickedRemoveFromCart" onMouseEntered="#hoverRemoveFromCart" onMouseExited="#exitedRemoveFromCart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/Add_to_cart_button-.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="removeFromCartButton" fitHeight="32.0" fitWidth="32.0" layoutX="396.0" layoutY="34.0" onMouseClicked="#clickedAddToCart" onMouseEntered="#hoverAddToCart" onMouseExited="#exitedAddToCart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/Add_to_cart_button+.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="productCategory" layoutX="130.0" layoutY="60.0" style="-fx-text-fill: #062F42;" text="Kategori" />
+      <Label fx:id="productWeight" layoutX="132.0" layoutY="77.0" style="-fx-text-fill: #062F42;" text="Vikt" />
+   </children>
+</AnchorPane>
