@@ -15,12 +15,12 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Label fx:id="productWeight" layoutX="70.0" layoutY="421.0" style="-fx-text-fill: #011936;" text="xx gram">
+      <Label fx:id="productWeight" layoutX="70.0" layoutY="421.0" style="-fx-text-fill: #011936;" text="xx kr/st">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="productCategory" layoutX="70.0" layoutY="387.0" style="-fx-text-fill: #011936;" text="Frucht å grönt">
+      <Label fx:id="productCategory" layoutX="70.0" layoutY="387.0" style="-fx-text-fill: #011936;" text="Frukt &amp; grönt">
          <font>
             <Font size="30.0" />
          </font>
@@ -35,7 +35,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="productCategory" layoutX="144.0" layoutY="25.0" style="-fx-text-fill: #F1BF98;" text="frucht å grönt">
+      <Label fx:id="productCategory" layoutX="144.0" layoutY="25.0" style="-fx-text-fill: #F1BF98;" text="frukt &amp; grönt">
          <font>
             <Font size="30.0" />
          </font>
@@ -45,14 +45,14 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Button layoutX="481.0" layoutY="8.0" mnemonicParsing="false">
+      <Button fx:id="closeButton" layoutX="481.0" layoutY="8.0" mnemonicParsing="false">
          <graphic>
             <ImageView fx:id="closeImage" fitHeight="41.01" fitWidth="41.01" pickOnBounds="true" preserveRatio="true">
                <Image url="@resources/Close.png" />
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="430.0" layoutY="539.0" mnemonicParsing="false">
+      <Button fx:id="addToCartButton" layoutX="430.0" layoutY="539.0" mnemonicParsing="false">
          <graphic>
             <ImageView fx:id="addToCartImage" fitHeight="89.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
                <Image url="@resources/Add_to_cart_button.png" />
