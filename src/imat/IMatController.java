@@ -18,7 +18,6 @@ import java.util.*;
 public class IMatController implements Initializable {
 
     private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
-    private final Map<String, ProductListItem> productListItemMap = new HashMap<>();
 
     // Main Category maps to a list of products that belong in that category
     private final Map<String, List<ProductListItem>> mainCategoryMap = new HashMap<>();
