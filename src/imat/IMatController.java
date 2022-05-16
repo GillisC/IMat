@@ -24,6 +24,7 @@ public class IMatController implements Initializable {
 
     // Main Category maps to a list of products that belong in that category
     private Map<String, List<ProductListItem>> mainCategoryMap = new HashMap<>();
+    private String selectedCategory;
 
 
     @FXML private ImageView shoppingCartImageView;
@@ -35,6 +36,7 @@ public class IMatController implements Initializable {
     @FXML private FlowPane subCategoryFlowPane;
     @FXML private ScrollPane mainCategoryScrollPane;
 
+    /* Populates mainCategoryMap so that a category name maps to a list of products */
     private void populateMainCategoryMap() {
         String[] categoryArray = {"Allt", "Grönsaker", "Frukt", "Mejeri", "Bröd", "Kött", "Fisk", "Skafferi", "Drickor"};
 
@@ -139,30 +141,25 @@ public class IMatController implements Initializable {
     @FXML
     public void handleSearchAction(ActionEvent event) {
         List<Product> matches = iMatDataModel.findProducts(searchTextField.getText());
-        updateProductGrid(matches);
+        //updateProductGrid(matches);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Stores all products in a map
-        for (Product p: iMatDataModel.getProducts()) {
-            productListItemMap.put(p.getName(), new ProductListItem(p));
-        }
+        populateMainCategoryMap();
+        selectedCategory = "Grönsaker";
 
-        shoppingCartImageView.setImage(getImageFromUrl("imat/resources/ShoppingCartButton.png"));
-        profileImageView.setImage(getImageFromUrl("imat/resources/profileButton.png"));
-        updateProductGrid(iMatDataModel.getProducts());
+        shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/ShoppingCartButton.png"));
+        profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/profileButton.png"));
+        updateProductGrid(mainCategoryMap.get(selectedCategory));
 
         //populateMainCategoryMap();
     }
 
-    public Image getImageFromUrl(String url) {
-        return new Image(url);
-    }
-
-    private void updateProductGrid(List<Product> products) {
+    private void updateProductGrid(List<ProductListItem> products) {
         productFlowPane.getChildren().clear();
-        for (Product product: products) {
-            productFlowPane.getChildren().add(productListItemMap.get(product.getName()));
+        for (ProductListItem productListItem: products) {
+            productFlowPane.getChildren().add(productListItem);
         }
     }
 }
