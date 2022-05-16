@@ -11,9 +11,12 @@
 }
 
 .main-carousel {
-    -fx-arc-height: 80px;
-    -fx-arc-width: 80px;
-    -fx-fill: #F3F2F3;
+    -fx-background-color: #F3F2F3;
+    -fx-background-radius: 40px;
+}
+.scroll-pane-carousel {
+    -fx-background-color: #F3F2F3;
+    -fx-border-radius: 40px;
 }
 
 .search-button {

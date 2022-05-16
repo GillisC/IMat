@@ -17,7 +17,15 @@
         <AnchorPane prefHeight="720.0" prefWidth="1080.0">
             <children>
                 <Rectangle fill="#052139" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="darkblue-normal" width="1080.0" />
-                <Rectangle arcHeight="80.0" arcWidth="80.0" fill="#f3f2f3" height="80.0" layoutX="290.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" styleClass="main-carousel" width="500.0" />
+            <AnchorPane layoutX="290.0" layoutY="10.0" prefHeight="80.0" prefWidth="500.0" styleClass="main-carousel">
+               <children>
+                  <ScrollPane prefHeight="80.0" prefWidth="500.0" styleClass="scroll-pane-carousel" vbarPolicy="NEVER">
+                     <content>
+                        <FlowPane prefHeight="80.0" prefWidth="500.0" style="-fx-background-radius: 80;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
                 <ImageView fx:id="profileImageView" fitHeight="60.0" fitWidth="60.0" layoutX="811.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="shoppingCartImageView" fitHeight="60.0" fitWidth="180.0" layoutX="887.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
             </children>

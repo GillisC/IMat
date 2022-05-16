@@ -34,6 +34,4 @@ public class wizard extends AnchorPane {
         navigateTo("iMatDelivery.fxml", pane);
     }
 
-
-
 }
