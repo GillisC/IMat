@@ -153,8 +153,13 @@ public class IMatController implements Initializable {
 
     @FXML
     public void handleSearchAction(ActionEvent event) {
+        /* Prevents it from creating useless objects */
+        if (searchTextField.getText() == "") {
+            updateProductGrid();
+            return;
+        }
         List<Product> matches = iMatDataModel.findProducts(searchTextField.getText());
-        //updateProductGrid(matches);
+        updateProductGrid(matches);
     }
 
     private void updateCategoryImages(String selected) {
@@ -187,21 +192,27 @@ public class IMatController implements Initializable {
         shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/ShoppingCartButton.png"));
         profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/profileButton.png"));
     }
-    /* Updates the product grid based on the main category */
+
+    /* Updates the product with given list of products */
+    private void updateProductGrid(List<Product> products) {
+        productFlowPane.getChildren().clear();
+        for (Product product: products) {
+            productFlowPane.getChildren().add(new ProductListItem(product));
+        }
+    }
+    /* Updates the product list based on current main category */
     private void updateProductGrid() {
         productFlowPane.getChildren().clear();
         for (ProductListItem productListItem: mainCategoryMap.get(selectedCategory)) {
             productFlowPane.getChildren().add(productListItem);
         }
     }
+
     /* Updates only when a subcategory is chosen */
     protected void updateProductGridWithSub(String subCategory) {
         ProductCategory category = getProductCategory(subCategory);
         List<Product> products = iMatDataModel.getProducts(category);
-        productFlowPane.getChildren().clear();
-        for (Product p: products) {
-            productFlowPane.getChildren().add(new ProductListItem(p));
-        }
+        updateProductGrid(products);
     }
 
     public void setMainCategory(String categoryName) {
