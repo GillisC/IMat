@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.util.ResourceBundle;
 
@@ -14,7 +13,8 @@ public class IMat extends Application {
     public void start(Stage stage) throws Exception {
 
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("imat/resources/IMat");
-        Parent root = FXMLLoader.load(getClass().getResource("imat_main.fxml"), bundle);
+
+        Parent root = FXMLLoader.load(getClass().getResource("iMat_main.fxml"), bundle);
 
         Scene scene = new Scene(root, 1080, 720);
         stage.setTitle(bundle.getString("application.name"));

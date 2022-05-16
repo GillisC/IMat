@@ -7,17 +7,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: F3F2F3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMatController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: F3F2F3;" stylesheets="@IMat_main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMatController">
     <children>
         <StackPane prefHeight="150.0" prefWidth="200.0" />
-        <AnchorPane prefHeight="100.0" prefWidth="1080.0">
+        <AnchorPane prefHeight="720.0" prefWidth="1080.0">
             <children>
                 <Rectangle fill="#052139" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="darkblue-normal" width="1080.0" />
                 <Rectangle arcHeight="80.0" arcWidth="80.0" fill="#f3f2f3" height="80.0" layoutX="290.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" styleClass="main-carousel" width="500.0" />
@@ -25,8 +22,8 @@
             <ImageView fx:id="shoppingCartImageView" fitHeight="60.0" fitWidth="180.0" layoutX="887.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
-        <TextField fx:id="searchTextField" layoutX="290.0" layoutY="109.0" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" />
-        <Button fx:id="searchButton" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" />
+        <TextField fx:id="searchTextField" layoutX="290.0" layoutY="109.0" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" styleClass="search-bar" stylesheets="@IMat_main.css" />
+        <Button fx:id="searchButton" alignment="CENTER" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" textAlignment="CENTER" />
         <ComboBox fx:id="sortComboBox" layoutX="857.0" layoutY="109.0" prefHeight="40.0" prefWidth="150.0" promptText="Sortera" />
         <SplitPane dividerPositions="0.20686456400742115" layoutY="158.0" prefHeight="566.0" prefWidth="1080.0">
             <items>
@@ -38,19 +35,9 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="853.0">
                     <children>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="562.0" prefWidth="850.0" vbarPolicy="ALWAYS">
-                            <content>
-                                <GridPane fx:id="productGridPane" prefHeight="562.0" prefWidth="850.0">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                </GridPane>
-                            </content>
+                     <content>
+                        <FlowPane fx:id="productFlowPane" prefHeight="556.0" prefWidth="840.0" />
+                     </content>
                         </ScrollPane>
                     </children>
                 </AnchorPane>

@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="205.0" styleClass="anchor-pane-background" stylesheets="@IMatListItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="productImageView" fitHeight="120.0" fitWidth="120.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0" />
-      <Label fx:id="productNameLabel" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="180.0" styleClass="product-name" text="Äpple Jonagold Klass1" textAlignment="CENTER" AnchorPane.topAnchor="140.0">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Rectangle fill="DODGERBLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-rec" width="50.0" />
-      <Label fx:id="productPriceLabel" layoutX="4.0" layoutY="4.0" prefHeight="20.0" prefWidth="42.0" styleClass="label-text" text="17.95 kr" textFill="WHITE" />
-      <Label fx:id="productSuffixLabel" layoutX="4.0" layoutY="20.0" prefHeight="20.0" prefWidth="42.0" styleClass="label-text" text="/ kg" textFill="WHITE" />
+      <AnchorPane layoutX="13.0" layoutY="13.0" prefHeight="200.0" prefWidth="180.0" styleClass="anchor-pane-foreground">
+         <children>
+            <ImageView fx:id="productImageView" fitHeight="120.0" fitWidth="160.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="8.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-rec" width="60.0" />
+            <Label fx:id="productPriceLabel" layoutY="2.0" prefHeight="18.0" prefWidth="60.0" styleClass="label-text" text="17:95 kr" />
+            <Label fx:id="productUnitSuffixLabel" layoutY="18.0" prefHeight="18.0" prefWidth="60.0" styleClass="label-text" text="/ kg" />
+            <Label fx:id="productNameLabel" layoutX="5.0" layoutY="128.0" prefHeight="18.0" prefWidth="170.0" styleClass="product-name" stylesheets="@IMatListItem.css" text="Exempel produkt Klass1" />
+            <Button fx:id="addButton" layoutX="138.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="32.0" prefWidth="32.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0" />
+            <Button fx:id="removeButton" layoutX="14.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleRemoveAction" prefHeight="32.0" prefWidth="32.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="24.0" layoutX="154.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" width="4.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="4.0" layoutX="144.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" width="24.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="4.0" layoutX="12.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" width="24.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" layoutX="45.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="large-rectangle" width="90.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" />
+            <Label layoutX="54.0" layoutY="163.0" prefHeight="19.0" prefWidth="70.0" styleClass="amount-text" text="0" />
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</fx:root>
