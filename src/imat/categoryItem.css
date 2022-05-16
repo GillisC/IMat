@@ -1,0 +1,6 @@
+.label-text {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+}

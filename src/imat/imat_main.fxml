@@ -19,9 +19,9 @@
                 <Rectangle fill="#052139" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="darkblue-normal" width="1080.0" />
             <AnchorPane layoutX="290.0" layoutY="10.0" prefHeight="80.0" prefWidth="500.0" styleClass="main-carousel">
                <children>
-                  <ScrollPane prefHeight="80.0" prefWidth="500.0" styleClass="scroll-pane-carousel" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="mainCategoryScrollPane" fitToHeight="true" fitToWidth="true" hmax="1000.0" prefHeight="80.0" prefWidth="500.0" styleClass="scroll-pane-carousel" vbarPolicy="NEVER">
                      <content>
-                        <FlowPane prefHeight="80.0" prefWidth="500.0" style="-fx-background-radius: 80;" />
+                        <FlowPane fx:id="mainCategoryFlowPane" alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="80.0" prefWidth="500.0" prefWrapLength="500.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -31,7 +31,7 @@
             </children>
         </AnchorPane>
         <TextField fx:id="searchTextField" layoutX="290.0" layoutY="109.0" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" styleClass="search-bar" stylesheets="@IMat_main.css" />
-        <Button fx:id="searchButton" alignment="CENTER" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" textAlignment="CENTER" />
+        <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" textAlignment="CENTER" />
         <ComboBox fx:id="sortComboBox" layoutX="857.0" layoutY="109.0" prefHeight="40.0" prefWidth="150.0" promptText="Sortera" />
         <SplitPane dividerPositions="0.20686456400742115" layoutY="158.0" prefHeight="566.0" prefWidth="1080.0">
             <items>

@@ -1,14 +1,12 @@
 package imat;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.Product;
@@ -20,12 +18,14 @@ import java.util.*;
 public class IMatController implements Initializable {
 
     private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
-    private Map<String, ProductListItem> productListItemMap = new HashMap<>();
+    private final Map<String, ProductListItem> productListItemMap = new HashMap<>();
 
     // Main Category maps to a list of products that belong in that category
-    private Map<String, List<ProductListItem>> mainCategoryMap = new HashMap<>();
-    private String selectedCategory;
+    private final Map<String, List<ProductListItem>> mainCategoryMap = new HashMap<>();
 
+    // Maps A main category to their respective subcategories
+    private final Map<String, List<String>> subCategoryMap = new HashMap<>();
+    private String selectedCategory;
 
     @FXML private ImageView shoppingCartImageView;
     @FXML private ImageView profileImageView;
@@ -35,10 +35,10 @@ public class IMatController implements Initializable {
     @FXML private FlowPane productFlowPane;
     @FXML private FlowPane subCategoryFlowPane;
     @FXML private ScrollPane mainCategoryScrollPane;
+    @FXML private FlowPane mainCategoryFlowPane;
 
     /* Populates mainCategoryMap so that a category name maps to a list of products */
     private void populateMainCategoryMap() {
-        String[] categoryArray = {"Allt", "Grönsaker", "Frukt", "Mejeri", "Bröd", "Kött", "Fisk", "Skafferi", "Drickor"};
 
         // Adds products to "Allt" category
         List<Product> tempEverything = iMatDataModel.getProducts();
@@ -47,6 +47,7 @@ public class IMatController implements Initializable {
             everything.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Allt", everything);
+        subCategoryMap.put("Allt", null);
 
         // Adds products to "Grönsaker" Category
         List<Product> tempGreens = new ArrayList<>();
@@ -60,6 +61,8 @@ public class IMatController implements Initializable {
             greens.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Grönsaker", greens);
+        String[] greenSub = {"Kålväxter", "Örter", "Baljväxter", "Rotfrukter"};
+        subCategoryMap.put("Grönsaker", List.of(greenSub));
 
         // Adds products to "Frukt" Category
         List<Product> tempFruit = new ArrayList<>();
@@ -74,6 +77,8 @@ public class IMatController implements Initializable {
             fruit.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Frukt", fruit);
+        String[] fruitSub = {"Bär", "Citrus Frukter", "Exotiska Frukter", "Meloner", "Frukt"};
+        subCategoryMap.put("Frukt", List.of(fruitSub));
 
         // Adds products to "Mejeri" Category
         List<Product> tempDairy = new ArrayList<>(iMatDataModel.getProducts(ProductCategory.DAIRIES));
@@ -83,6 +88,7 @@ public class IMatController implements Initializable {
             dairy.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Mejeri", dairy);
+        subCategoryMap.put("Mejeri", null);
 
         // Adds products to "Bröd" Category
         List<Product> tempBread = new ArrayList<>(iMatDataModel.getProducts(ProductCategory.BREAD));
@@ -92,6 +98,7 @@ public class IMatController implements Initializable {
             bread.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Bröd", bread);
+        subCategoryMap.put("Bröd", null);
 
         // Adds products to "Kött" Category
         List<Product> tempMeat = new ArrayList<>(iMatDataModel.getProducts(ProductCategory.MEAT));
@@ -101,6 +108,7 @@ public class IMatController implements Initializable {
             meat.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Kött", meat);
+        subCategoryMap.put("Kött", null);
 
         // Adds products to "Fisk" Category
         List<Product> tempFish = new ArrayList<>(iMatDataModel.getProducts(ProductCategory.FISH));
@@ -110,6 +118,7 @@ public class IMatController implements Initializable {
             fish.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Fisk", fish);
+        subCategoryMap.put("Fisk", null);
 
         // Adds products to "Skafferi" Category
         List<Product> tempPantry = new ArrayList<>();
@@ -123,6 +132,8 @@ public class IMatController implements Initializable {
             pantry.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Skafferi", pantry);
+        String[] pantrySub = {"Mjöl, Socker & Salt", "Pasta", "Potatis & Ris", "Nötter, & Frön"};
+        subCategoryMap.put("Skafferi", List.of(pantrySub));
 
         // Adds products to "Skafferi" Category
         List<Product> tempDrinks = new ArrayList<>();
@@ -134,6 +145,8 @@ public class IMatController implements Initializable {
             drinks.add(new ProductListItem(p));
         }
         mainCategoryMap.put("Drickor", drinks);
+        String[] drinksSub = {"Kalla Drycker", "Varma Drycker"};
+        subCategoryMap.put("Drickor", List.of(drinksSub));
 
         System.out.println("Successfully Loaded all products...");
     }
@@ -143,23 +156,95 @@ public class IMatController implements Initializable {
         List<Product> matches = iMatDataModel.findProducts(searchTextField.getText());
         //updateProductGrid(matches);
     }
+
+    private void updateCategoryImages(String selected) {
+        String[] categoryArray = {"Allt", "Grönsaker", "Frukt", "Mejeri", "Bröd", "Kött", "Fisk", "Skafferi", "Drickor"};
+        mainCategoryFlowPane.getChildren().clear();
+
+        for (String s: categoryArray) {
+            mainCategoryFlowPane.getChildren().add(new CategoryItem(s, selectedCategory, this));
+        }
+    }
+
+    private void populateSubCategory() {
+        subCategoryFlowPane.getChildren().clear();
+        List<String> subCategories = subCategoryMap.get(selectedCategory);
+        if (subCategories == null) {
+            return;
+        }
+        for (String s: subCategories) {
+            subCategoryFlowPane.getChildren().add(new SubCategoryItem(s, this));
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Stores all products in a map
+        selectedCategory = "Allt";
+
         populateMainCategoryMap();
-        selectedCategory = "Grönsaker";
+        updateCategoryImages(selectedCategory);
+        updateProductGrid();
 
         shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/ShoppingCartButton.png"));
         profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/profileButton.png"));
-        updateProductGrid(mainCategoryMap.get(selectedCategory));
-
-        //populateMainCategoryMap();
+    }
+    /* Updates the product grid based on the main category */
+    private void updateProductGrid() {
+        productFlowPane.getChildren().clear();
+        for (ProductListItem productListItem: mainCategoryMap.get(selectedCategory)) {
+            productFlowPane.getChildren().add(productListItem);
+        }
+    }
+    /* Updates only when a subcategory is chosen */
+    protected void updateProductGridWithSub(String subCategory) {
+        ProductCategory category = getProductCategory(subCategory);
+        List<Product> products = iMatDataModel.getProducts(category);
+        productFlowPane.getChildren().clear();
+        for (Product p: products) {
+            productFlowPane.getChildren().add(new ProductListItem(p));
+        }
     }
 
-    private void updateProductGrid(List<ProductListItem> products) {
-        productFlowPane.getChildren().clear();
-        for (ProductListItem productListItem: products) {
-            productFlowPane.getChildren().add(productListItem);
+    public void setMainCategory(String categoryName) {
+        selectedCategory = categoryName;
+        updateCategoryImages(selectedCategory);
+        populateSubCategory();
+        updateProductGrid();
+    }
+
+    public ProductCategory getProductCategory(String subCategory) {
+        switch (subCategory) {
+            case "Kålväxter" :
+                return ProductCategory.CABBAGE;
+            case "Örter" :
+                return ProductCategory.HERB;
+            case "Baljväxter" :
+                return ProductCategory.POD;
+            case "Rotfrukter" :
+                return ProductCategory.ROOT_VEGETABLE;
+            case "Bär" :
+                return ProductCategory.BERRY;
+            case "Citrus Frukter" :
+                return ProductCategory.CITRUS_FRUIT;
+            case "Exotiska Frukter" :
+                return ProductCategory.EXOTIC_FRUIT;
+            case "Meloner" :
+                return ProductCategory.MELONS;
+            case "Frukt" :
+                return ProductCategory.FRUIT;
+            case "Mjöl, Socker & Salt" :
+                return ProductCategory.FLOUR_SUGAR_SALT;
+            case "Pasta" :
+                return ProductCategory.PASTA;
+            case "Potatis & Ris" :
+                return ProductCategory.POTATO_RICE;
+            case "Nötter & Frön" :
+                return ProductCategory.NUTS_AND_SEEDS;
+            case "Kalla Drycker" :
+                return ProductCategory.COLD_DRINKS;
+            case "Varma Drycker" :
+                return ProductCategory.HOT_DRINKS;
+            default:
+                return null;
         }
     }
 }

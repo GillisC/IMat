@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="88.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.CategoryItem">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="88.0" stylesheets="@categoryItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="categoryItemImageView" fitHeight="48.0" fitWidth="48.0" layoutX="20.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="categoryItemLabel" layoutY="56.0" prefHeight="24.0" prefWidth="88.0" text="Label" />
+      <ImageView fx:id="categoryItemImageView" fitHeight="48.0" fitWidth="48.0" layoutX="20.0" layoutY="8.0" onMouseClicked="#handleOnClick" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="categoryItemLabel" layoutY="54.0" prefHeight="24.0" prefWidth="88.0" styleClass="label-text" text="Label" />
    </children>
-</AnchorPane>
+</fx:root>

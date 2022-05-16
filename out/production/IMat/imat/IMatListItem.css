@@ -54,3 +54,21 @@
     -fx-text-fill: #F3F2F3;
     -fx-alignment: center;
 }
+
+.sub-category-name {
+    -fx-font-size: 20px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+
+.sub-category-card {
+    -fx-fill: #F3F2F3;
+    -fx-arc-width: 16px;
+    -fx-arc-height: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+}
+
+.sub-category-card:hover {
+    -fx-fill: #D4D1D4;
+}
