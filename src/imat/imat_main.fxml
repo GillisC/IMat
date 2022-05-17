@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -27,8 +28,11 @@
                         </ScrollPane>
                      </children>
                   </AnchorPane>
-                      <ImageView fx:id="profileImageView" fitHeight="60.0" fitWidth="60.0" layoutX="811.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="shoppingCartImageView" fitHeight="60.0" fitWidth="180.0" layoutX="887.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="811.0" layoutY="20.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="profile-shopping-button" />
+                  <ImageView fx:id="profileImageView" fitHeight="40.0" fitWidth="40.0" layoutX="821.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="887.0" layoutY="20.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="profile-shopping-button" />
+                  <ImageView fx:id="shoppingCartImageView" fitHeight="40.0" fitWidth="40.0" layoutX="898.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="shoppingCartTotalLabel" layoutX="946.0" layoutY="21.0" prefHeight="60.0" prefWidth="110.0" styleClass="shopping-cart-label" text="1090.90 kr" />
                   </children>
               </AnchorPane>
          </children></StackPane>

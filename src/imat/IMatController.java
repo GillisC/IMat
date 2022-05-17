@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -41,6 +38,7 @@ public class IMatController implements Initializable {
     @FXML private ScrollPane mainCategoryScrollPane;
     @FXML private FlowPane mainCategoryFlowPane;
     @FXML private StackPane mainStackPane;
+    @FXML private Label shoppingCartTotalLabel;
 
     /* Populates mainCategoryMap so that a category name maps to a list of products */
     private void populateMainCategoryMap() {
@@ -132,8 +130,8 @@ public class IMatController implements Initializable {
         updateCategoryImages(selectedCategory);
         updateProductGrid(mainCategoryMap.get(selectedCategory));
 
-        shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/ShoppingCartButton.png"));
-        profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/profileButton.png"));
+        shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/shopping-cart.png"));
+        profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/receipt.png"));
     }
 
     @FXML

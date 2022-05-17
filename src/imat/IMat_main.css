@@ -38,3 +38,20 @@
     -fx-font-size: 16px;
     -fx-font-family: 'Sen', sans-serif;
 }
+
+.profile-shopping-button {
+    -fx-background-color: #ED254E;
+    -fx-background-radius: 30px;
+}
+
+.profile-shopping-button:hover {
+    -fx-background-color: #F34E70;
+}
+
+.shopping-cart-label {
+    -fx-font-size: 22px;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
+}
