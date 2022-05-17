@@ -22,14 +22,25 @@
     -fx-alignment: center;
 }
 
+.text-field {
+    -fx-background-color: #ED254E;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
 .anchor-pane-background {
     -fx-background-color: #F3F2F3;
 }
 
 .anchor-pane-foreground {
-    -fx-background-color: #F3F2F3;
+    -fx-background-color: #E3E3E3;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+}
+
+.anchor-pane-foreground:hover {
+    -fx-background-color: #F3F2F3;
 }
 
 .button {
@@ -63,12 +74,11 @@
 }
 
 .sub-category-card {
-    -fx-fill: #F3F2F3;
-    -fx-arc-width: 16px;
-    -fx-arc-height: 16px;
+    -fx-background-color: #E3E3E3;
+    -fx-background-radius: 16px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
 }
 
 .sub-category-card:hover {
-    -fx-fill: #FAFAFA;
+    -fx-background-color: #F3F2F3;
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
@@ -35,6 +36,7 @@ public class IMatController implements Initializable {
     @FXML private FlowPane subCategoryFlowPane;
     @FXML private ScrollPane mainCategoryScrollPane;
     @FXML private FlowPane mainCategoryFlowPane;
+    @FXML private StackPane mainStackPane;
 
     /* Populates mainCategoryMap so that a category name maps to a list of products */
     private void populateMainCategoryMap() {
