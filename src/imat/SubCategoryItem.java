@@ -10,6 +10,7 @@ import java.io.IOException;
 public class SubCategoryItem extends AnchorPane {
 
     @FXML Label subCategoryItemLabel;
+    @FXML AnchorPane backdropAnchorPane;
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
 
     String subCategoryName;
@@ -37,5 +38,6 @@ public class SubCategoryItem extends AnchorPane {
     private void handleOnClick() {
         System.out.println(subCategoryName);
         parentController.updateProductGridWithSub(subCategoryName);
+        this.backdropAnchorPane.setStyle("-fx-background-color: #C0C0C0");
     }
 }

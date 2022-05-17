@@ -3,6 +3,7 @@ package imat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
@@ -25,6 +26,9 @@ public class IMatController implements Initializable {
 
     // Maps A main category to their respective subcategories
     private final Map<String, List<String>> subCategoryMap = new HashMap<>();
+    // Current sub category objects, used to set the backdrop style
+    private ArrayList<SubCategoryItem> subCategoryItems = new ArrayList<>();
+
     private String selectedCategory;
 
     @FXML private ImageView shoppingCartImageView;
@@ -174,12 +178,15 @@ public class IMatController implements Initializable {
 
     private void populateSubCategory() {
         subCategoryFlowPane.getChildren().clear();
+        subCategoryItems.clear();
         List<String> subCategories = subCategoryMap.get(selectedCategory);
         if (subCategories == null) {
             return;
         }
         for (String s: subCategories) {
-            subCategoryFlowPane.getChildren().add(new SubCategoryItem(s, this));
+            SubCategoryItem subCategoryItem = new SubCategoryItem(s, this);
+            subCategoryItems.add(subCategoryItem);
+            subCategoryFlowPane.getChildren().add(subCategoryItem);
         }
     }
     @Override
@@ -211,6 +218,10 @@ public class IMatController implements Initializable {
 
     /* Updates only when a subcategory is chosen */
     protected void updateProductGridWithSub(String subCategory) {
+        for (SubCategoryItem subCategoryItem : subCategoryItems) {
+            subCategoryItem.backdropAnchorPane.setStyle("-fx-background-color: #E3E3E3");
+        }
+
         ProductCategory category = getProductCategory(subCategory);
         List<Product> products = iMatDataModel.getProducts(category);
         updateProductGrid(products);
@@ -224,39 +235,23 @@ public class IMatController implements Initializable {
     }
 
     public ProductCategory getProductCategory(String subCategory) {
-        switch (subCategory) {
-            case "Kålväxter" :
-                return ProductCategory.CABBAGE;
-            case "Örter" :
-                return ProductCategory.HERB;
-            case "Baljväxter" :
-                return ProductCategory.POD;
-            case "Rotfrukter" :
-                return ProductCategory.ROOT_VEGETABLE;
-            case "Bär" :
-                return ProductCategory.BERRY;
-            case "Citrus Frukter" :
-                return ProductCategory.CITRUS_FRUIT;
-            case "Exotiska Frukter" :
-                return ProductCategory.EXOTIC_FRUIT;
-            case "Meloner" :
-                return ProductCategory.MELONS;
-            case "Frukt" :
-                return ProductCategory.FRUIT;
-            case "Mjöl, Socker & Salt" :
-                return ProductCategory.FLOUR_SUGAR_SALT;
-            case "Pasta" :
-                return ProductCategory.PASTA;
-            case "Potatis & Ris" :
-                return ProductCategory.POTATO_RICE;
-            case "Nötter & Frön" :
-                return ProductCategory.NUTS_AND_SEEDS;
-            case "Kalla Drycker" :
-                return ProductCategory.COLD_DRINKS;
-            case "Varma Drycker" :
-                return ProductCategory.HOT_DRINKS;
-            default:
-                return null;
-        }
+        return switch (subCategory) {
+            case "Kålväxter" -> ProductCategory.CABBAGE;
+            case "Örter" -> ProductCategory.HERB;
+            case "Baljväxter" -> ProductCategory.POD;
+            case "Rotfrukter" -> ProductCategory.ROOT_VEGETABLE;
+            case "Bär" -> ProductCategory.BERRY;
+            case "Citrus Frukter" -> ProductCategory.CITRUS_FRUIT;
+            case "Exotiska Frukter" -> ProductCategory.EXOTIC_FRUIT;
+            case "Meloner" -> ProductCategory.MELONS;
+            case "Frukt" -> ProductCategory.FRUIT;
+            case "Mjöl, Socker & Salt" -> ProductCategory.FLOUR_SUGAR_SALT;
+            case "Pasta" -> ProductCategory.PASTA;
+            case "Potatis & Ris" -> ProductCategory.POTATO_RICE;
+            case "Nötter & Frön" -> ProductCategory.NUTS_AND_SEEDS;
+            case "Kalla Drycker" -> ProductCategory.COLD_DRINKS;
+            case "Varma Drycker" -> ProductCategory.HOT_DRINKS;
+            default -> null;
+        };
     }
 }

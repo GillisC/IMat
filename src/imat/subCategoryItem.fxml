@@ -6,7 +6,7 @@
 
 <fx:root onMouseClicked="#handleOnClick" prefHeight="90.0" prefWidth="220.0" stylesheets="@IMatListItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="5.0" prefHeight="80.0" prefWidth="200.0" styleClass="sub-category-card" />
+      <AnchorPane fx:id="backdropAnchorPane" layoutX="10.0" layoutY="5.0" prefHeight="80.0" prefWidth="200.0" styleClass="sub-category-card" />
       <Label fx:id="subCategoryItemLabel" layoutX="10.0" layoutY="30.0" mouseTransparent="true" prefHeight="30.0" prefWidth="200.0" styleClass="sub-category-name" text="Mjöl, Socker, Salt">
          <font>
             <Font name="System Bold" size="20.0" />

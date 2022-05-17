@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
 .searchbar-text {
     -fx-font-size: 16px;
-    -fx-font-family: "Sen";
     -fx-text-fill: #F3F2F3;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .product-name {
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
     -fx-text-fill: #062F42;
     -fx-alignment: center;
     -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .price-rec {
@@ -16,10 +19,11 @@
 }
 
 .label-text {
-    -fx-font-size: 12px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: #F3F2F3;
     -fx-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .text-field {
@@ -27,6 +31,7 @@
     -fx-text-fill: #F3F2F3;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .anchor-pane-background {
@@ -64,6 +69,7 @@
     -fx-font-weight: bold;
     -fx-text-fill: #F3F2F3;
     -fx-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .sub-category-name {
@@ -71,6 +77,7 @@
     -fx-text-fill: #062F42;
     -fx-alignment: center;
     -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .sub-category-card {
@@ -81,8 +88,4 @@
 
 .sub-category-card:hover {
     -fx-background-color: #F3F2F3;
-}
-
-.sub-category-card:selected {
-    -fx-background-color: #000000;
 }
