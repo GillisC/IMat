@@ -55,101 +55,69 @@ public class IMatController implements Initializable {
         subCategoryMap.put("Allt", null);
 
         // Adds products to "Grönsaker" Category
-        List<Product> tempGreens = new ArrayList<>();
-        tempGreens.addAll(iMatDataModel.getProducts(ProductCategory.CABBAGE));
-        tempGreens.addAll(iMatDataModel.getProducts(ProductCategory.HERB));
-        tempGreens.addAll(iMatDataModel.getProducts(ProductCategory.POD));
-        tempGreens.addAll(iMatDataModel.getProducts(ProductCategory.ROOT_VEGETABLE));
-
         List<ProductListItem> greens = new ArrayList<>();
-        for (Product p: tempGreens) {
-            greens.add(new ProductListItem(p));
-        }
+        greens.addAll(findMatchingProducts(ProductCategory.CABBAGE));
+        greens.addAll(findMatchingProducts(ProductCategory.HERB));
+        greens.addAll(findMatchingProducts(ProductCategory.POD));
+        greens.addAll(findMatchingProducts(ProductCategory.ROOT_VEGETABLE));
         mainCategoryMap.put("Grönsaker", greens);
+
         String[] greenSub = {"Kålväxter", "Örter", "Baljväxter", "Rotfrukter"};
         subCategoryMap.put("Grönsaker", List.of(greenSub));
 
         // Adds products to "Frukt" Category
-        List<Product> tempFruit = new ArrayList<>();
-        tempFruit.addAll(iMatDataModel.getProducts(ProductCategory.BERRY));
-        tempFruit.addAll(iMatDataModel.getProducts(ProductCategory.CITRUS_FRUIT));
-        tempFruit.addAll(iMatDataModel.getProducts(ProductCategory.EXOTIC_FRUIT));
-        tempFruit.addAll(iMatDataModel.getProducts(ProductCategory.MELONS));
-        tempFruit.addAll(iMatDataModel.getProducts(ProductCategory.FRUIT));
-
         List<ProductListItem> fruit = new ArrayList<>();
-        for (Product p: tempFruit) {
-            fruit.add(new ProductListItem(p));
-        }
+        fruit.addAll(findMatchingProducts(ProductCategory.BERRY));
+        fruit.addAll(findMatchingProducts(ProductCategory.CITRUS_FRUIT));
+        fruit.addAll(findMatchingProducts(ProductCategory.EXOTIC_FRUIT));
+        fruit.addAll(findMatchingProducts(ProductCategory.MELONS));
+        fruit.addAll(findMatchingProducts(ProductCategory.FRUIT));
         mainCategoryMap.put("Frukt", fruit);
+
         String[] fruitSub = {"Bär", "Citrus Frukter", "Exotiska Frukter", "Meloner", "Frukt"};
         subCategoryMap.put("Frukt", List.of(fruitSub));
 
         // Adds products to "Mejeri" Category
-        List<Product> tempDairy = new ArrayList<>(iMatDataModel.getProducts(ProductCategory.DAIRIES));
-
-        List<ProductListItem> dairy = new ArrayList<>();
-        for (Product p: tempDairy) {
-            dairy.add(new ProductListItem(p));
-        }
+        List<ProductListItem> dairy = new ArrayList<>(findMatchingProducts(ProductCategory.DAIRIES));
         mainCategoryMap.put("Mejeri", dairy);
+
         subCategoryMap.put("Mejeri", null);
 
         // Adds products to "Bröd" Category
-        List<Product> tempBread = new ArrayList<>(iMatDataModel.getProducts(ProductCategory.BREAD));
-
-        List<ProductListItem> bread = new ArrayList<>();
-        for (Product p: tempBread) {
-            bread.add(new ProductListItem(p));
-        }
+        List<ProductListItem> bread = new ArrayList<>(findMatchingProducts(ProductCategory.BREAD));
         mainCategoryMap.put("Bröd", bread);
+
         subCategoryMap.put("Bröd", null);
 
         // Adds products to "Kött" Category
-        List<Product> tempMeat = new ArrayList<>(iMatDataModel.getProducts(ProductCategory.MEAT));
-
-        List<ProductListItem> meat = new ArrayList<>();
-        for (Product p: tempMeat) {
-            meat.add(new ProductListItem(p));
-        }
+        List<ProductListItem> meat = new ArrayList<>(findMatchingProducts(ProductCategory.MEAT));
         mainCategoryMap.put("Kött", meat);
+
         subCategoryMap.put("Kött", null);
 
         // Adds products to "Fisk" Category
-        List<Product> tempFish = new ArrayList<>(iMatDataModel.getProducts(ProductCategory.FISH));
-
-        List<ProductListItem> fish = new ArrayList<>();
-        for (Product p: tempFish) {
-            fish.add(new ProductListItem(p));
-        }
+        List<ProductListItem> fish = new ArrayList<>(findMatchingProducts(ProductCategory.FISH));
         mainCategoryMap.put("Fisk", fish);
+
         subCategoryMap.put("Fisk", null);
 
         // Adds products to "Skafferi" Category
-        List<Product> tempPantry = new ArrayList<>();
-        tempPantry.addAll(iMatDataModel.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
-        tempPantry.addAll(iMatDataModel.getProducts(ProductCategory.PASTA));
-        tempPantry.addAll(iMatDataModel.getProducts(ProductCategory.POTATO_RICE));
-        tempPantry.addAll(iMatDataModel.getProducts(ProductCategory.NUTS_AND_SEEDS));
-
         List<ProductListItem> pantry = new ArrayList<>();
-        for (Product p: tempPantry) {
-            pantry.add(new ProductListItem(p));
-        }
+        pantry.addAll(findMatchingProducts(ProductCategory.FLOUR_SUGAR_SALT));
+        pantry.addAll(findMatchingProducts(ProductCategory.PASTA));
+        pantry.addAll(findMatchingProducts(ProductCategory.POTATO_RICE));
+        pantry.addAll(findMatchingProducts(ProductCategory.NUTS_AND_SEEDS));
         mainCategoryMap.put("Skafferi", pantry);
+
         String[] pantrySub = {"Mjöl, Socker & Salt", "Pasta", "Potatis & Ris", "Nötter, & Frön"};
         subCategoryMap.put("Skafferi", List.of(pantrySub));
 
         // Adds products to "Skafferi" Category
-        List<Product> tempDrinks = new ArrayList<>();
-        tempDrinks.addAll(iMatDataModel.getProducts(ProductCategory.COLD_DRINKS));
-        tempDrinks.addAll(iMatDataModel.getProducts(ProductCategory.HOT_DRINKS));
-
         List<ProductListItem> drinks = new ArrayList<>();
-        for (Product p: tempDrinks) {
-            drinks.add(new ProductListItem(p));
-        }
+        drinks.addAll(findMatchingProducts(ProductCategory.COLD_DRINKS));
+        drinks.addAll(findMatchingProducts(ProductCategory.HOT_DRINKS));
         mainCategoryMap.put("Drickor", drinks);
+
         String[] drinksSub = {"Kalla Drycker", "Varma Drycker"};
         subCategoryMap.put("Drickor", List.of(drinksSub));
 
@@ -159,12 +127,35 @@ public class IMatController implements Initializable {
     @FXML
     public void handleSearchAction(ActionEvent event) {
         /* Prevents it from creating useless objects */
-        if (searchTextField.getText() == "") {
-            updateProductGrid();
+        if (Objects.equals(searchTextField.getText(), "")) {
             return;
         }
-        List<Product> matches = iMatDataModel.findProducts(searchTextField.getText());
+        String searchTerm = searchTextField.getText();
+        List<ProductListItem> matches = findMatchingProducts(searchTerm);
         updateProductGrid(matches);
+    }
+
+    private List<ProductListItem> findMatchingProducts(String s) {
+        String lowS = s.toLowerCase();
+        List<ProductListItem> result = new ArrayList<>();
+        for (ProductListItem p: mainCategoryMap.get("Allt")) {
+            String productName = p.productNameLabel.getText().toLowerCase();
+            if (productName.contains(lowS)) {
+                result.add(p);
+            }
+        }
+        return result;
+    }
+
+    private List<ProductListItem> findMatchingProducts(ProductCategory category) {
+        List<ProductListItem> result = new ArrayList<>();
+        for (ProductListItem p: mainCategoryMap.get("Allt")) {
+            ProductCategory pCategory = p.getProductListItemCategory();
+            if (pCategory == category) {
+                result.add(p);
+            }
+        }
+        return result;
     }
 
     private void updateCategoryImages(String selected) {
@@ -195,17 +186,17 @@ public class IMatController implements Initializable {
 
         populateMainCategoryMap();
         updateCategoryImages(selectedCategory);
-        updateProductGrid();
+        updateProductGrid(mainCategoryMap.get(selectedCategory));
 
         shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/ShoppingCartButton.png"));
         profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/profileButton.png"));
     }
 
     /* Updates the product with given list of products */
-    private void updateProductGrid(List<Product> products) {
+    private void updateProductGrid(List<ProductListItem> products) {
         productFlowPane.getChildren().clear();
-        for (Product product: products) {
-            productFlowPane.getChildren().add(new ProductListItem(product));
+        for (ProductListItem product: products) {
+            productFlowPane.getChildren().add(product);
         }
     }
     /* Updates the product list based on current main category */
@@ -218,20 +209,19 @@ public class IMatController implements Initializable {
 
     /* Updates only when a subcategory is chosen */
     protected void updateProductGridWithSub(String subCategory) {
+        // resets the background color on all category buttons
         for (SubCategoryItem subCategoryItem : subCategoryItems) {
             subCategoryItem.backdropAnchorPane.setStyle("-fx-background-color: #E3E3E3");
         }
-
         ProductCategory category = getProductCategory(subCategory);
-        List<Product> products = iMatDataModel.getProducts(category);
-        updateProductGrid(products);
+        updateProductGrid(findMatchingProducts(category));
     }
 
     public void setMainCategory(String categoryName) {
         selectedCategory = categoryName;
         updateCategoryImages(selectedCategory);
         populateSubCategory();
-        updateProductGrid();
+        updateProductGrid(mainCategoryMap.get(selectedCategory));
     }
 
     public ProductCategory getProductCategory(String subCategory) {

@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
 import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -104,4 +105,10 @@ public class ProductListItem extends AnchorPane {
         return (double) Math.round(value * scale) / scale;
     }
 
+    protected ProductCategory getProductListItemCategory() {
+        return product.getCategory();
+    }
+    protected String getProductListItemName() {
+        return product.getName();
+    }
 }
