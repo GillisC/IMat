@@ -124,6 +124,18 @@ public class IMatController implements Initializable {
         System.out.println("Successfully Loaded all products...");
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        selectedCategory = "Allt";
+
+        populateMainCategoryMap();
+        updateCategoryImages(selectedCategory);
+        updateProductGrid(mainCategoryMap.get(selectedCategory));
+
+        shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/ShoppingCartButton.png"));
+        profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/profileButton.png"));
+    }
+
     @FXML
     public void handleSearchAction(ActionEvent event) {
         /* Prevents it from creating useless objects */
@@ -166,7 +178,6 @@ public class IMatController implements Initializable {
             mainCategoryFlowPane.getChildren().add(new CategoryItem(s, selectedCategory, this));
         }
     }
-
     private void populateSubCategory() {
         subCategoryFlowPane.getChildren().clear();
         subCategoryItems.clear();
@@ -180,30 +191,12 @@ public class IMatController implements Initializable {
             subCategoryFlowPane.getChildren().add(subCategoryItem);
         }
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        selectedCategory = "Allt";
-
-        populateMainCategoryMap();
-        updateCategoryImages(selectedCategory);
-        updateProductGrid(mainCategoryMap.get(selectedCategory));
-
-        shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/ShoppingCartButton.png"));
-        profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/profileButton.png"));
-    }
 
     /* Updates the product with given list of products */
     private void updateProductGrid(List<ProductListItem> products) {
         productFlowPane.getChildren().clear();
         for (ProductListItem product: products) {
             productFlowPane.getChildren().add(product);
-        }
-    }
-    /* Updates the product list based on current main category */
-    private void updateProductGrid() {
-        productFlowPane.getChildren().clear();
-        for (ProductListItem productListItem: mainCategoryMap.get(selectedCategory)) {
-            productFlowPane.getChildren().add(productListItem);
         }
     }
 
@@ -216,7 +209,7 @@ public class IMatController implements Initializable {
         ProductCategory category = getProductCategory(subCategory);
         updateProductGrid(findMatchingProducts(category));
     }
-
+    /* Called when main category icon is pressed */
     public void setMainCategory(String categoryName) {
         selectedCategory = categoryName;
         updateCategoryImages(selectedCategory);
