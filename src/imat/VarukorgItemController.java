@@ -7,12 +7,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 
 public class VarukorgItemController extends AnchorPane{
     private IMatDataModel dataModel;
-    private Product product;
+    private ShoppingItem shoppingItem;
     @FXML private ImageView productImage;
     @FXML private Label productName;
     @FXML private Label productCategory;
@@ -21,7 +22,7 @@ public class VarukorgItemController extends AnchorPane{
     @FXML private Label antalLabel;
     @FXML private Label productPrice;
 
-    public VarukorgItemController(IMatDataModel dataModel, Product product){
+    public VarukorgItemController(IMatDataModel dataModel, ShoppingItem shoppingItem){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("varukorgItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,13 +37,13 @@ public class VarukorgItemController extends AnchorPane{
         }
 
         this.dataModel = dataModel;
-        this.product = product;
+        this.shoppingItem = shoppingItem;
 
-        //productImage.setImage(dataModel.getFXImage(product));
-        productName.setText(product.getName());
-        productCategory.setText(String.valueOf(product.getCategory()));
-        //antalLabel.setText(); //använda shoppingItem getAmount
-        productPrice.setText(product.getPrice() + product.getUnit());
+        productImage.setImage(dataModel.getFXImage(shoppingItem.getProduct()));
+        productName.setText(shoppingItem.getProduct().getName());
+        productCategory.setText(String.valueOf(shoppingItem.getProduct().getCategory()));
+        antalLabel.setText(String.valueOf(shoppingItem.getAmount()) + shoppingItem.getProduct().getUnit());
+        productPrice.setText(shoppingItem.getProduct().getPrice() + shoppingItem.getProduct().getUnit());
     }
 
     @FXML
@@ -60,6 +61,7 @@ public class VarukorgItemController extends AnchorPane{
         addToCartButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "imat/resources/Add to cart buttonhover+")));
     }
+
     @FXML
     protected void exitedRemoveFromCart(){
         removeFromCartButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
@@ -67,11 +69,11 @@ public class VarukorgItemController extends AnchorPane{
     }
     @FXML
     protected void clickedAddToCart(){
-        dataModel.addProduct(product);
+        dataModel.getShoppingCart().addItem(shoppingItem);
     }
     @FXML
     protected void clickedRemoveFromCart(){
-        dataModel.removeProduct(product);
+        dataModel.getShoppingCart().removeItem(shoppingItem);
     }
 
 }
