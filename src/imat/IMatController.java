@@ -44,6 +44,14 @@ public class IMatController implements Initializable {
     @FXML private StackPane mainStackPane;
     @FXML private Label shoppingCartTotalLabel;
 
+    @FXML private AnchorPane shoppingCartPane;
+    @FXML private AnchorPane backgroundPane;
+    @FXML private FlowPane shoppingItemList;
+    @FXML private Label totalLabel;
+    @FXML private ImageView closeButton;
+    @FXML private ImageView payButton;
+
+
     /* Populates mainCategoryMap so that a category name maps to a list of products */
     private void populateMainCategoryMap() {
 
@@ -141,13 +149,6 @@ public class IMatController implements Initializable {
         totalLabel.setText("Totalt: " + iMatDataModel.getShoppingCart().getTotal() + " kr");
 
     }
-
-    @FXML private AnchorPane shoppingCartPane;
-    @FXML private AnchorPane backgroundPane;
-    @FXML private FlowPane shoppingItemList;
-    @FXML private Label totalLabel;
-    @FXML private ImageView closeButton;
-    @FXML private ImageView payButton;
 
     @FXML
     public void handleSearchAction(ActionEvent event) {
