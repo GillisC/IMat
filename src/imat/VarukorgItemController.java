@@ -60,6 +60,7 @@ public class VarukorgItemController extends AnchorPane{
         addToCartButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "imat/resources/Add to cart buttonhover+")));
     }
+
     @FXML
     protected void exitedRemoveFromCart(){
         removeFromCartButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
