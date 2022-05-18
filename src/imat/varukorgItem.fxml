@@ -10,7 +10,7 @@
    <children>
       <ImageView fx:id="productImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="productName" layoutX="122.0" layoutY="14.0" prefHeight="39.0" prefWidth="150.0" style="-fx-text-fill: #062F42;" text="Namn på produkt" wrapText="true" />
-      <Label fx:id="productPrice" layoutX="506.0" layoutY="41.0" style="-fx-text-fill: #062F42;" text="25 kr" />
+      <Label fx:id="productPrice" layoutX="506.0" layoutY="41.0" style="-fx-text-fill: #062F42;" text="25 kr/st" />
       <Label fx:id="antalLabel" layoutX="362.0" layoutY="41.0" style="-fx-text-fill: #062F42;" text="1 st" />
       <ImageView fx:id="addToCartButton" fitHeight="32.0" fitWidth="32.0" layoutX="316.0" layoutY="34.0" onMouseClicked="#clickedRemoveFromCart" onMouseEntered="#hoverRemoveFromCart" onMouseExited="#exitedRemoveFromCart" pickOnBounds="true" preserveRatio="true">
          <image>
