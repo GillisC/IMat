@@ -33,7 +33,9 @@ public class iMatComplete  extends wizard {
         navigateToDelivery(completeRootAnchorPane);
     }
 
-
+    public void shoppingCartPressed() {
+        shoppingCartPressed (completeRootAnchorPane);
+    }
 
 
 

@@ -22,6 +22,18 @@ public class wizard extends AnchorPane {
             e.printStackTrace();
         }
     }
+
+    public void shoppingCartPressed(AnchorPane pane) {
+        try {
+            AnchorPane root = FXMLLoader.load(getClass().getResource("varukorgItem.fxml"));
+            pane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     public void navigateToSelectDateTime(AnchorPane pane) {
         navigateTo("iMatSelectDateTime.fxml", pane);
     }
