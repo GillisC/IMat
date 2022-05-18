@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMatController">
    <children>
       <StackPane>
@@ -93,6 +92,11 @@
                         </items>
                     </SplitPane>
                 </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+               <children>
+                  <AnchorPane layoutX="265.0" layoutY="45.0" prefHeight="650.0" prefWidth="550.0" style="-fx-background-color: #F3F2F3;" />
+               </children>
             </AnchorPane>
          </children>
       </StackPane>
