@@ -10,8 +10,9 @@ import se.chalmers.cse.dat216.project.Product;
 
 import java.io.IOException;
 
-public class ImatDetaljvyController {
-
+public class ImatDetaljvyController extends AnchorPane{
+    private IMatDataModel dataModel;
+    private IMat imat;
     private Product product;
 
     @FXML
@@ -52,11 +53,19 @@ public class ImatDetaljvyController {
         }
 
         this.product = product;
+        this.dataModel = dataModel;
+        this.imat = imat;
+
         productImage.setImage(productImage.getImage());
         productName.setText(product.getName());
         productCategory.setText(String.valueOf(product.getCategory()));
         productWeight.setText(String.valueOf(product.getPrice()) + "/" + product.getUnit());
-        //Finns ingen detaljtext, eller vikt.. ändra vikttexten till kr/kg eller vafan
 
  }
+     @FXML
+     protected void clickedAddToCart(){
+        dataModel.addProduct(product);
+     }
+
+
 }
