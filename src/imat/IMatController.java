@@ -1,5 +1,6 @@
 package imat;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class IMatController implements Initializable {
 
@@ -44,8 +46,9 @@ public class IMatController implements Initializable {
     @FXML private StackPane mainStackPane;
     @FXML private Label shoppingCartTotalLabel;
 
-    @FXML private AnchorPane shoppingCartPane;
-    @FXML private AnchorPane backgroundPane;
+    @FXML private AnchorPane shoppingCartAnchorPane;
+    @FXML private AnchorPane shoppingCartBackAnchorPane;
+    @FXML private AnchorPane mainAnchorPane;
     @FXML private FlowPane shoppingItemList;
     @FXML private Label totalLabel;
     @FXML private ImageView closeButton;
@@ -256,6 +259,24 @@ public class IMatController implements Initializable {
         for (ShoppingItem shoppingItem : shoppingItems){
             shoppingItemList.getChildren().add(new VarukorgItemController(iMatDataModel, shoppingItem));
         }
+    }
+    @FXML
+    protected void openShoppingCartView() {
+        shoppingCartBackAnchorPane.toFront();
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(shoppingCartAnchorPane);
+        transition.setByX(-410);
+        transition.play();
+        //shoppingCartAnchorPane.setLayoutX(680);
+    }
+    @FXML
+    protected void closeShoppingCartView() throws InterruptedException {
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(shoppingCartAnchorPane);
+        transition.setByX(410);
+        transition.play();
+        mainAnchorPane.toFront();
+        //shoppingCartAnchorPane.setLayoutX(1090);
     }
     //onClick på varukorg gör bring to front på varukorgen
     //onClick på close button eller det gråa gör bring to front på main sidan
