@@ -6,12 +6,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingCart;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -32,6 +36,13 @@ public class IMatController implements Initializable {
     @FXML private FlowPane productFlowPane;
     @FXML private FlowPane subCategoryFlowPane;
 
+    @FXML private AnchorPane shoppingCartPane;
+    @FXML private AnchorPane backgroundPane;
+    @FXML private FlowPane shoppingItemList;
+    @FXML private Label totalLabel;
+    @FXML private ImageView closeButton;
+    @FXML private ImageView payButton;
+
     @FXML
     public void handleSearchAction(ActionEvent event) {
         List<Product> matches = iMatDataModel.findProducts(searchTextField.getText());
@@ -42,6 +53,9 @@ public class IMatController implements Initializable {
         shoppingCartImageView.setImage(getImageFromUrl("imat/resources/ShoppingCartButton.png"));
         profileImageView.setImage(getImageFromUrl("imat/resources/profileButton.png"));
         updateProductGrid(iMatDataModel.getProducts());
+        updateShoppingCart(iMatDataModel.getShoppingCart().getItems());
+        totalLabel.setText("Totalt: " + iMatDataModel.getShoppingCart().getTotal() + " kr");
+
     }
     public Image getImageFromUrl(String url) {
         return new Image(url);
@@ -53,4 +67,13 @@ public class IMatController implements Initializable {
         }
 
     }
+    private void updateShoppingCart(List<ShoppingItem> shoppingItems){
+        shoppingItemList.getChildren().clear();
+        for (ShoppingItem shoppingItem : shoppingItems){
+            shoppingItemList.getChildren().add(new VarukorgItemController(iMatDataModel, shoppingItem));
+        }
+    }
+    //onClick på varukorg gör bring to front på varukorgen
+    //onClick på close button eller det gråa gör bring to front på main sidan
+    //onClick på Betala öppnar betalningsvy.
 }
