@@ -23,7 +23,7 @@
                             </font>
                         </Label>
                         <Ellipse fx:id="selectDateTime" fill="#c2eabd" layoutX="244.0" layoutY="51.0" onMouseClicked="#toSelectDateTime" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Ellipse fx:id="pay" fill="#f3f2f3" layoutX="425.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="#ed254e" strokeType="INSIDE" strokeWidth="5.0" />
+                        <Ellipse fx:id="delivery" fill="#f3f2f3" layoutX="425.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="#ed254e" strokeType="INSIDE" strokeWidth="5.0" />
                         <Ellipse fill="#f3f2f3" layoutX="612.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
                         <Ellipse fill="#f3f2f3" layoutX="796.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label layoutX="770.0" layoutY="66.0" prefHeight="22.0" prefWidth="66.0" text="Slutför" textFill="#062f42">

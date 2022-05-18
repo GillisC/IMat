@@ -13,6 +13,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import javax.annotation.processing.Filer;
 import java.io.FileReader;
@@ -26,7 +28,7 @@ public class iMatPay extends wizard {
 
     @FXML private Button next2,back2,shoppingCart;
 
-    @FXML private Ellipse selectDateTime;
+    @FXML private Ellipse selectDateTime, delivery;
     @FXML private TextField cardNr1,cardNr2,cardNr3,cardNr4,expirationMonth, expirationYear,securityCode;
     String inputNr;
     public void initialize() {
