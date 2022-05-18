@@ -111,5 +111,8 @@ public class IMatDataModel {
     public Image getFXImage(Product p, double requestedWidth, double requestedHeight, boolean preserveRatio) {
         return iMatDataHandler.getFXImage(p, requestedWidth, requestedHeight, preserveRatio);
     }
+    public Image getImageFromUrl(String url) {
+        return new Image(url);
+    }
 
 }

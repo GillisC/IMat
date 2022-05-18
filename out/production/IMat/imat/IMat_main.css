@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
 
 .white-normal {
     -fx-fill: #F3F2F3;
@@ -11,9 +11,13 @@
 }
 
 .main-carousel {
-    -fx-arc-height: 80px;
-    -fx-arc-width: 80px;
-    -fx-fill: #F3F2F3;
+    -fx-background-color: #F3F2F3;
+    -fx-background-radius: 40px;
+}
+
+.scroll-pane-carousel {
+    -fx-background-color: #F3F2F3;
+    -fx-border-radius: 40px;
 }
 
 .search-button {
@@ -23,6 +27,7 @@
     -fx-text-fill: #F3F2F3;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .search-button:hover {
@@ -32,4 +37,37 @@
 .search-bar {
     -fx-background-radius: 15px;
     -fx-font-size: 16px;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.profile-shopping-button {
+    -fx-background-color: #ED254E;
+    -fx-background-radius: 30px;
+}
+
+.profile-shopping-button:hover {
+    -fx-background-color: #F34E70;
+}
+
+.shopping-cart-label {
+    -fx-font-size: 22px;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.shopping-cart-name {
+    -fx-font-size: 35px;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
+}
+.shopping-cart-pay {
+    -fx-font-size: 28px;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
 }

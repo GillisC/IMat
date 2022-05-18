@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
 .searchbar-text {
     -fx-font-size: 16px;
-    -fx-font-family: "Sen";
     -fx-text-fill: #F3F2F3;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .product-name {
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
     -fx-text-fill: #062F42;
     -fx-alignment: center;
     -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .price-rec {
@@ -16,10 +19,19 @@
 }
 
 .label-text {
-    -fx-font-size: 12px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: #F3F2F3;
     -fx-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.text-field {
+    -fx-background-color: #ED254E;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
 }
 
 .anchor-pane-background {
@@ -27,9 +39,13 @@
 }
 
 .anchor-pane-foreground {
-    -fx-background-color: #F3F2F3;
+    -fx-background-color: #E3E3E3;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+}
+
+.anchor-pane-foreground:hover {
+    -fx-background-color: #F3F2F3;
 }
 
 .button {
@@ -53,4 +69,23 @@
     -fx-font-weight: bold;
     -fx-text-fill: #F3F2F3;
     -fx-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.sub-category-name {
+    -fx-font-size: 20px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.sub-category-card {
+    -fx-background-color: #E3E3E3;
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+}
+
+.sub-category-card:hover {
+    -fx-background-color: #F3F2F3;
 }
