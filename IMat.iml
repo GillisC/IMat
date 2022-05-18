@@ -8,8 +8,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="projectbackend" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="lab1fxbackend" level="project" />
     <orderEntry type="library" name="json-simple-1.1.1 (2)" level="project" />
+    <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
