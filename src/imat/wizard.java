@@ -25,7 +25,7 @@ public class wizard extends AnchorPane {
 
     public void shoppingCartPressed(AnchorPane pane) {
         try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("varukorgItem.fxml"));
+            AnchorPane root = FXMLLoader.load(getClass().getResource("iMatShoppingCart.fxml"));
             pane.getChildren().setAll(root);
         } catch (IOException e) {
             e.printStackTrace();
