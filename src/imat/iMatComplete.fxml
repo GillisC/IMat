@@ -26,17 +26,12 @@
                         <Ellipse fx:id="pay" fill="#c2eabd" layoutX="425.0" layoutY="51.0" onMouseClicked="#toPay" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
                         <Ellipse fx:id="delivery" fill="#c2eabd" layoutX="612.0" layoutY="51.0" onMouseClicked="#toDelivery" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
                         <Ellipse fill="#f3f2f3" layoutX="796.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="#ed254e" strokeType="INSIDE" strokeWidth="5.0" />
-                        <Label layoutX="387.0" layoutY="63.0" prefHeight="28.0" prefWidth="77.0" text="Betalning" textFill="#062f42">
-                            <font>
-                                <Font name="Times New Roman Bold" size="18.0" />
-                            </font>
-                        </Label>
                         <Label layoutX="770.0" layoutY="66.0" prefHeight="22.0" prefWidth="66.0" text="Slutför" textFill="#062f42">
                             <font>
                                 <Font name="Times New Roman Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="578.0" layoutY="63.0" prefHeight="28.0" prefWidth="83.0" text="Leverans" textFill="#062f42">
+                        <Label layoutX="384.0" layoutY="63.0" prefHeight="28.0" prefWidth="83.0" text="Leverans" textFill="#062f42">
                             <font>
                                 <Font name="Times New Roman Bold" size="18.0" />
                             </font>
@@ -48,11 +43,6 @@
                         </ImageView>
                         <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="399.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@resources/credit-card.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="586.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
                                 <Image url="@resources/package-box.png" />
                             </image>
                         </ImageView>
@@ -61,7 +51,7 @@
                                 <Image url="@resources/checked.png" />
                             </image>
                         </ImageView>
-                        <Button layoutX="897.0" layoutY="24.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="167.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="        Varukorg" textAlignment="RIGHT" textFill="#f3f2f3">
+                        <Button fx:id="shoppingCart" layoutX="897.0" layoutY="24.0" mnemonicParsing="false" onAction="#shoppingCartPressed" prefHeight="66.0" prefWidth="167.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="        Varukorg" textAlignment="RIGHT" textFill="#f3f2f3">
                             <font>
                                 <Font name="Times New Roman Bold" size="18.0" />
                             </font>
@@ -75,6 +65,16 @@
                         <Line endX="-31.0" layoutX="570.0" layoutY="49.0" startX="-72.0" stroke="#c2eabd" strokeWidth="3.0" />
                         <Line endX="-43.0" layoutX="766.0" layoutY="54.0" startX="-81.0" stroke="#ed254e" strokeWidth="3.0" />
                         <Label layoutX="212.0" layoutY="63.0" prefHeight="28.0" prefWidth="66.0" text="Välj tid" textAlignment="RIGHT" textFill="#062f42">
+                            <font>
+                                <Font name="Times New Roman Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="588.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@resources/credit-card.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="574.0" layoutY="61.0" prefHeight="28.0" prefWidth="77.0" text="Betalning" textFill="#062f42">
                             <font>
                                 <Font name="Times New Roman Bold" size="18.0" />
                             </font>

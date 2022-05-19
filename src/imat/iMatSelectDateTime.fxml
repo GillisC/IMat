@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.effect.Bloom?>
-<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,17 +27,12 @@
                   <Ellipse fill="#f3f2f3" layoutX="425.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
                   <Ellipse fill="#f3f2f3" layoutX="612.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
                   <Ellipse fill="#f3f2f3" layoutX="796.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label layoutX="387.0" layoutY="63.0" prefHeight="28.0" prefWidth="77.0" text="Betalning" textFill="#062f42">
+                  <Label layoutX="574.0" layoutY="63.0" prefHeight="28.0" prefWidth="77.0" text="Betalning" textFill="#062f42">
                      <font>
                         <Font name="Times New Roman Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="770.0" layoutY="66.0" prefHeight="22.0" prefWidth="66.0" text="Slutför" textFill="#062f42">
-                     <font>
-                        <Font name="Times New Roman Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="578.0" layoutY="63.0" prefHeight="28.0" prefWidth="83.0" text="Leverans" textFill="#062f42">
                      <font>
                         <Font name="Times New Roman Bold" size="18.0" />
                      </font>
@@ -50,11 +44,6 @@
                   </ImageView>
                   <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="399.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@resources/credit-card.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="586.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@resources/package-box.png" />
                      </image>
                   </ImageView>
@@ -63,7 +52,7 @@
                         <Image url="@resources/checked.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="897.0" layoutY="24.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="167.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="        Varukorg" textAlignment="RIGHT" textFill="#f3f2f3">
+                  <Button fx:id="shoppingCart" layoutX="897.0" layoutY="24.0" mnemonicParsing="false" onAction="#shoppingCartPressed" prefHeight="66.0" prefWidth="167.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="        Varukorg" textAlignment="RIGHT" textFill="#f3f2f3">
                      <font>
                         <Font name="Times New Roman Bold" size="18.0" />
                      </font>
@@ -77,6 +66,16 @@
                   <Line endX="-31.0" layoutX="570.0" layoutY="49.0" startX="-72.0" stroke="#f3f2f3" strokeWidth="3.0" />
                   <Line endX="-43.0" layoutX="766.0" layoutY="54.0" startX="-81.0" stroke="#f3f2f3" strokeWidth="3.0" />
                   <Label layoutX="212.0" layoutY="63.0" prefHeight="28.0" prefWidth="66.0" text="Välj tid" textAlignment="RIGHT" textFill="#062f42">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="575.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/credit-card.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="383.0" layoutY="59.0" prefHeight="28.0" prefWidth="83.0" text="Leverans" textFill="#062f42">
                      <font>
                         <Font name="Times New Roman Bold" size="18.0" />
                      </font>
@@ -105,67 +104,67 @@
                         <Font name="Times New Roman Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="74.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="74.0" layoutY="142.0" stroke="#00000034" strokeType="OUTSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="204.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="204.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdcdcd" height="95.0" layoutX="333.0" layoutY="142.0" stroke="#00000037" strokeType="INSIDE" width="95.0">
-                     <effect>
-                        <BoxBlur />
-                     </effect>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="474.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle3" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="333.0" layoutY="142.0" stroke="#00000037" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="606.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle4" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="474.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="744.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle5" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="606.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cdcdcd" height="95.0" layoutX="474.0" layoutY="357.0" stroke="#00000037" strokeType="INSIDE" width="95.0">
-                     <effect>
-                        <BoxBlur />
-                     </effect>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="606.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle6" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="744.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="890.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle11" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="474.0" layoutY="357.0" stroke="#00000037" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="204.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle12" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="606.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="333.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle7" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="890.0" layoutY="142.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="74.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle9" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="204.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="744.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                  <Rectangle fx:id="rectangle10" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="333.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle fx:id="rectangle8" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="74.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle fx:id="rectangle13" arcHeight="5.0" arcWidth="5.0" fill="#f3f2f3" height="95.0" layoutX="744.0" layoutY="357.0" stroke="#00000034" strokeType="INSIDE" width="95.0">
                      <effect>
                         <Bloom />
                      </effect>
@@ -268,6 +267,11 @@
                   <Label layoutX="760.0" layoutY="391.0" text="20-21" textFill="#062f42">
                      <font>
                         <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="reminder" layoutX="616.0" layoutY="32.0" prefHeight="80.0" prefWidth="308.0" textFill="#ed254e">
+                     <font>
+                        <Font name="Times New Roman Bold" size="18.0" />
                      </font>
                   </Label>
                </children>

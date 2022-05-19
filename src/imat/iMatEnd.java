@@ -3,26 +3,32 @@ package imat;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.time.DayOfWeek;
 
 public class iMatEnd extends wizard {
     @FXML private AnchorPane endRootAnchorPane;
-    @FXML private Button continueShopping;
+    @FXML private Button continueShopping,shoppingCart ;
+    @FXML private Label confirmation;
+
     public void continueButtonPressed() {
-        navigateTo("iMatSelectDateTime.fxml", endRootAnchorPane);
+        navigateTo("iMat_main.fxml", endRootAnchorPane);
     }
 
-/*    public void continueButtonPressed() {
-        try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("iMatSelectDateTime.fxml"));
-            endRootAnchorPane.getChildren().setAll(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void shoppingCartPressed() {
+        shoppingCartPressed(endRootAnchorPane);
     }
 
- */
 
+
+
+    @FXML
+    private void initialize() {
+        confirmation.setText("Din bekräftade leverans tid är " + iMatSelectDateTime.selectedDay + " " + iMatSelectDateTime.selectedTime + ". "
+                +"Vi kommer att skicka ett mail till din angivna mailadress när leveransen är redo :)");
+    }
+    //confirmation
 }
