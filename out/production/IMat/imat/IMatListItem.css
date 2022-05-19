@@ -53,6 +53,10 @@
     -fx-background-radius: 16px;
 }
 
+.button:hover {
+    -fx-background-color: #F34E70;
+}
+
 .small-rectangle {
     -fx-fill: #F3F2F3;
     -fx-background-radius: 2px;
