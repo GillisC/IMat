@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+.product-name {
+    -fx-font-size: 36px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.product-price {
+    -fx-font-size: 24px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: top-left;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.product-unit {
+    -fx-font-size: 24px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: top-right;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.text-field {
+    -fx-background-color: fx-background;
+    -fx-text-fill: #062F42;
+    -fx-font-size: 16px;
+}
+
+.buttons {
+    -fx-background-color: #ED254E;
+    -fx-background-radius: 32px;
+}
+
+.buttons:hover {
+    -fx-background-color: #F34E70;
+}
+
+.small-rectangle {
+    -fx-fill: #F3F2F3;
+    -fx-arc-width: 8px;
+    -fx-arc-height: 8px;
+}
+
+.anchor-pane-backdrop {
+    -fx-background-color: #F3F2F3;
+    -fx-background-radius: 16px;
+}

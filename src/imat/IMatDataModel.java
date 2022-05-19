@@ -161,4 +161,11 @@ public class IMatDataModel {
             }
         }
     }
+
+    public String removeSuffixes(String s) {
+        s = s.replace("kg", "");
+        s = s.replace("st", "");
+        s = s.replace("förp", "");
+        return s;
+    }
 }

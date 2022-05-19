@@ -64,32 +64,37 @@ public class ProductListItem extends AnchorPane {
     }
 
     protected void incrementAmountLabel() {
-        double currentVal = Double.parseDouble(productAmountTextField.getText());
+        String currentVal = productAmountTextField.getText();
+        currentVal = iMatDataModel.removeSuffixes(currentVal);
+        double value = Double.parseDouble(currentVal);
         String suffix = product.getUnitSuffix();
         if (Objects.equals(suffix, "kg")) {
-            currentVal += 0.1;
-            currentVal = iMatDataModel.round(currentVal, 2);
+            value += 0.1;
+            value = iMatDataModel.round(value, 2);
+            productAmountTextField.setText(value + "kg");
         } else {
-            currentVal += 1;
-            currentVal = (int) currentVal;
+            value += 1;
+            productAmountTextField.setText((int) value + "st");
         }
-        productAmountTextField.setText(String.valueOf(currentVal));
+
     }
 
     protected void decrementAmountLabel() {
-        double currentVal = Double.parseDouble(productAmountTextField.getText());
+        String currentVal = productAmountTextField.getText();
+        currentVal = iMatDataModel.removeSuffixes(currentVal);
+        double value = Double.parseDouble(currentVal);
         String suffix = product.getUnitSuffix();
-        if (currentVal == 0) {
+        if (value == 0) {
             return;
         }
         if (Objects.equals(suffix, "kg")) {
-            currentVal -= 0.1;
-            currentVal = iMatDataModel.round(currentVal, 2);
+            value -= 0.1;
+            value = iMatDataModel.round(value, 2);
+            productAmountTextField.setText(value + "kg");
         } else {
-            currentVal -= 1;
-            currentVal = (int) currentVal;
+            value -= 1;
+            productAmountTextField.setText((int) value + "st");
         }
-        productAmountTextField.setText(String.valueOf(currentVal));
     }
 
     @FXML
@@ -102,7 +107,8 @@ public class ProductListItem extends AnchorPane {
         parentController.handleRemoveProduct(product);
     }
 
-    private void onCLick() {
+    @FXML
+    private void onClick() {
         parentController.populateDetailView(product);
     }
     protected ProductCategory getProductListItemCategory() {

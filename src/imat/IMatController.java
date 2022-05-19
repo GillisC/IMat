@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+import static se.chalmers.cse.dat216.project.ProductCategory.CABBAGE;
+import static se.chalmers.cse.dat216.project.ProductCategory.ROOT_VEGETABLE;
+
 public class IMatController implements Initializable, ShoppingCartListener {
 
     private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
@@ -30,17 +33,18 @@ public class IMatController implements Initializable, ShoppingCartListener {
 
     private String selectedCategory;
 
+    /* Main view */
     @FXML private ImageView shoppingCartImageView;
     @FXML private ImageView profileImageView;
     @FXML private TextField searchTextField;
     @FXML private Button searchButton;
-    @FXML private ComboBox<String> sortComboBox;
     @FXML private FlowPane productFlowPane;
     @FXML private FlowPane subCategoryFlowPane;
     @FXML private ScrollPane mainCategoryScrollPane;
     @FXML private FlowPane mainCategoryFlowPane;
     @FXML private StackPane mainStackPane;
 
+    /* Shopping cart view */
     @FXML private AnchorPane shoppingCartAnchorPane;
     @FXML private AnchorPane shoppingCartBackAnchorPane;
     @FXML private AnchorPane mainAnchorPane;
@@ -49,6 +53,17 @@ public class IMatController implements Initializable, ShoppingCartListener {
     @FXML private Label shoppingCartViewTotalLabel;
     @FXML private ImageView closeButton;
     @FXML private Button ShoppingCartPayButton;
+
+    /* Detail view */
+    @FXML private AnchorPane detailViewAnchorPane;
+    @FXML private ImageView detailViewImageView;
+    @FXML private ImageView closeButtonImageView;
+    @FXML private Label detailViewNameLabel;
+    @FXML private Label detailViewCategoryLabel;
+    @FXML private Label detailViewUnitSuffixLabel;
+    @FXML private TextArea detailViewDescriptionTextArea;
+    @FXML private Button detailViewRemoveButton;
+    @FXML private Button detailViewAddButton;
 
 
     /* Populates mainCategoryMap so that a category name maps to a list of products */
@@ -65,10 +80,10 @@ public class IMatController implements Initializable, ShoppingCartListener {
 
         // Adds products to "Grönsaker" Category
         List<ProductListItem> greens = new ArrayList<>();
-        greens.addAll(findMatchingProducts(ProductCategory.CABBAGE));
+        greens.addAll(findMatchingProducts(CABBAGE));
         greens.addAll(findMatchingProducts(ProductCategory.HERB));
         greens.addAll(findMatchingProducts(ProductCategory.POD));
-        greens.addAll(findMatchingProducts(ProductCategory.ROOT_VEGETABLE));
+        greens.addAll(findMatchingProducts(ROOT_VEGETABLE));
         mainCategoryMap.put("Grönsaker", greens);
 
         String[] greenSub = {"Kålväxter", "Örter", "Baljväxter", "Rotfrukter"};
@@ -250,6 +265,29 @@ public class IMatController implements Initializable, ShoppingCartListener {
         };
     }
 
+    public String getProductCategoryName(ProductCategory category) {
+        return switch (category) {
+            case CABBAGE ->"Kålväxter";
+            case HERB ->"Örter" ;
+            case POD -> "Baljväxter";
+            case ROOT_VEGETABLE -> "Rotfrukter" ;
+            case BERRY -> "Bär";
+            case CITRUS_FRUIT -> "Citrus Frukter";
+            case EXOTIC_FRUIT -> "Exotiska Frukter";
+            case MELONS -> "Meloner";
+            case FRUIT -> "Frukt";
+            case FLOUR_SUGAR_SALT -> "Mjöl, Socker & Salt";
+            case PASTA -> "Pasta";
+            case POTATO_RICE -> "Potatis & Ris";
+            case NUTS_AND_SEEDS -> "Nötter & Frön";
+            case COLD_DRINKS -> "Kalla Drycker";
+            case HOT_DRINKS -> "Varma Drycker";
+            case MEAT -> "Kött";
+            case VEGETABLE_FRUIT -> "Grönsaker";
+            default -> null;
+        };
+    }
+
     private void updateShoppingCart() {
         shoppingCartFlowPane.getChildren().clear();
         List<ShoppingItem> shoppingItemsList = iMatDataModel.getShoppingCart().getItems();
@@ -309,6 +347,26 @@ public class IMatController implements Initializable, ShoppingCartListener {
     }
 
     public void populateDetailView(Product product) {
+        detailViewImageView.setImage(iMatDataModel.getFXImage(product));
+        detailViewNameLabel.setText(product.getName());
+        detailViewCategoryLabel.setText(getProductCategoryName(product.getCategory()));
+        detailViewUnitSuffixLabel.setText(String.valueOf(product.getPrice()) + product.getUnit());
 
+        detailViewAnchorPane.toFront();
+
+    }
+    @FXML
+    public void closeDetailView() {
+        mainAnchorPane.toFront();
+    }
+
+    @FXML
+    public void closeButtonHover() {
+        closeButtonImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-blue-hover.png"));
+    }
+
+    @FXML
+    public void closeButtonExitHover() {
+        closeButtonImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-blue.png"));
     }
 }
