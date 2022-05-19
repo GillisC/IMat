@@ -3,6 +3,7 @@ package imat;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -11,6 +12,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -46,7 +48,7 @@ public class IMatController implements Initializable, ShoppingCartListener {
     @FXML private Label shoppingCartButtonTotalLabel;
     @FXML private Label shoppingCartViewTotalLabel;
     @FXML private ImageView closeButton;
-    @FXML private ImageView payButton;
+    @FXML private Button ShoppingCartPayButton;
 
 
     /* Populates mainCategoryMap so that a category name maps to a list of products */
@@ -294,5 +296,15 @@ public class IMatController implements Initializable, ShoppingCartListener {
         ProductListItem correspondingProduct = findMatchingProducts(product.getName()).get(0);
         correspondingProduct.decrementAmountLabel();
         updateShoppingCart();
+    }
+
+    @FXML
+    public void payButtonPressed() {
+        try {
+            AnchorPane root = FXMLLoader.load(getClass().getResource("IMatSelectDateTime.fxml"));
+            shoppingCartBackAnchorPane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
