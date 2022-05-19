@@ -102,6 +102,9 @@ public class ProductListItem extends AnchorPane {
         parentController.handleRemoveProduct(product);
     }
 
+    private void onCLick() {
+        parentController.populateDetailView(product);
+    }
     protected ProductCategory getProductListItemCategory() {
         return product.getCategory();
     }

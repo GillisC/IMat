@@ -307,4 +307,8 @@ public class IMatController implements Initializable, ShoppingCartListener {
             e.printStackTrace();
         }
     }
+
+    public void populateDetailView(Product product) {
+
+    }
 }

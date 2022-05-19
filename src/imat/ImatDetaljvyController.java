@@ -57,6 +57,5 @@ public class ImatDetaljvyController {
         productCategory.setText(String.valueOf(product.getCategory()));
         productWeight.setText(String.valueOf(product.getPrice()) + "/" + product.getUnit());
         //Finns ingen detaljtext, eller vikt.. ändra vikttexten till kr/kg eller vafan
-
- }
+    }
 }
