@@ -67,7 +67,7 @@ public class iMatPay extends wizard {
 
     //data sparas till datbasen när next button trycks
     public void next2ButtonPressed() {
-        navigateTo("iMatDelivery.fxml", payRootAnchorPane);
+        navigateTo("iMatComplete.fxml", payRootAnchorPane);
     }
 
     public void back2ButtonPressed() {

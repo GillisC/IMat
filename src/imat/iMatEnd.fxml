@@ -59,22 +59,22 @@
                                 <Font name="Times New Roman Bold" size="18.0" />
                             </font>
                         </Label>
-                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="399.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="587.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@resources/credit-card.png" />
                             </image>
                         </ImageView>
-                        <Label layoutX="387.0" layoutY="63.0" prefHeight="28.0" prefWidth="77.0" text="Betalning" textFill="#062f42">
+                        <Label layoutX="575.0" layoutY="63.0" prefHeight="28.0" prefWidth="77.0" text="Betalning" textFill="#062f42">
                             <font>
                                 <Font name="Times New Roman Bold" size="18.0" />
                             </font>
                         </Label>
-                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="586.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="400.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@resources/package-box.png" />
                             </image>
                         </ImageView>
-                        <Label layoutX="571.0" layoutY="63.0" prefHeight="28.0" prefWidth="83.0" text="Leverans" textFill="#062f42">
+                        <Label layoutX="396.0" layoutY="60.0" prefHeight="28.0" prefWidth="83.0" text="Leverans" textFill="#062f42">
                             <font>
                                 <Font name="Times New Roman Bold" size="18.0" />
                             </font>
@@ -93,7 +93,7 @@
                                 <Font name="Times New Roman Bold" size="48.0" />
                             </font>
                         </Label>
-                        <Label fx:id="confirmation" layoutX="221.0" layoutY="107.0" prefHeight="105.0" prefWidth="679.0" text="Vi kommer att skicka ett mail till dig när din leverans är på väg!" textFill="#062f42" wrapText="true">
+                        <Label fx:id="confirm" layoutX="221.0" layoutY="107.0" prefHeight="105.0" prefWidth="679.0" text="Vi kommer att skicka ett mail till dig när din leverans är på väg!" textFill="#062f42" wrapText="true">
                             <font>
                                 <Font name="Times New Roman Bold" size="24.0" />
                             </font>

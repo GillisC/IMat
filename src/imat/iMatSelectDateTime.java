@@ -81,7 +81,7 @@ public class iMatSelectDateTime extends wizard {
     }
 
     public void back1ButtonPressed() {
-        navigateTo("iMatvarukorgItem.fxml", dateTimeRootAnchorPane);
+        navigateTo("imat_main.fxml", dateTimeRootAnchorPane);
     }
 
     public void shoppingCartPressed() {
