@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -37,7 +38,9 @@ public class ProductListItem extends AnchorPane {
     @FXML
     TextField productAmountTextField;
 
-    public ProductListItem(Product product) {
+    IMatController parentController;
+
+    public ProductListItem(Product product, IMatController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("imat_listitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -50,6 +53,7 @@ public class ProductListItem extends AnchorPane {
         }
 
         this.product = product;
+        this.parentController = controller;
 
         Image image = iMatDataModel.getFXImage(product);
         productImageView.setImage(image);
@@ -59,12 +63,12 @@ public class ProductListItem extends AnchorPane {
         productAmountTextField.setText("0");
     }
 
-    private void incrementAmountLabel() {
+    protected void incrementAmountLabel() {
         double currentVal = Double.parseDouble(productAmountTextField.getText());
         String suffix = product.getUnitSuffix();
         if (Objects.equals(suffix, "kg")) {
             currentVal += 0.1;
-            currentVal = round(currentVal, 2);
+            currentVal = iMatDataModel.round(currentVal, 2);
         } else {
             currentVal += 1;
             currentVal = (int) currentVal;
@@ -72,7 +76,7 @@ public class ProductListItem extends AnchorPane {
         productAmountTextField.setText(String.valueOf(currentVal));
     }
 
-    private void decrementAmountLabel() {
+    protected void decrementAmountLabel() {
         double currentVal = Double.parseDouble(productAmountTextField.getText());
         String suffix = product.getUnitSuffix();
         if (currentVal == 0) {
@@ -80,7 +84,7 @@ public class ProductListItem extends AnchorPane {
         }
         if (Objects.equals(suffix, "kg")) {
             currentVal -= 0.1;
-            currentVal = round(currentVal, 2);
+            currentVal = iMatDataModel.round(currentVal, 2);
         } else {
             currentVal -= 1;
             currentVal = (int) currentVal;
@@ -90,19 +94,12 @@ public class ProductListItem extends AnchorPane {
 
     @FXML
     private void handleAddAction(ActionEvent event) {
-        System.out.println("Added: " + product.getName() + " to the Shoppingcart" + product.getUnitSuffix());
-        incrementAmountLabel();
+        parentController.handleAddProduct(product);
     }
 
     @FXML
     private void handleRemoveAction(ActionEvent event) {
-        System.out.println("Removed: " + product.getName() + " from the Shoppingcart");
-        decrementAmountLabel();
-    }
-
-    private static double round (double value, int precision) {
-        int scale = (int) Math.pow(10, precision);
-        return (double) Math.round(value * scale) / scale;
+        parentController.handleRemoveProduct(product);
     }
 
     protected ProductCategory getProductListItemCategory() {

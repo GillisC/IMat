@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
@@ -22,35 +21,35 @@
                   <AnchorPane layoutX="265.0" layoutY="45.0" prefHeight="650.0" prefWidth="550.0" style="-fx-background-color: #F3F2F3;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="shoppingCartBackAnchorPane" layoutX="400.0" style="-fx-background-color: rgba(0,0,0,0.75);" stylesheets="@IMat_main.css">
+            <AnchorPane fx:id="shoppingCartBackAnchorPane" layoutX="400.0" maxHeight="720.0" minHeight="720.0" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: rgba(0,0,0,0.75);" stylesheets="@IMat_main.css">
                <children>
-                  <AnchorPane fx:id="shoppingCartAnchorPane" layoutX="1090.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="400.0" style="-fx-background-color: #F3F2F3;">
+                  <AnchorPane fx:id="shoppingCartAnchorPane" layoutX="1090.0" maxHeight="720.0" maxWidth="-Infinity" minHeight="720.0" prefHeight="720.0" prefWidth="400.0" style="-fx-background-color: #F3F2F3;">
                      <children>
-                        <ScrollPane layoutX="-1.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="400.0">
+                        <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="400.0" vbarPolicy="ALWAYS">
                            <content>
-                              <FlowPane fx:id="shoppingItemList" prefHeight="600.0" prefWidth="400.0" />
+                              <FlowPane fx:id="shoppingCartFlowPane" prefHeight="600.0" prefWidth="385.0" />
                            </content>
                         </ScrollPane>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#062f42" height="60.0" stroke="BLACK" strokeType="INSIDE" width="400.0" />
-                        <Rectangle fill="#062f42" height="60.0" layoutY="680.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+                        <Rectangle fill="#062f42" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+                        <Rectangle fill="#062f42" height="60.0" layoutX="-1.0" layoutY="660.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="401.0" />
                         <Label layoutX="120.0" layoutY="4.0" styleClass="shopping-cart-name" text="Varukorg" />
-                        <Label fx:id="totalLabel" layoutX="123.0" layoutY="684.0" styleClass="shopping-cart-name" text="Totalt: 235.05 kr" />
+                        <Label fx:id="shoppingCartViewTotalLabel" layoutX="3.0" layoutY="666.0" prefHeight="51.0" prefWidth="392.0" styleClass="shopping-cart-total" text="Totalt: 0 kr" />
                         <ImageView fx:id="closeButton" fitHeight="150.0" fitWidth="40.0" layoutX="5.0" layoutY="4.0" onMouseClicked="#closeShoppingCartView" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/close-button-white.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="payButton" fitHeight="60.0" fitWidth="165.0" layoutX="226.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="payButton" fitHeight="60.0" fitWidth="165.0" layoutX="216.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/Group%2023.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="240.0" layoutY="612.0" styleClass="shopping-cart-name" text="Betala" />
+                        <Label layoutX="235.0" layoutY="598.0" styleClass="shopping-cart-name" text="Betala" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="mainAnchorPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: F3F2F3;" stylesheets="@IMat_main.css">
+            <AnchorPane fx:id="mainAnchorPane" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: F3F2F3;" stylesheets="@IMat_main.css">
                 <children>
                     <StackPane fx:id="mainStackPane" prefHeight="720.0" prefWidth="1080.0">
                      <children>
@@ -67,17 +66,16 @@
                                  </children>
                               </AnchorPane>
                               <Button layoutX="811.0" layoutY="20.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="profile-shopping-button" />
-                              <ImageView fx:id="profileImageView" fitHeight="40.0" fitWidth="40.0" layoutX="821.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="profileImageView" fitHeight="40.0" fitWidth="40.0" layoutX="821.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
                               <Button layoutX="887.0" layoutY="20.0" mnemonicParsing="false" onAction="#openShoppingCartView" prefHeight="60.0" prefWidth="180.0" styleClass="profile-shopping-button" />
-                              <ImageView fx:id="shoppingCartImageView" fitHeight="40.0" fitWidth="40.0" layoutX="898.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="shoppingCartTotalLabel" layoutX="946.0" layoutY="21.0" prefHeight="60.0" prefWidth="110.0" styleClass="shopping-cart-label" text="1090.90 kr" />
+                              <ImageView fx:id="shoppingCartImageView" fitHeight="40.0" fitWidth="40.0" layoutX="898.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="shoppingCartButtonTotalLabel" layoutX="946.0" layoutY="21.0" mouseTransparent="true" prefHeight="60.0" prefWidth="110.0" styleClass="shopping-cart-label" text="Varukorg" />
                               </children>
                           </AnchorPane>
                      </children>
                   </StackPane>
                     <TextField fx:id="searchTextField" layoutX="290.0" layoutY="109.0" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" styleClass="search-bar" stylesheets="@IMat_main.css" />
                     <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" textAlignment="CENTER" />
-                    <ComboBox fx:id="sortComboBox" layoutX="857.0" layoutY="109.0" prefHeight="40.0" prefWidth="150.0" promptText="Sortera" />
                     <SplitPane dividerPositions="0.20686456400742115" layoutY="158.0" prefHeight="566.0" prefWidth="1080.0">
                         <items>
                             <AnchorPane maxWidth="220.0" minHeight="0.0" minWidth="220.0" prefWidth="220.0">

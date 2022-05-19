@@ -2,25 +2,19 @@ package imat;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ProductCategory;
-import se.chalmers.cse.dat216.project.ShoppingCart;
-import se.chalmers.cse.dat216.project.ShoppingItem;
+import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
-public class IMatController implements Initializable {
+public class IMatController implements Initializable, ShoppingCartListener {
 
     private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
 
@@ -44,13 +38,13 @@ public class IMatController implements Initializable {
     @FXML private ScrollPane mainCategoryScrollPane;
     @FXML private FlowPane mainCategoryFlowPane;
     @FXML private StackPane mainStackPane;
-    @FXML private Label shoppingCartTotalLabel;
 
     @FXML private AnchorPane shoppingCartAnchorPane;
     @FXML private AnchorPane shoppingCartBackAnchorPane;
     @FXML private AnchorPane mainAnchorPane;
-    @FXML private FlowPane shoppingItemList;
-    @FXML private Label totalLabel;
+    @FXML private FlowPane shoppingCartFlowPane;
+    @FXML private Label shoppingCartButtonTotalLabel;
+    @FXML private Label shoppingCartViewTotalLabel;
     @FXML private ImageView closeButton;
     @FXML private ImageView payButton;
 
@@ -62,7 +56,7 @@ public class IMatController implements Initializable {
         List<Product> tempEverything = iMatDataModel.getProducts();
         List<ProductListItem> everything = new ArrayList<>();
         for (Product p: tempEverything) {
-            everything.add(new ProductListItem(p));
+            everything.add(new ProductListItem(p, this));
         }
         mainCategoryMap.put("Allt", everything);
         subCategoryMap.put("Allt", null);
@@ -139,6 +133,8 @@ public class IMatController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        iMatDataModel.getShoppingCart().addShoppingCartListener(this);
+
         selectedCategory = "Allt";
 
         populateMainCategoryMap();
@@ -147,9 +143,6 @@ public class IMatController implements Initializable {
 
         shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/shopping-cart.png"));
         profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/receipt.png"));
-
-        updateShoppingCart(iMatDataModel.getShoppingCart().getItems());
-        totalLabel.setText("Totalt: " + iMatDataModel.getShoppingCart().getTotal() + " kr");
 
     }
 
@@ -254,12 +247,18 @@ public class IMatController implements Initializable {
             default -> null;
         };
     }
-    private void updateShoppingCart(List<ShoppingItem> shoppingItems){
-        shoppingItemList.getChildren().clear();
-        for (ShoppingItem shoppingItem : shoppingItems){
-            shoppingItemList.getChildren().add(new VarukorgItemController(iMatDataModel, shoppingItem));
+
+    private void updateShoppingCart() {
+        shoppingCartFlowPane.getChildren().clear();
+        List<ShoppingItem> shoppingItemsList = iMatDataModel.getShoppingCart().getItems();
+        for (ShoppingItem shoppingItem : shoppingItemsList){
+            shoppingCartFlowPane.getChildren().add(new VarukorgItem(shoppingItem, this));
         }
+        System.out.println("Total: " + iMatDataModel.getShoppingCart().getTotal() + " kr");
+        shoppingCartButtonTotalLabel.setText(iMatDataModel.round(iMatDataModel.getShoppingCart().getTotal(), 2) + " kr");
+        shoppingCartViewTotalLabel.setText("Totalt: " + iMatDataModel.round(iMatDataModel.getShoppingCart().getTotal(), 2) + " kr");
     }
+
     @FXML
     protected void openShoppingCartView() {
         shoppingCartBackAnchorPane.toFront();
@@ -267,18 +266,33 @@ public class IMatController implements Initializable {
         transition.setNode(shoppingCartAnchorPane);
         transition.setByX(-410);
         transition.play();
-        //shoppingCartAnchorPane.setLayoutX(680);
     }
+
     @FXML
-    protected void closeShoppingCartView() throws InterruptedException {
+    protected void closeShoppingCartView() {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(shoppingCartAnchorPane);
         transition.setByX(410);
         transition.play();
         mainAnchorPane.toFront();
-        //shoppingCartAnchorPane.setLayoutX(1090);
     }
-    //onClick på varukorg gör bring to front på varukorgen
-    //onClick på close button eller det gråa gör bring to front på main sidan
-    //onClick på Betala öppnar betalningsvy.
+
+    @Override
+    public void shoppingCartChanged(CartEvent cartEvent) {
+        updateShoppingCart();
+    }
+
+    protected void handleAddProduct(Product product) {
+        iMatDataModel.addToShoppingCart(product);
+        ProductListItem correspondingProduct = findMatchingProducts(product.getName()).get(0);
+        correspondingProduct.incrementAmountLabel();
+        updateShoppingCart();
+    }
+
+    protected void handleRemoveProduct(Product product) {
+        iMatDataModel.removeFromShoppingCart(product);
+        ProductListItem correspondingProduct = findMatchingProducts(product.getName()).get(0);
+        correspondingProduct.decrementAmountLabel();
+        updateShoppingCart();
+    }
 }

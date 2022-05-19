@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import se.chalmers.cse.dat216.project.*;
 
 import java.util.List;
+import java.util.Objects;
 
 public class IMatDataModel {
     private static IMatDataModel instance = null;
@@ -99,7 +100,6 @@ public class IMatDataModel {
     public void removeFavorite(Product p) {
         iMatDataHandler.removeFavorite(p);
     }
-
     public Image getFXImage(Product p) {
         return iMatDataHandler.getFXImage(p);
     }
@@ -115,4 +115,50 @@ public class IMatDataModel {
         return new Image(url);
     }
 
+    public double round (double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
+    }
+
+    /* Added Method. Checks if the product already is a shoppingItem, if yes increment amount otherwise make a new shopping item and add it to the cart */
+    public void addToShoppingCart(Product product) {
+        ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
+        List<ShoppingItem> currShoppingItems = shoppingCart.getItems();
+        for (ShoppingItem shoppingItem : currShoppingItems) {
+            if (Objects.equals(shoppingItem.getProduct().getName(), product.getName())) {
+                if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
+                    shoppingItem.setAmount(shoppingItem.getAmount() + 1);
+                } else {
+                    shoppingItem.setAmount(shoppingItem.getAmount() + 0.1);
+                }
+                return;
+
+            }
+        }
+    ShoppingItem shoppingItem = new ShoppingItem(product);
+    if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
+        shoppingItem.setAmount(1);
+    } else {
+        shoppingItem.setAmount(0.1);
+    }
+    IMatDataModel.getInstance().getShoppingCart().addItem(shoppingItem);
+    }
+
+    public void removeFromShoppingCart(Product product) {
+        ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
+        List<ShoppingItem> currShoppingItems = shoppingCart.getItems();
+        for (ShoppingItem shoppingItem : currShoppingItems) {
+            if (Objects.equals(shoppingItem.getProduct().getName(), product.getName())) {
+                if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
+                    shoppingItem.setAmount(shoppingItem.getAmount() - 1);
+                } else {
+                    shoppingItem.setAmount(shoppingItem.getAmount() - 0.1);
+                }
+                if (shoppingItem.getAmount() == 0) {
+                    shoppingCart.removeItem(shoppingItem);
+                }
+
+            }
+        }
+    }
 }
