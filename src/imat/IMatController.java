@@ -346,6 +346,7 @@ public class IMatController implements Initializable, ShoppingCartListener {
         updateProductItemsAmount();
         updateShoppingCart();
     }
+
     /* Updates the productListItems with the value stored in the shopping cart */
     private void updateProductItemsAmount() {
         List<ShoppingItem> shoppingItems = iMatDataModel.getShoppingCart().getItems();

@@ -144,3 +144,11 @@
     -fx-fill: #F3F2F3;
     -fx-background-radius: 2px;
 }
+
+.logo-text {
+    -fx-font-size: 48px;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
+}

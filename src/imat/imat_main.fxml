@@ -92,6 +92,7 @@
                                     <Image url="@resources/icons/shopping-cart.png" />
                                  </image></ImageView>
                               <Label fx:id="shoppingCartButtonTotalLabel" layoutX="946.0" layoutY="21.0" mouseTransparent="true" prefHeight="60.0" prefWidth="110.0" styleClass="shopping-cart-label" text="Varukorg" />
+                              <Label layoutX="80.0" layoutY="1.0" prefHeight="100.0" prefWidth="135.0" styleClass="logo-text" text="iMAT" />
                               </children>
                           </AnchorPane>
                      </children>

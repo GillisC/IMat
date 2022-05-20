@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+.text-title {
+    -fx-font-size: 32px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.text-title-left {
+    -fx-font-size: 32px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: top-left;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.delivery-card-text-day {
+    -fx-font-size: 30px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.delivery-card-text-date {
+    -fx-font-size: 26px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.delivery-card-backdrop {
+    -fx-background-color: #E3E3E3;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+}
+
+.delivery-card-backdrop:hover {
+    -fx-background-color: #F3F2F3;
+}
+
+.navigation-buttons {
+    -fx-background-color: #ED254E;
+    -fx-background-radius: 30px;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.navigation-buttons:hover {
+    -fx-background-color: #F34E70;
+}
+
+.wizard-step-rectangle {
+    -fx-fill: #F3F2F3;
+    -fx-arc-width: 80px;
+    -fx-arc-height: 80px;
+}
+
+.wizard-step-rectangle-2 {
+    -fx-fill: #F3F2F3;
+}
+
+.wizard-step-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
