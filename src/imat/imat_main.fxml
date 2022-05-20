@@ -18,7 +18,7 @@
    <children>
       <StackPane>
          <children>
-            <AnchorPane fx:id="shoppingCartBackAnchorPane" layoutX="400.0" maxHeight="720.0" minHeight="720.0" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: rgba(0,0,0,0.75);" stylesheets="@IMat_main.css">
+            <AnchorPane fx:id="shoppingCartBackAnchorPane" layoutX="400.0" maxHeight="720.0" minHeight="720.0" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: rgba(0,0,0,0.75);" stylesheets="@stylesheets/IMat_main.css">
                <children>
                   <AnchorPane fx:id="shoppingCartAnchorPane" layoutX="1090.0" maxHeight="720.0" maxWidth="-Infinity" minHeight="720.0" prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #F3F2F3;">
                      <children>
@@ -43,7 +43,7 @@
             </AnchorPane>
             <AnchorPane fx:id="detailViewAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.75);">
                <children>
-                  <AnchorPane layoutX="265.0" layoutY="36.0" prefHeight="650.0" prefWidth="550.0" styleClass="anchor-pane-backdrop" stylesheets="@DetailView.css">
+                  <AnchorPane layoutX="265.0" layoutY="36.0" prefHeight="650.0" prefWidth="550.0" styleClass="anchor-pane-backdrop" stylesheets="@stylesheets/DetailView.css">
                      <children>
                         <ImageView fx:id="detailViewImageView" fitHeight="250.0" fitWidth="316.0" layoutX="109.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
                         <Label fx:id="detailViewNameLabel" layoutX="75.0" layoutY="279.0" prefHeight="60.0" prefWidth="400.0" styleClass="product-name" text="Grahamsmjöl" />
@@ -67,7 +67,7 @@
                      </children></AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="mainAnchorPane" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: F3F2F3;" stylesheets="@IMat_main.css">
+            <AnchorPane fx:id="mainAnchorPane" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: F3F2F3;" stylesheets="@stylesheets/IMat_main.css">
                 <children>
                     <StackPane fx:id="mainStackPane" prefHeight="720.0" prefWidth="1080.0">
                      <children>
@@ -96,7 +96,7 @@
                           </AnchorPane>
                      </children>
                   </StackPane>
-                    <TextField fx:id="searchTextField" layoutX="290.0" layoutY="109.0" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" styleClass="search-bar" stylesheets="@IMat_main.css" />
+                    <TextField fx:id="searchTextField" layoutX="290.0" layoutY="109.0" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" styleClass="search-bar" stylesheets="@stylesheets/IMat_main.css" />
                     <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" textAlignment="CENTER" />
                     <SplitPane dividerPositions="0.20686456400742115" layoutY="158.0" prefHeight="566.0" prefWidth="1080.0">
                         <items>

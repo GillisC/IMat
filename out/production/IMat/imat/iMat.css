@@ -1,6 +1,0 @@
-#button{
-    -fx-background-color: red;
-}
-
-.root { abc: #062f42 }
-.AnchorPane { -fx-background-color: abc }

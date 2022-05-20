@@ -9,7 +9,7 @@
 
 <fx:root prefHeight="100.0" prefWidth="435.0" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="90.0" prefWidth="425.0" styleClass="shopping-item" stylesheets="@IMat_main.css">
+      <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="90.0" prefWidth="425.0" styleClass="shopping-item" stylesheets="@stylesheets/IMat_main.css">
          <children>
             <ImageView fx:id="shoppingItemImageView" fitHeight="80.0" fitWidth="80.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
