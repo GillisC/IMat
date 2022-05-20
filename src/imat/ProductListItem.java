@@ -37,6 +37,8 @@ public class ProductListItem extends AnchorPane {
     Label productAmountLabel;
     @FXML
     TextField productAmountTextField;
+    @FXML
+    ImageView ekoImageView;
 
     IMatController parentController;
 
@@ -60,6 +62,9 @@ public class ProductListItem extends AnchorPane {
         productPriceLabel.setText(product.getPrice() + " kr");
         productUnitSuffixLabel.setText("/" + product.getUnitSuffix());
         productAmountTextField.setText("0");
+        if (product.isEcological()) {
+            ekoImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/eko-märkt.jpg"));
+        }
     }
     protected String getCorrectSuffix() {
         String suffix = product.getUnitSuffix();
@@ -67,31 +72,6 @@ public class ProductListItem extends AnchorPane {
             return "kg";
         } else {
             return "st";
-        }
-    }
-    protected void incrementAmountLabel() {
-        String currentVal = productAmountTextField.getText();
-        currentVal = iMatDataModel.removeSuffixes(currentVal);
-        double value = Double.parseDouble(currentVal);
-
-
-    }
-
-    protected void decrementAmountLabel() {
-        String currentVal = productAmountTextField.getText();
-        currentVal = iMatDataModel.removeSuffixes(currentVal);
-        double value = Double.parseDouble(currentVal);
-        String suffix = product.getUnitSuffix();
-        if (value == 0) {
-            return;
-        }
-        if (Objects.equals(suffix, "kg")) {
-            value -= 0.1;
-            value = iMatDataModel.round(value, 2);
-            productAmountTextField.setText(value + "kg");
-        } else {
-            value -= 1;
-            productAmountTextField.setText((int) value + "st");
         }
     }
 

@@ -98,7 +98,7 @@
     -fx-font-size: 16px;
     -fx-text-fill: #062F42;
     -fx-font-weight: bold;
-    -fx-text-alignment: left;
+    -fx-alignment: top-left;
     -fx-font-family: 'Sen', sans-serif;
 }
 
@@ -119,8 +119,8 @@
 }
 
 .shopping-item-amount {
-    -fx-font-size: 12px;
-    -fx-text-fill: #062F42;
+    -fx-font-size: 16px;
+    -fx-text-fill: #ED254E;
     -fx-font-weight: bold;
     -fx-alignment: center;
     -fx-font-family: 'Sen', sans-serif;

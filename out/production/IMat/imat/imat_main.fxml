@@ -20,26 +20,51 @@
          <children>
             <AnchorPane fx:id="shoppingCartBackAnchorPane" layoutX="400.0" maxHeight="720.0" minHeight="720.0" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: rgba(0,0,0,0.75);" stylesheets="@IMat_main.css">
                <children>
-                  <AnchorPane fx:id="shoppingCartAnchorPane" layoutX="1090.0" maxHeight="720.0" maxWidth="-Infinity" minHeight="720.0" prefHeight="720.0" prefWidth="400.0" style="-fx-background-color: #F3F2F3;">
+                  <AnchorPane fx:id="shoppingCartAnchorPane" layoutX="1090.0" maxHeight="720.0" maxWidth="-Infinity" minHeight="720.0" prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #F3F2F3;">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="400.0" vbarPolicy="ALWAYS">
+                        <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" vbarPolicy="ALWAYS">
                            <content>
-                              <FlowPane fx:id="shoppingCartFlowPane" prefHeight="600.0" prefWidth="385.0" />
+                              <FlowPane fx:id="shoppingCartFlowPane" prefHeight="600.0" prefWidth="435.0" />
                            </content>
                         </ScrollPane>
-                        <Rectangle fill="#062f42" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-                        <Rectangle fill="#062f42" height="60.0" layoutX="-1.0" layoutY="660.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="401.0" />
-                        <Label layoutX="120.0" layoutY="4.0" styleClass="shopping-cart-name" text="Varukorg" />
-                        <Label fx:id="shoppingCartViewTotalLabel" layoutX="3.0" layoutY="666.0" prefHeight="51.0" prefWidth="392.0" styleClass="shopping-cart-total" text="Totalt: 0 kr" />
-                        <Button fx:id="ShoppingCartPayButton" layoutX="260.0" layoutY="592.0" mnemonicParsing="false" onAction="#payButtonPressed" prefHeight="60.0" prefWidth="120.0" styleClass="profile-shopping-button" />
+                        <Rectangle fill="#062f42" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="450.0" />
+                        <Rectangle fill="#062f42" height="60.0" layoutX="-1.0" layoutY="660.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="450.0" />
+                        <Label layoutX="148.0" layoutY="5.0" styleClass="shopping-cart-name" text="Varukorg" />
+                        <Label fx:id="shoppingCartViewTotalLabel" layoutX="51.0" layoutY="665.0" prefHeight="51.0" prefWidth="392.0" styleClass="shopping-cart-total" text="Totalt: 0 kr" />
+                        <Button fx:id="ShoppingCartPayButton" layoutX="312.0" layoutY="595.0" mnemonicParsing="false" onAction="#payButtonPressed" prefHeight="60.0" prefWidth="120.0" styleClass="profile-shopping-button" text="Betala" />
                         <ImageView fx:id="closeButton" fitHeight="150.0" fitWidth="40.0" layoutX="5.0" layoutY="4.0" onMouseClicked="#closeShoppingCartView" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/close-button-white.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="279.0" layoutY="601.0" styleClass="shopping-cart-name-2" text="Betala" />
                      </children>
                   </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="detailViewAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+               <children>
+                  <AnchorPane layoutX="265.0" layoutY="36.0" prefHeight="650.0" prefWidth="550.0" styleClass="anchor-pane-backdrop" stylesheets="@DetailView.css">
+                     <children>
+                        <ImageView fx:id="detailViewImageView" fitHeight="250.0" fitWidth="316.0" layoutX="109.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="detailViewNameLabel" layoutX="75.0" layoutY="279.0" prefHeight="60.0" prefWidth="400.0" styleClass="product-name" text="Grahamsmjöl" />
+                        <Label fx:id="detailViewUnitSuffixLabel" layoutX="27.0" layoutY="355.0" prefHeight="35.0" prefWidth="209.0" styleClass="product-price" text="103.95kr /kg" />
+                        <Label fx:id="detailViewCategoryLabel" layoutX="271.0" layoutY="355.0" prefHeight="35.0" prefWidth="241.0" styleClass="product-unit" text="Baljväxter" />
+                        <TextArea fx:id="detailViewDescriptionTextArea" editable="false" layoutX="21.0" layoutY="426.0" prefHeight="146.0" prefWidth="492.0" styleClass="text-area" text="Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus. " wrapText="true">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                        <Button layoutX="450.0" layoutY="572.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" styleClass="buttons" visible="false" />
+                        <Rectangle fill="DODGERBLUE" height="8.0" layoutX="456.0" layoutY="600.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" visible="false" width="52.0" />
+                        <Button layoutX="27.0" layoutY="572.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" styleClass="buttons" visible="false" />
+                        <Rectangle fill="DODGERBLUE" height="8.0" layoutX="33.0" layoutY="600.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" visible="false" width="52.0" />
+                        <Rectangle fill="DODGERBLUE" height="52.0" layoutX="478.0" layoutY="578.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" visible="false" width="8.0" />
+                        <ImageView fx:id="closeButtonImageView" fitHeight="48.0" fitWidth="48.0" layoutX="484.0" layoutY="15.0" onMouseClicked="#closeDetailView" onMouseEntered="#closeButtonHover" onMouseExited="#closeButtonExitHover" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/close-button-blue.png" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="mainAnchorPane" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: F3F2F3;" stylesheets="@IMat_main.css">
@@ -88,32 +113,6 @@
                         </items>
                     </SplitPane>
                 </children>
-            </AnchorPane>
-            <AnchorPane fx:id="detailViewAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.75);">
-               <children>
-                  <AnchorPane layoutX="265.0" layoutY="36.0" prefHeight="650.0" prefWidth="550.0" styleClass="anchor-pane-backdrop" stylesheets="@DetailView.css">
-                     <children>
-                        <ImageView fx:id="detailViewImageView" fitHeight="250.0" fitWidth="316.0" layoutX="109.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="detailViewNameLabel" layoutX="75.0" layoutY="279.0" prefHeight="60.0" prefWidth="400.0" styleClass="product-name" text="Grahamsmjöl" />
-                        <Label fx:id="detailViewUnitSuffixLabel" layoutX="27.0" layoutY="355.0" prefHeight="35.0" prefWidth="209.0" styleClass="product-price" text="103.95kr /kg" />
-                        <Label fx:id="detailViewCategoryLabel" layoutX="271.0" layoutY="355.0" prefHeight="35.0" prefWidth="241.0" styleClass="product-unit" text="Baljväxter" />
-                        <TextArea fx:id="detailViewDescriptionTextArea" layoutX="25.0" layoutY="471.0" prefHeight="146.0" prefWidth="492.0" styleClass="text-field" text="Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus. " wrapText="true">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </TextArea>
-                        <Button layoutX="450.0" layoutY="572.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" styleClass="buttons" visible="false" />
-                        <Rectangle fill="DODGERBLUE" height="8.0" layoutX="456.0" layoutY="600.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" visible="false" width="52.0" />
-                        <Button layoutX="27.0" layoutY="572.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" styleClass="buttons" visible="false" />
-                        <Rectangle fill="DODGERBLUE" height="8.0" layoutX="33.0" layoutY="600.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" visible="false" width="52.0" />
-                        <Rectangle fill="DODGERBLUE" height="52.0" layoutX="478.0" layoutY="578.0" mouseTransparent="true" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" visible="false" width="8.0" />
-                        <ImageView fx:id="closeButtonImageView" fitHeight="48.0" fitWidth="48.0" layoutX="484.0" layoutY="15.0" onMouseClicked="#closeDetailView" onMouseEntered="#closeButtonHover" onMouseExited="#closeButtonExitHover" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/close-button-blue.png" />
-                           </image>
-                        </ImageView>
-                     </children></AnchorPane>
-               </children>
             </AnchorPane>
          </children>
       </StackPane>
