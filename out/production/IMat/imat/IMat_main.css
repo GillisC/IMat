@@ -15,6 +15,11 @@
     -fx-background-radius: 40px;
 }
 
+.triangles {
+    -fx-fill: #062F42;
+    -fx-border-radius: 4px;
+}
+
 .scroll-pane-carousel {
     -fx-background-color: #F3F2F3;
     -fx-border-radius: 40px;

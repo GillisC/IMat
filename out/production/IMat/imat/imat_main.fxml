@@ -76,17 +76,21 @@
                                   <Rectangle fill="#052139" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="darkblue-normal" width="1080.0" />
                               <AnchorPane layoutX="290.0" layoutY="10.0" prefHeight="80.0" prefWidth="500.0" styleClass="main-carousel">
                                  <children>
-                                    <ScrollPane fx:id="mainCategoryScrollPane" fitToHeight="true" fitToWidth="true" hmax="1000.0" prefHeight="80.0" prefWidth="500.0" styleClass="scroll-pane-carousel" vbarPolicy="NEVER">
-                                       <content>
-                                          <FlowPane fx:id="mainCategoryFlowPane" alignment="CENTER_LEFT" columnHalignment="CENTER" prefHeight="80.0" prefWidth="500.0" prefWrapLength="500.0" />
-                                       </content>
-                                    </ScrollPane>
+                                    <FlowPane fx:id="mainCategoryFlowPane" alignment="CENTER_LEFT" columnHalignment="CENTER" layoutX="40.0" prefHeight="80.0" prefWidth="420.0" prefWrapLength="500.0" />
+                                    <ImageView fx:id="leftNavigationImageView" fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="28.0" onMouseClicked="#handleNavigateLeft" onMouseEntered="#leftNavigationArrowHover" onMouseExited="#leftNavigationArrowExitHover" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="rightNavigationImageView" fitHeight="24.0" fitWidth="24.0" layoutX="462.0" layoutY="28.0" onMouseClicked="#handleNavigateRight" onMouseEntered="#rightNavigationArrowHover" onMouseExited="#rightNavigationArrowExitHover" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                               <Button layoutX="811.0" layoutY="20.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="profile-shopping-button" />
-                              <ImageView fx:id="profileImageView" fitHeight="40.0" fitWidth="40.0" layoutX="821.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="profileImageView" fitHeight="40.0" fitWidth="40.0" layoutX="821.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/icons/receipt.png" />
+                                 </image></ImageView>
                               <Button layoutX="887.0" layoutY="20.0" mnemonicParsing="false" onAction="#openShoppingCartView" prefHeight="60.0" prefWidth="180.0" styleClass="profile-shopping-button" />
-                              <ImageView fx:id="shoppingCartImageView" fitHeight="40.0" fitWidth="40.0" layoutX="898.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="shoppingCartImageView" fitHeight="40.0" fitWidth="40.0" layoutX="898.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/icons/shopping-cart.png" />
+                                 </image></ImageView>
                               <Label fx:id="shoppingCartButtonTotalLabel" layoutX="946.0" layoutY="21.0" mouseTransparent="true" prefHeight="60.0" prefWidth="110.0" styleClass="shopping-cart-label" text="Varukorg" />
                               </children>
                           </AnchorPane>

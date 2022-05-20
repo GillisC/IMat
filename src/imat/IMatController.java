@@ -33,6 +33,8 @@ public class IMatController implements Initializable, ShoppingCartListener {
     private ArrayList<SubCategoryItem> subCategoryItems = new ArrayList<>();
 
     private String selectedCategory;
+    // Keeps track of where we start to render the carousel
+    private int categoryIndex = 0;
 
     /* Main view */
     @FXML private ImageView profileImageView;
@@ -44,6 +46,8 @@ public class IMatController implements Initializable, ShoppingCartListener {
     @FXML private ScrollPane mainCategoryScrollPane;
     @FXML private FlowPane mainCategoryFlowPane;
     @FXML private StackPane mainStackPane;
+    @FXML private ImageView leftNavigationImageView;
+    @FXML private ImageView rightNavigationImageView;
 
     /* Shopping cart view */
     @FXML private AnchorPane shoppingCartAnchorPane;
@@ -156,17 +160,21 @@ public class IMatController implements Initializable, ShoppingCartListener {
         selectedCategory = "Allt";
 
         populateMainCategoryMap();
-        updateCategoryImages(selectedCategory);
+        updateCategoryImages();
         updateProductGrid(mainCategoryMap.get(selectedCategory));
 
         profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/receipt.png"));
         shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/shopping-cart.png"));
+
+        leftNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/left-navigation-triangle.png"));
+        rightNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/right-navigation-triangle.png"));
 
         searchTextField.setOnKeyReleased(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 handleSearchAction();
             }
         });
+        updateProductItemsAmount();
     }
 
     @FXML
@@ -203,12 +211,11 @@ public class IMatController implements Initializable, ShoppingCartListener {
         return result;
     }
 
-    private void updateCategoryImages(String selected) {
+    private void updateCategoryImages() {
         String[] categoryArray = {"Allt", "Grönsaker", "Frukt", "Mejeri", "Bröd", "Kött", "Fisk", "Skafferi", "Drickor"};
         mainCategoryFlowPane.getChildren().clear();
-
-        for (String s: categoryArray) {
-            mainCategoryFlowPane.getChildren().add(new CategoryItem(s, selectedCategory, this));
+        for (int i = categoryIndex; i < categoryIndex + 5; i++) {
+            mainCategoryFlowPane.getChildren().add(new CategoryItem(categoryArray[i], selectedCategory, this));
         }
     }
     private void populateSubCategory() {
@@ -245,7 +252,7 @@ public class IMatController implements Initializable, ShoppingCartListener {
     /* Called when main category icon is pressed */
     public void setMainCategory(String categoryName) {
         selectedCategory = categoryName;
-        updateCategoryImages(selectedCategory);
+        updateCategoryImages();
         populateSubCategory();
         updateProductGrid(mainCategoryMap.get(selectedCategory));
     }
@@ -356,6 +363,9 @@ public class IMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void payButtonPressed() {
+        if (iMatDataModel.getShoppingCart().getTotal() == 0) {
+            return;
+        }
         try {
             AnchorPane root = FXMLLoader.load(getClass().getResource("IMatSelectDateTime.fxml"));
             shoppingCartBackAnchorPane.getChildren().setAll(root);
@@ -382,9 +392,45 @@ public class IMatController implements Initializable, ShoppingCartListener {
     public void closeButtonHover() {
         closeButtonImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-blue-hover.png"));
     }
+    @FXML
+    public void handleNavigateRight() {
+        if (!(categoryIndex >= 4)) {
+            categoryIndex++;
+            updateCategoryImages();
+        }
+    }
 
+    @FXML
+    public void handleNavigateLeft() {
+        if (!(categoryIndex <= 0)) {
+            categoryIndex--;
+            updateCategoryImages();
+        }
+    }
     @FXML
     public void closeButtonExitHover() {
         closeButtonImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-blue.png"));
     }
+
+    @FXML
+    public void leftNavigationArrowHover() {
+        leftNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/left-navigation-triangle-hover.png"));
+    }
+
+    @FXML
+    public void leftNavigationArrowExitHover() {
+        leftNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/left-navigation-triangle.png"));
+    }
+
+    @FXML
+    public void rightNavigationArrowHover() {
+        rightNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/right-navigation-triangle-hover.png"));
+    }
+
+    @FXML
+    public void rightNavigationArrowExitHover() {
+        rightNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/right-navigation-triangle.png"));
+    }
+
+
 }
