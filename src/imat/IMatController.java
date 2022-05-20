@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -34,8 +35,8 @@ public class IMatController implements Initializable, ShoppingCartListener {
     private String selectedCategory;
 
     /* Main view */
-    @FXML private ImageView shoppingCartImageView;
     @FXML private ImageView profileImageView;
+    @FXML private ImageView shoppingCartImageView;
     @FXML private TextField searchTextField;
     @FXML private Button searchButton;
     @FXML private FlowPane productFlowPane;
@@ -158,13 +159,18 @@ public class IMatController implements Initializable, ShoppingCartListener {
         updateCategoryImages(selectedCategory);
         updateProductGrid(mainCategoryMap.get(selectedCategory));
 
-        shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/shopping-cart.png"));
         profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/receipt.png"));
+        shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/shopping-cart.png"));
 
+        searchTextField.setOnKeyReleased(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                handleSearchAction();
+            }
+        });
     }
 
     @FXML
-    public void handleSearchAction(ActionEvent event) {
+    public void handleSearchAction() {
         /* Prevents it from creating useless objects */
         if (Objects.equals(searchTextField.getText(), "")) {
             return;
@@ -304,7 +310,7 @@ public class IMatController implements Initializable, ShoppingCartListener {
         shoppingCartBackAnchorPane.toFront();
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(shoppingCartAnchorPane);
-        transition.setByX(-410);
+        transition.setByX(-460);
         transition.play();
     }
 
@@ -312,7 +318,7 @@ public class IMatController implements Initializable, ShoppingCartListener {
     protected void closeShoppingCartView() {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(shoppingCartAnchorPane);
-        transition.setByX(410);
+        transition.setByX(460);
         transition.play();
         mainAnchorPane.toFront();
     }
@@ -324,16 +330,28 @@ public class IMatController implements Initializable, ShoppingCartListener {
 
     protected void handleAddProduct(Product product) {
         iMatDataModel.addToShoppingCart(product);
-        ProductListItem correspondingProduct = findMatchingProducts(product.getName()).get(0);
-        correspondingProduct.incrementAmountLabel();
+        updateProductItemsAmount();
         updateShoppingCart();
     }
 
     protected void handleRemoveProduct(Product product) {
         iMatDataModel.removeFromShoppingCart(product);
-        ProductListItem correspondingProduct = findMatchingProducts(product.getName()).get(0);
-        correspondingProduct.decrementAmountLabel();
+        updateProductItemsAmount();
         updateShoppingCart();
+    }
+    /* Updates the productListItems with the value stored in the shopping cart */
+    private void updateProductItemsAmount() {
+        List<ShoppingItem> shoppingItems = iMatDataModel.getShoppingCart().getItems();
+        for (ShoppingItem shoppingItem : shoppingItems) {
+            ProductListItem productListItem = findMatchingProducts(shoppingItem.getProduct().getName()).get(0);
+            if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
+                productListItem.productAmountTextField.setText(iMatDataModel.round(shoppingItem.getAmount(), 1) + productListItem.getCorrectSuffix());
+            } else {
+                productListItem.productAmountTextField.setText((int) shoppingItem.getAmount() + productListItem.getCorrectSuffix());
+            }
+
+        }
+
     }
 
     @FXML

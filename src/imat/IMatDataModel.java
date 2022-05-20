@@ -1,6 +1,7 @@
 package imat;
 
 
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import se.chalmers.cse.dat216.project.*;
 
@@ -149,14 +150,18 @@ public class IMatDataModel {
         List<ShoppingItem> currShoppingItems = shoppingCart.getItems();
         for (ShoppingItem shoppingItem : currShoppingItems) {
             if (Objects.equals(shoppingItem.getProduct().getName(), product.getName())) {
-                if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
-                    shoppingItem.setAmount(shoppingItem.getAmount() - 1);
-                } else {
-                    shoppingItem.setAmount(shoppingItem.getAmount() - 0.1);
-                }
+
                 if (shoppingItem.getAmount() == 0) {
                     shoppingCart.removeItem(shoppingItem);
+                    return;
                 }
+                else if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
+                    shoppingItem.setAmount(shoppingItem.getAmount() - 1);
+                }
+                else {
+                    shoppingItem.setAmount(shoppingItem.getAmount() - 0.1);
+                }
+
 
             }
         }
@@ -167,5 +172,22 @@ public class IMatDataModel {
         s = s.replace("st", "");
         s = s.replace("förp", "");
         return s;
+    }
+
+    public void incrementTextField(TextField textField, Product product) {
+        String currentVal = textField.getText();
+        currentVal = removeSuffixes(currentVal);
+        double value = Double.parseDouble(currentVal);
+        String suffix = product.getUnitSuffix();
+        if (value == 0) {
+            return;
+        }
+        if (Objects.equals(suffix, "kg")) {
+            value -= 0.1;
+            textField.setText(round(value, 2) + "kg");
+        } else {
+            value -= 1;
+            textField.setText((int) value + "st");
+        }
     }
 }

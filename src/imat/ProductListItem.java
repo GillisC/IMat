@@ -48,7 +48,6 @@ public class ProductListItem extends AnchorPane {
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
-            System.out.println("yo");
             throw new RuntimeException(exception);
         }
 
@@ -62,20 +61,19 @@ public class ProductListItem extends AnchorPane {
         productUnitSuffixLabel.setText("/" + product.getUnitSuffix());
         productAmountTextField.setText("0");
     }
-
+    protected String getCorrectSuffix() {
+        String suffix = product.getUnitSuffix();
+        if (Objects.equals(suffix, "kg")) {
+            return "kg";
+        } else {
+            return "st";
+        }
+    }
     protected void incrementAmountLabel() {
         String currentVal = productAmountTextField.getText();
         currentVal = iMatDataModel.removeSuffixes(currentVal);
         double value = Double.parseDouble(currentVal);
-        String suffix = product.getUnitSuffix();
-        if (Objects.equals(suffix, "kg")) {
-            value += 0.1;
-            value = iMatDataModel.round(value, 2);
-            productAmountTextField.setText(value + "kg");
-        } else {
-            value += 1;
-            productAmountTextField.setText((int) value + "st");
-        }
+
 
     }
 
@@ -111,6 +109,7 @@ public class ProductListItem extends AnchorPane {
     private void onClick() {
         parentController.populateDetailView(product);
     }
+
     protected ProductCategory getProductListItemCategory() {
         return product.getCategory();
     }

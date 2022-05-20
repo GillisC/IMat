@@ -11,6 +11,7 @@ import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class VarukorgItem extends AnchorPane{
 
@@ -41,8 +42,17 @@ public class VarukorgItem extends AnchorPane{
 
         shoppingItemImageView.setImage(dataModel.getFXImage(shoppingItem.getProduct(), 80, 80));
         shoppingItemNameLabel.setText(shoppingItem.getProduct().getName());
-        shoppingItemUnitLabel.setText(String.valueOf(shoppingItem.getProduct().getUnit()));
-        shoppingItemAmountLabel.setText((dataModel.round(shoppingItem.getAmount(), 1) + shoppingItem.getProduct().getUnitSuffix()));
+        shoppingItemUnitLabel.setText(shoppingItem.getProduct().getPrice() + (shoppingItem.getProduct().getUnit()));
+        String unit = shoppingItem.getProduct().getUnitSuffix();
+        if (Objects.equals(unit, "förp")) {
+            unit = "st";
+        }
+        if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
+            shoppingItemAmountLabel.setText((dataModel.round(shoppingItem.getAmount(), 1) + unit));
+        } else {
+            shoppingItemAmountLabel.setText((int) shoppingItem.getAmount() + unit);
+        }
+
         shoppingItemTotalLabel.setText(dataModel.round(shoppingItem.getTotal(), 2) + " kr");
     }
 
