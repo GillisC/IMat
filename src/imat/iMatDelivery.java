@@ -4,58 +4,147 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Ellipse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import se.chalmers.cse.dat216.project.Customer;
 
+import java.awt.event.KeyEvent;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.function.UnaryOperator;
 
 public class iMatDelivery extends wizard {
     @FXML private AnchorPane deliveryRootAnchorPane;
     @FXML private Button next3,back3,shoppingCart;
-    @FXML private Ellipse selectDateTime, pay;
-    @FXML private TextField firstN,lastN,road, postNr,phoneNr,mailAddress;
+    @FXML private TextField firstName,lastName, streetName, zipCode, phoneNum, mailAddress;
 
+    IMatDataModel iMatDataModel = IMatDataModel.getInstance();
+    Customer customer;
 
     public void initialize() {
-        JSONParser parser = new JSONParser();
-        try {
-            JSONObject object = (JSONObject) parser.parse(new FileReader("src/imat/resources/database.json"));
-            JSONObject delivery = (JSONObject) object.get("delivery");
-            String first =  (String) delivery.get("firstName");
-            firstN.setText(first);
+        customer = iMatDataModel.getCustomer();
 
-            String last =  (String) delivery.get("lastName");
-            lastN.setText(last);
+        firstName.setOnKeyReleased(KeyEvent -> {
+            if (KeyEvent.getCode() == KeyCode.ENTER) {
+                lastName.requestFocus();
+            }
+        });
 
-            String r =  (String) delivery.get("road");
-            road.setText(r);
+        firstName.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!firstName.getText().matches("[a-zA-ZåäöÅÄÖ ]+")) {
+                    firstName.setText("");
+                }
+            }
+        });
 
-            String postN =  (String) delivery.get("postNumber");
-            postNr.setText(postN);
+        lastName.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!lastName.getText().matches("[a-zA-ZåäöÅÄÖ ]+")) {
+                    lastName.setText("");
+                }
+            }
+        });
 
-            String phoneN =  (String) delivery.get("phoneNumber");
-            phoneNr.setText(phoneN);
+        lastName.setOnKeyReleased(KeyEvent -> {
+            if (KeyEvent.getCode() == KeyCode.ENTER) {
+                streetName.requestFocus();
+            }
+        });
 
-            String mailA =  (String) delivery.get("mailAddress");
-            mailAddress.setText(mailA);
+        streetName.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!streetName.getText().matches("^[a-zA-ZåäöÅÄÖ]+(?:\\s\\d+)?$")) {
+                    streetName.setText("");
+                }
+            }
+        });
 
-        } catch (Exception e) {
+        streetName.setOnKeyReleased(KeyEvent -> {
+            if (KeyEvent.getCode() == KeyCode.ENTER) {
+                zipCode.requestFocus();
+            }
+        });
 
-        }
+        zipCode.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!zipCode.getText().matches("^[0-9 ]+$")) {
+                    zipCode.setText("");
+                }
+            }
+        });
+
+        zipCode.setOnKeyReleased(KeyEvent -> {
+            if (KeyEvent.getCode() == KeyCode.ENTER) {
+                phoneNum.requestFocus();
+            }
+        });
+
+        phoneNum.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!phoneNum.getText().matches("^[0-9- ]+$")) {
+                    phoneNum.setText("");
+                }
+            }
+        });
+
+        phoneNum.setOnKeyReleased(KeyEvent -> {
+            if (KeyEvent.getCode() == KeyCode.ENTER) {
+                mailAddress.requestFocus();
+            }
+        });
+
+        mailAddress.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!mailAddress.getText().matches("^[a-zA-ZåäöÅÄÖ0-9_!#$%&'*+/=?`{|}~^-]+(?:\\."
+                        + "[a-zA-ZåäöÅÄÖ0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-ZåäöÅÄÖ0-9-]+(?:\\.[a-zA-ZåäöÅÄÖ0-9-]+)*$")) {
+                    mailAddress.setText("");
+                }
+            }
+        });
+
+        mailAddress.setOnKeyReleased(KeyEvent -> {
+            if (KeyEvent.getCode() == KeyCode.ENTER) {
+                next3.requestFocus();
+            }
+        });
+    }
+
+    private void updateDeliveryDetails() {
+        customer.setFirstName(firstName.getText().replace(" ", ""));
+        customer.setLastName(lastName.getText().replace(" ", ""));
+        customer.setAddress(streetName.getText());
+        customer.setPostAddress(streetName.getText());
+        customer.setPostCode(zipCode.getText().replace(" ", ""));
+        customer.setMobilePhoneNumber(phoneNum.getText().replace(" ", "").replace("-", ""));
+        customer.setEmail(mailAddress.getText().replace(" ", ""));
+
+        System.out.println("Customer is complete: " + iMatDataModel.isCustomerComplete());
+    }
+
+    private boolean isCellsEmpty() {
+        return (firstName.getText().isEmpty() || lastName.getText().isEmpty() || streetName.getText().isEmpty() || zipCode.getText().isEmpty() || phoneNum.getText().isEmpty() || mailAddress.getText().isEmpty());
     }
 
     public void next3ButtonPressed() {
-        JSONParser parser = new JSONParser();
+        if (!isCellsEmpty()) {
+            updateDeliveryDetails();
+            navigateTo("iMatPay.fxml", deliveryRootAnchorPane);
+        }
+
+
+        /*JSONParser parser = new JSONParser();
         JSONObject delivery;
         try {
             JSONObject object = (JSONObject) parser.parse(new FileReader("src/imat/resources/database.json"));
             delivery = (JSONObject) object.get("delivery");
 
-            delivery.put("firstName", firstN.getText());
+         *//*   delivery.put("firstName", firstN.getText());
             object.put("delivery", delivery);
 
             delivery.put("lastName", lastN.getText());
@@ -71,7 +160,7 @@ public class iMatDelivery extends wizard {
             object.put("delivery", delivery);
 
             delivery.put("mailAddress", mailAddress.getText());
-            object.put("delivery", delivery);
+            object.put("delivery", delivery);*//*
 
 
             try (FileWriter file = new FileWriter("src/imat/resources/database.json")) {
@@ -80,8 +169,7 @@ public class iMatDelivery extends wizard {
             }
         } catch (Exception e) {
 
-        }
-        navigateTo("iMatPay.fxml", deliveryRootAnchorPane);
+        }*/
     }
 
     public void back3ButtonPressed() {
@@ -92,10 +180,6 @@ public class iMatDelivery extends wizard {
         navigateToSelectDateTime(deliveryRootAnchorPane);
     }
 
-
-    public void shoppingCartPressed() {
-        shoppingCartPressed (deliveryRootAnchorPane);
-    }
 
 
 

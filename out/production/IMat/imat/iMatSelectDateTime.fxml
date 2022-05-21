@@ -67,9 +67,9 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-    <AnchorPane fx:id="underAnchorPane" layoutY="120.0" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="1080.0" style="-fx-background-color: #F3F2F3;">
+    <AnchorPane fx:id="underAnchorPane" layoutY="100.0" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="1080.0" style="-fx-background-color: #F3F2F3;">
          <children>
-                  <Button fx:id="next1" layoutX="906.0" layoutY="525.0" mnemonicParsing="false" onAction="#next1ButtonPressed" prefHeight="60.0" prefWidth="160.0" styleClass="navigation-buttons" text="Nästa" textAlignment="CENTER" textFill="#f3f2f3">
+                  <Button fx:id="next1" layoutX="906.0" layoutY="546.0" mnemonicParsing="false" onAction="#next1ButtonPressed" prefHeight="60.0" prefWidth="160.0" styleClass="navigation-buttons" text="Nästa" textAlignment="CENTER" textFill="#f3f2f3">
                       <font>
                           <Font name="Times New Roman" size="24.0" />
                       </font>
@@ -89,7 +89,7 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="525.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="190.0" styleClass="navigation-buttons" text="Till Varukorg" />
+            <Button layoutX="14.0" layoutY="546.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="190.0" styleClass="navigation-buttons" text="Till Varukorg" />
             <HBox fx:id="dayCardHBox" layoutX="40.0" layoutY="82.0" prefHeight="140.0" prefWidth="800.0" />
             <HBox fx:id="timeCardHBox" layoutX="40.0" layoutY="316.0" prefHeight="140.0" prefWidth="800.0" />
          </children>

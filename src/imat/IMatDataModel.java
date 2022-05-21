@@ -43,7 +43,7 @@ public class IMatDataModel {
     }
 
     public Customer getCustomer() {
-        return instance.getCustomer();
+        return iMatDataHandler.getCustomer();
     }
 
     public User getUser() {
@@ -165,6 +165,14 @@ public class IMatDataModel {
 
             }
         }
+    }
+
+    public void shutDown() {
+        iMatDataHandler.shutDown();
+    }
+
+    public boolean isCustomerComplete() {
+        return iMatDataHandler.isCustomerComplete();
     }
 
     public String removeSuffixes(String s) {

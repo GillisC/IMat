@@ -8,6 +8,15 @@
     -fx-font-family: 'Sen', sans-serif;
 }
 
+.text-under-title {
+    -fx-font-size: 18px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
 .text-title-left {
     -fx-font-size: 32px;
     -fx-text-fill: #062F42;
@@ -16,6 +25,34 @@
     -fx-font-family: 'Sen', sans-serif;
 }
 
+.text-input-desc {
+    -fx-font-size: 16px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center-right;
+    -fx-text-alignment: right;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.text-field-input {
+    -fx-background-radius: 8px;
+    -fx-font-size: 16px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center-left;
+    -fx-text-alignment: left;
+    -fx-font-weight: normal;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.text-field-input-centered {
+    -fx-background-radius: 8px;
+    -fx-font-size: 16px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-weight: normal;
+    -fx-font-family: 'Sen', sans-serif;
+}
 .delivery-card-text-day {
     -fx-font-size: 30px;
     -fx-text-fill: #062F42;

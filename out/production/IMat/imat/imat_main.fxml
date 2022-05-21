@@ -31,7 +31,7 @@
                         <Rectangle fill="#062f42" height="60.0" layoutX="-1.0" layoutY="660.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="450.0" />
                         <Label layoutX="148.0" layoutY="5.0" styleClass="shopping-cart-name" text="Varukorg" />
                         <Label fx:id="shoppingCartViewTotalLabel" layoutX="51.0" layoutY="665.0" prefHeight="51.0" prefWidth="392.0" styleClass="shopping-cart-total" text="Totalt: 0 kr" />
-                        <Button fx:id="ShoppingCartPayButton" layoutX="312.0" layoutY="595.0" mnemonicParsing="false" onAction="#payButtonPressed" prefHeight="60.0" prefWidth="120.0" styleClass="profile-shopping-button" text="Betala" />
+                        <Button fx:id="ShoppingCartPayButton" layoutX="312.0" layoutY="595.0" mnemonicParsing="false" onAction="#payButtonPressed" prefHeight="60.0" prefWidth="120.0" styleClass="shopping-cart-button" text="Betala" />
                         <ImageView fx:id="closeButton" fitHeight="150.0" fitWidth="40.0" layoutX="5.0" layoutY="4.0" onMouseClicked="#closeShoppingCartView" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/close-button-white.png" />
@@ -64,7 +64,8 @@
                               <Image url="@resources/close-button-blue.png" />
                            </image>
                         </ImageView>
-                     </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="mainAnchorPane" prefHeight="720.0" prefWidth="1490.0" style="-fx-background-color: F3F2F3;" stylesheets="@stylesheets/IMat_main.css">

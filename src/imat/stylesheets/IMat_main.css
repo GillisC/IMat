@@ -152,3 +152,17 @@
     -fx-alignment: center;
     -fx-font-family: 'Sen', sans-serif;
 }
+
+.shopping-cart-button {
+    -fx-background-color: #ED254E;
+    -fx-background-radius: 32px;
+    -fx-font-size: 24px;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.shopping-cart-button:hover {
+    -fx-background-color: #F34E70;
+}

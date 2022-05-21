@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 
 public class IMat extends Application {
 
+    public static IMatDataModel iMatDataModel = IMatDataModel.getInstance();
+
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -26,6 +28,13 @@ public class IMat extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                iMatDataModel.shutDown();
+            }
+        }));
     }
 
 
