@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class VarukorgItem extends AnchorPane{
 
-    private IMatController parentController;
+    private ShoppingCartManager parentController;
     private ShoppingItem shoppingItem;
     private IMatDataModel dataModel = IMatDataModel.getInstance();
 
@@ -27,7 +27,7 @@ public class VarukorgItem extends AnchorPane{
     @FXML Label shoppingItemAmountLabel;
     @FXML Label shoppingItemTotalLabel;
 
-    public VarukorgItem(ShoppingItem shoppingItem, IMatController controller){
+    public VarukorgItem(ShoppingItem shoppingItem, ShoppingCartManager controller){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("varukorgItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

@@ -20,9 +20,10 @@ import java.util.*;
 import static se.chalmers.cse.dat216.project.ProductCategory.CABBAGE;
 import static se.chalmers.cse.dat216.project.ProductCategory.ROOT_VEGETABLE;
 
-public class IMatController implements Initializable, ShoppingCartListener {
+public class IMatController implements Initializable, ShoppingCartListener, ShoppingCartManager {
 
     private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
+    iMatComplete iMatComplete;
 
     // Main Category maps to a list of products that belong in that category
     private final Map<String, List<ProductListItem>> mainCategoryMap = new HashMap<>();
@@ -335,13 +336,13 @@ public class IMatController implements Initializable, ShoppingCartListener {
         updateShoppingCart();
     }
 
-    protected void handleAddProduct(Product product) {
+    public void handleAddProduct(Product product) {
         iMatDataModel.addToShoppingCart(product);
         updateProductItemsAmount();
         updateShoppingCart();
     }
 
-    protected void handleRemoveProduct(Product product) {
+    public void handleRemoveProduct(Product product) {
         iMatDataModel.removeFromShoppingCart(product);
         updateProductItemsAmount();
         updateShoppingCart();

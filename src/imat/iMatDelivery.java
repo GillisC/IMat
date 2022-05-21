@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Ellipse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 
 import java.awt.event.KeyEvent;
@@ -25,9 +26,13 @@ public class iMatDelivery extends wizard {
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     Customer customer;
+    CreditCard creditCard;
 
     public void initialize() {
         customer = iMatDataModel.getCustomer();
+        creditCard = iMatDataModel.getCreditCard();
+
+        updateTextFields();
 
         firstName.setOnKeyReleased(KeyEvent -> {
             if (KeyEvent.getCode() == KeyCode.ENTER) {
@@ -114,6 +119,14 @@ public class iMatDelivery extends wizard {
             }
         });
     }
+    private void updateTextFields() {
+        firstName.setText(customer.getFirstName());
+        lastName.setText(customer.getLastName());
+        streetName.setText(customer.getAddress());
+        zipCode.setText(customer.getPostCode());
+        phoneNum.setText(customer.getMobilePhoneNumber());
+        mailAddress.setText(customer.getEmail());
+    }
 
     private void updateDeliveryDetails() {
         customer.setFirstName(firstName.getText().replace(" ", ""));
@@ -123,6 +136,9 @@ public class iMatDelivery extends wizard {
         customer.setPostCode(zipCode.getText().replace(" ", ""));
         customer.setMobilePhoneNumber(phoneNum.getText().replace(" ", "").replace("-", ""));
         customer.setEmail(mailAddress.getText().replace(" ", ""));
+
+        /* Skips asking for first and last name again in the next step */
+        creditCard.setHoldersName(lastName.getText() + firstName.getText());
 
         System.out.println("Customer is complete: " + iMatDataModel.isCustomerComplete());
     }
@@ -136,40 +152,6 @@ public class iMatDelivery extends wizard {
             updateDeliveryDetails();
             navigateTo("iMatPay.fxml", deliveryRootAnchorPane);
         }
-
-
-        /*JSONParser parser = new JSONParser();
-        JSONObject delivery;
-        try {
-            JSONObject object = (JSONObject) parser.parse(new FileReader("src/imat/resources/database.json"));
-            delivery = (JSONObject) object.get("delivery");
-
-         *//*   delivery.put("firstName", firstN.getText());
-            object.put("delivery", delivery);
-
-            delivery.put("lastName", lastN.getText());
-            object.put("delivery", delivery);
-
-            delivery.put("road", road.getText());
-            object.put("delivery", delivery);
-
-            delivery.put("postNumber", postNr.getText());
-            object.put("delivery", delivery);
-
-            delivery.put("phoneNumber", phoneNr.getText());
-            object.put("delivery", delivery);
-
-            delivery.put("mailAddress", mailAddress.getText());
-            object.put("delivery", delivery);*//*
-
-
-            try (FileWriter file = new FileWriter("src/imat/resources/database.json")) {
-                file.write(object.toJSONString());
-                file.flush();
-            }
-        } catch (Exception e) {
-
-        }*/
     }
 
     public void back3ButtonPressed() {
@@ -179,48 +161,4 @@ public class iMatDelivery extends wizard {
     public void toSelectDateTime() {
         navigateToSelectDateTime(deliveryRootAnchorPane);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*    public void next3ButtonPressed() {
-        try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("iMatComplete.fxml"));
-            deliveryRootAnchorPane.getChildren().setAll(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void back3ButtonPressed() {
-        try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("iMatPay.fxml"));
-            deliveryRootAnchorPane.getChildren().setAll(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
- */
 }
