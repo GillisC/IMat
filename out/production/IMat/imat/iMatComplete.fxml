@@ -68,14 +68,14 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-          <AnchorPane id="AnchoPane2" layoutX="-6.0" layoutY="100.0" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="1080.0">
+          <AnchorPane id="AnchoPane2" layoutY="100.0" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="1080.0" stylesheets="@stylesheets/wizard.css">
               <children>
                   <Button fx:id="complete" layoutX="906.0" layoutY="546.0" mnemonicParsing="false" onAction="#CompleteButtonPressed" prefHeight="60.0" prefWidth="160.0" styleClass="navigation-buttons" text="Slutför" textAlignment="CENTER" textFill="#f3f2f3">
                       <font>
                           <Font name="Times New Roman" size="24.0" />
                       </font>
                   </Button>
-                  <Label layoutX="14.0" layoutY="14.0" prefHeight="48.0" prefWidth="234.0" styleClass="text-title-left" text="Varukorg" textFill="#062f42">
+                  <Label layoutX="261.0" layoutY="14.0" prefHeight="48.0" prefWidth="558.0" styleClass="text-title" text="Se över beställning" textFill="#062f42">
                       <font>
                           <Font name="Times New Roman Bold" size="48.0" />
                       </font>
@@ -85,11 +85,37 @@
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Button>
-            <ScrollPane fx:id="completeScrollPane" hbarPolicy="NEVER" layoutX="14.0" layoutY="62.0" prefHeight="460.0" prefWidth="440.0">
+            <ScrollPane fx:id="completeScrollPane" hbarPolicy="NEVER" layoutX="556.0" layoutY="71.0" prefHeight="460.0" prefWidth="450.0">
                <content>
-                  <FlowPane fx:id="completeFlowPane" prefHeight="460.0" prefWidth="435.0" />
+                  <FlowPane fx:id="completeFlowPane" prefHeight="460.0" prefWidth="435.0" styleClass="summary-cards" />
                </content>
             </ScrollPane>
+            <AnchorPane layoutX="60.0" layoutY="183.0" prefHeight="236.0" prefWidth="220.0" styleClass="summary-cards">
+               <children>
+                  <Label layoutX="8.0" layoutY="38.0" styleClass="text-input-desc" text="Namn" />
+                  <Label fx:id="fullNameLabel" layoutX="8.0" layoutY="58.0" styleClass="complete-text" text="Tim Carlsson" />
+                  <Label layoutX="8.0" layoutY="88.0" styleClass="text-input-desc" text="E-post" />
+                  <Label fx:id="emailLabel" layoutX="8.0" layoutY="108.0" styleClass="complete-text" text="timcarlsson@gmail.com" />
+                  <Label layoutX="8.0" layoutY="188.0" styleClass="text-input-desc" text="Telefon" />
+                  <Label fx:id="phoneNumLabel" layoutX="8.0" layoutY="208.0" styleClass="complete-text" text="070-550 88 15" />
+                  <Label layoutX="8.0" layoutY="138.0" styleClass="text-input-desc" text="Address" />
+                  <Label fx:id="addressPostNumLabel" layoutX="8.0" layoutY="158.0" styleClass="complete-text" text="Sörlyckan 58, 43369" />
+                  <Button fx:id="changeDelivery" layoutX="155.0" layoutY="200.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
+                  <Label layoutX="32.0" layoutY="4.0" styleClass="text-under-title" text="Leveransuppgifter" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="303.0" layoutY="183.0" prefHeight="236.0" prefWidth="220.0" styleClass="summary-cards">
+               <children>
+                  <Label layoutX="8.0" layoutY="38.0" styleClass="text-input-desc" text="Kortnummer" />
+                  <Label fx:id="cardNumLabel" layoutX="8.0" layoutY="58.0" styleClass="complete-text" text="1111 2222 3333 4444" />
+                  <Label layoutX="8.0" layoutY="88.0" styleClass="text-input-desc" text="Utgångsdatum" />
+                  <Label fx:id="expirationLabel" layoutX="8.0" layoutY="108.0" styleClass="complete-text" text="07/25" />
+                  <Label layoutX="8.0" layoutY="138.0" styleClass="text-input-desc" text="Säkerhetskod" />
+                  <Label fx:id="securityCode" layoutX="8.0" layoutY="158.0" styleClass="complete-text" text="4xx" />
+                  <Button fx:id="changePay" layoutX="154.0" layoutY="200.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
+                  <Label layoutX="25.0" layoutY="4.0" styleClass="text-under-title" text="Betalningsuppgifter" />
+               </children>
+            </AnchorPane>
               </children>
           </AnchorPane>
     </children>
