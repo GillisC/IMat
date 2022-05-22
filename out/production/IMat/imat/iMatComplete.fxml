@@ -93,26 +93,26 @@
             <AnchorPane layoutX="60.0" layoutY="183.0" prefHeight="236.0" prefWidth="220.0" styleClass="summary-cards">
                <children>
                   <Label layoutX="8.0" layoutY="38.0" styleClass="text-input-desc" text="Namn" />
-                  <Label fx:id="fullNameLabel" layoutX="8.0" layoutY="58.0" styleClass="complete-text" text="Tim Carlsson" />
+                  <Label fx:id="fullNameLabel" layoutX="8.0" layoutY="58.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="88.0" styleClass="text-input-desc" text="E-post" />
-                  <Label fx:id="emailLabel" layoutX="8.0" layoutY="108.0" styleClass="complete-text" text="timcarlsson@gmail.com" />
+                  <Label fx:id="emailLabel" layoutX="8.0" layoutY="108.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="188.0" styleClass="text-input-desc" text="Telefon" />
-                  <Label fx:id="phoneNumLabel" layoutX="8.0" layoutY="208.0" styleClass="complete-text" text="070-550 88 15" />
+                  <Label fx:id="phoneNumLabel" layoutX="8.0" layoutY="208.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="138.0" styleClass="text-input-desc" text="Address" />
-                  <Label fx:id="addressPostNumLabel" layoutX="8.0" layoutY="158.0" styleClass="complete-text" text="Sörlyckan 58, 43369" />
-                  <Button fx:id="changeDelivery" layoutX="155.0" layoutY="200.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
+                  <Label fx:id="addressPostNumLabel" layoutX="8.0" layoutY="158.0" styleClass="complete-text" />
+                  <Button fx:id="changeDelivery" layoutX="155.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangeDelivery" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
                   <Label layoutX="32.0" layoutY="4.0" styleClass="text-under-title" text="Leveransuppgifter" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="303.0" layoutY="183.0" prefHeight="236.0" prefWidth="220.0" styleClass="summary-cards">
                <children>
                   <Label layoutX="8.0" layoutY="38.0" styleClass="text-input-desc" text="Kortnummer" />
-                  <Label fx:id="cardNumLabel" layoutX="8.0" layoutY="58.0" styleClass="complete-text" text="1111 2222 3333 4444" />
+                  <Label fx:id="cardNumLabel" layoutX="8.0" layoutY="58.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="88.0" styleClass="text-input-desc" text="Utgångsdatum" />
-                  <Label fx:id="expirationLabel" layoutX="8.0" layoutY="108.0" styleClass="complete-text" text="07/25" />
+                  <Label fx:id="expirationLabel" layoutX="8.0" layoutY="108.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="138.0" styleClass="text-input-desc" text="Säkerhetskod" />
-                  <Label fx:id="securityCode" layoutX="8.0" layoutY="158.0" styleClass="complete-text" text="4xx" />
-                  <Button fx:id="changePay" layoutX="154.0" layoutY="200.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
+                  <Label fx:id="securityCode" layoutX="8.0" layoutY="158.0" styleClass="complete-text" />
+                  <Button fx:id="changePay" layoutX="154.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangePayment" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
                   <Label layoutX="25.0" layoutY="4.0" styleClass="text-under-title" text="Betalningsuppgifter" />
                </children>
             </AnchorPane>

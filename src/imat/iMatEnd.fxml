@@ -2,111 +2,89 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Ellipse?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="endRootAnchorPane" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.iMatEnd">
+<AnchorPane fx:id="endRootAnchorPane" prefHeight="720.0" prefWidth="1080.0" stylesheets="@stylesheets/wizard.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.iMatEnd">
     <children>
-        <SplitPane dividerPositions="0.16295264623955433" orientation="VERTICAL" prefHeight="720.0" prefWidth="1080.0">
-            <items>
-                <AnchorPane id="AnchorPane1" minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="1080.0" style="-fx-background-color: #062f42;">
-                    <children>
-                        <Label layoutX="39.0" layoutY="24.0" prefHeight="66.0" prefWidth="132.0" style="-fx-background-color: 062F42;" text="IMAT" textAlignment="CENTER" textFill="#f3f2f3">
-                            <font>
-                                <Font name="Times New Roman Bold" size="40.0" />
-                            </font>
-                        </Label>
-                        <Ellipse fill="#c2eabd" layoutX="244.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Ellipse fill="#c2eabd" layoutX="425.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Ellipse fill="#c2eabd" layoutX="612.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Ellipse fill="#c2eabd" layoutX="796.0" layoutY="51.0" radiusX="73.0" radiusY="40.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label layoutX="770.0" layoutY="66.0" prefHeight="22.0" prefWidth="66.0" text="Slutför" textFill="#062f42">
-                            <font>
-                                <Font name="Times New Roman Bold" size="18.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="219.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@resources/calendar.png" />
-                            </image>
+          <AnchorPane id="AnchoPane2" layoutY="100.0" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="1080.0">
+              <children>
+                  <Label layoutX="353.0" layoutY="14.0" prefHeight="48.0" prefWidth="375.0" styleClass="text-title" text="Tack för ditt köp!" textFill="#062f42">
+                      <font>
+                          <Font name="Times New Roman Bold" size="48.0" />
+                      </font>
+                  </Label>
+                  <Label fx:id="confirm" layoutX="201.0" layoutY="101.0" prefHeight="60.0" prefWidth="679.0" styleClass="text-under-title" text="Din order är bekräftad, och levereras hem till dig den 21 Maj mellan 16:00-17:00!" textFill="#062f42" wrapText="true">
+                      <font>
+                          <Font name="Times New Roman Bold" size="24.0" />
+                      </font>
+                  </Label>
+            <Label fx:id="confirm1" layoutX="201.0" layoutY="189.0" prefHeight="60.0" prefWidth="679.0" styleClass="text-under-title" text="Din beställning och tidigare beställningar sparas automatisk under dina tidigare köp som nås genom att trycka på knappen med ett kvitto på från förstasidan." textFill="#062f42" wrapText="true">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="430.0" layoutY="546.0" mnemonicParsing="false" onAction="#continueButtonPressed" prefHeight="60.0" prefWidth="220.0" styleClass="navigation-buttons" text="Fortsätt Handla" />
+              </children>
+          </AnchorPane>
+      <AnchorPane fx:id="upperAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1080.0" style="-fx-background-color: #062f42;" stylesheets="@stylesheets/wizard.css">
+         <children>
+            <Label layoutX="80.0" prefHeight="100.0" prefWidth="135.0" styleClass="logo-text" text="iMAT" />
+            <AnchorPane layoutX="252.0" layoutY="10.0">
+               <children>
+                  <Rectangle fill="DODGERBLUE" height="8.0" layoutX="272.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle-2" width="32.0" />
+                  <Rectangle fill="DODGERBLUE" height="8.0" layoutX="424.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle-2" width="32.0" />
+                  <Rectangle fill="DODGERBLUE" height="8.0" layoutX="120.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle-2" width="32.0" />
+                  <AnchorPane>
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
+                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/calender.png" />
+                           </image>
                         </ImageView>
-                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="770.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@resources/checked.png" />
-                            </image>
+                        <Label layoutY="52.0" prefHeight="25.0" prefWidth="120.0" styleClass="wizard-step-text" text="Välj Tid" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="152.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
+                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/delivery.png" />
+                           </image>
                         </ImageView>
-                        <Button fx:id="shoppingCart" layoutX="897.0" layoutY="24.0" mnemonicParsing="false" onAction="#shoppingCartPressed" prefHeight="66.0" prefWidth="167.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="        Varukorg" textAlignment="RIGHT" textFill="#f3f2f3">
-                            <font>
-                                <Font name="Times New Roman Bold" size="18.0" />
-                            </font>
-                        </Button>
-                        <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="905.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@resources/cart.png" />
-                            </image>
+                        <Label layoutY="52.0" prefHeight="25.0" prefWidth="120.0" styleClass="wizard-step-text" text="Leverans" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="304.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
+                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/credit-card.png" />
+                           </image>
                         </ImageView>
-                        <Line endX="-44.0" layoutX="396.0" layoutY="55.0" startX="-79.0" stroke="#c2eabd" strokeWidth="3.0" />
-                        <Line endX="-31.0" layoutX="570.0" layoutY="49.0" startX="-72.0" stroke="#c2eabd" strokeWidth="3.0" />
-                        <Line endX="-43.0" layoutX="766.0" layoutY="54.0" startX="-81.0" stroke="#c2eabd" strokeWidth="3.0" />
-                        <Label layoutX="212.0" layoutY="63.0" prefHeight="28.0" prefWidth="66.0" text="Välj tid" textAlignment="RIGHT" textFill="#062f42">
-                            <font>
-                                <Font name="Times New Roman Bold" size="18.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="587.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@resources/credit-card.png" />
-                            </image>
+                        <Label layoutY="52.0" prefHeight="25.0" prefWidth="120.0" styleClass="wizard-step-text" text="Välj Tid" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="456.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
+                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/tick-mark.png" />
+                           </image>
                         </ImageView>
-                        <Label layoutX="575.0" layoutY="63.0" prefHeight="28.0" prefWidth="77.0" text="Betalning" textFill="#062f42">
-                            <font>
-                                <Font name="Times New Roman Bold" size="18.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="400.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@resources/package-box.png" />
-                            </image>
-                        </ImageView>
-                        <Label layoutX="396.0" layoutY="60.0" prefHeight="28.0" prefWidth="83.0" text="Leverans" textFill="#062f42">
-                            <font>
-                                <Font name="Times New Roman Bold" size="18.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane id="AnchoPane2" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="1080.0">
-                    <children>
-                        <Button fx:id="continueShopping" layoutX="873.0" layoutY="532.0" mnemonicParsing="false" onAction="#continueButtonPressed" prefHeight="52.0" prefWidth="191.0" style="-fx-background-color: ED254E; -fx-background-radius: 50px;" text="Försätt handla" textAlignment="CENTER" textFill="#f3f2f3">
-                            <font>
-                                <Font name="Times New Roman" size="24.0" />
-                            </font>
-                        </Button>
-                        <Label layoutX="359.0" layoutY="27.0" prefHeight="80.0" prefWidth="375.0" text="Tack för ditt köp!" textFill="#062f42">
-                            <font>
-                                <Font name="Times New Roman Bold" size="48.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="confirm" layoutX="221.0" layoutY="107.0" prefHeight="105.0" prefWidth="679.0" text="Vi kommer att skicka ett mail till dig när din leverans är på väg!" textFill="#062f42" wrapText="true">
-                            <font>
-                                <Font name="Times New Roman Bold" size="24.0" />
-                            </font>
-                        </Label>
-                        <TextArea layoutX="221.0" layoutY="273.0" prefHeight="311.0" prefWidth="375.0" promptText="Bannan Eko Fairtrade Klass1                                             25,00kr" />
-                        <Label layoutX="221.0" layoutY="221.0" prefHeight="52.0" prefWidth="276.0" text="Kvitto" textFill="#062f42" wrapText="true">
-                            <font>
-                                <Font name="Times New Roman Bold" size="36.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-            </items>
-        </SplitPane>
+                        <Label layoutY="52.0" prefHeight="25.0" prefWidth="120.0" styleClass="wizard-step-text" text="Slutför" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

@@ -79,12 +79,12 @@
                           <Font name="Times New Roman" size="24.0" />
                       </font>
                   </Button>
-                  <Label layoutX="393.0" layoutY="14.0" prefHeight="48.0" prefWidth="294.0" styleClass="text-title" text="Leveransuppgifter" textFill="#062f42">
+                  <Label layoutX="290.0" layoutY="11.0" prefHeight="48.0" prefWidth="500.0" styleClass="text-title" text="Leveransuppgifter" textFill="#062f42">
                       <font>
                           <Font name="Times New Roman Bold" size="36.0" />
                       </font>
                   </Label>
-            <Label layoutX="335.0" layoutY="59.0" prefHeight="60.0" prefWidth="410.0" styleClass="text-under-title" text="Följande uppgifter låter oss möjliggöra leverans direkt hem till dig, utan allt trassel" textFill="#062f42" wrapText="true">
+            <Label layoutX="290.0" layoutY="60.0" prefHeight="60.0" prefWidth="500.0" styleClass="text-under-title" text="Följande uppgifter låter oss möjliggöra leverans direkt hem till dig, utan allt trassel" textFill="#062f42" wrapText="true">
                <font>
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
