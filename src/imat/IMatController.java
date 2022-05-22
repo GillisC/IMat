@@ -49,11 +49,11 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML private StackPane mainStackPane;
     @FXML private ImageView leftNavigationImageView;
     @FXML private ImageView rightNavigationImageView;
+    @FXML private AnchorPane mainAnchorPane, backAnchorPane;
 
     /* Shopping cart view */
     @FXML private AnchorPane shoppingCartAnchorPane;
     @FXML private AnchorPane shoppingCartBackAnchorPane;
-    @FXML private AnchorPane mainAnchorPane;
     @FXML private FlowPane shoppingCartFlowPane;
     @FXML private Label shoppingCartButtonTotalLabel;
     @FXML private Label shoppingCartViewTotalLabel;
@@ -175,6 +175,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
                 handleSearchAction();
             }
         });
+        updateShoppingCart();
         updateProductItemsAmount();
     }
 
@@ -247,7 +248,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         for (SubCategoryItem subCategoryItem : subCategoryItems) {
             subCategoryItem.backdropAnchorPane.setStyle("-fx-background-color: #E3E3E3");
         }
-        ProductCategory category = getProductCategory(subCategory);
+        ProductCategory category = iMatDataModel.getProductCategory(subCategory);
         updateProductGrid(findMatchingProducts(category));
     }
     /* Called when main category icon is pressed */
@@ -256,50 +257,6 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         updateCategoryImages();
         populateSubCategory();
         updateProductGrid(mainCategoryMap.get(selectedCategory));
-    }
-
-    public ProductCategory getProductCategory(String subCategory) {
-        return switch (subCategory) {
-            case "Kålväxter" -> ProductCategory.CABBAGE;
-            case "Örter" -> ProductCategory.HERB;
-            case "Baljväxter" -> ProductCategory.POD;
-            case "Rotfrukter" -> ProductCategory.ROOT_VEGETABLE;
-            case "Bär" -> ProductCategory.BERRY;
-            case "Citrus Frukter" -> ProductCategory.CITRUS_FRUIT;
-            case "Exotiska Frukter" -> ProductCategory.EXOTIC_FRUIT;
-            case "Meloner" -> ProductCategory.MELONS;
-            case "Frukt" -> ProductCategory.FRUIT;
-            case "Mjöl, Socker & Salt" -> ProductCategory.FLOUR_SUGAR_SALT;
-            case "Pasta" -> ProductCategory.PASTA;
-            case "Potatis & Ris" -> ProductCategory.POTATO_RICE;
-            case "Nötter & Frön" -> ProductCategory.NUTS_AND_SEEDS;
-            case "Kalla Drycker" -> ProductCategory.COLD_DRINKS;
-            case "Varma Drycker" -> ProductCategory.HOT_DRINKS;
-            default -> null;
-        };
-    }
-
-    public String getProductCategoryName(ProductCategory category) {
-        return switch (category) {
-            case CABBAGE ->"Kålväxter";
-            case HERB ->"Örter" ;
-            case POD -> "Baljväxter";
-            case ROOT_VEGETABLE -> "Rotfrukter" ;
-            case BERRY -> "Bär";
-            case CITRUS_FRUIT -> "Citrus Frukter";
-            case EXOTIC_FRUIT -> "Exotiska Frukter";
-            case MELONS -> "Meloner";
-            case FRUIT -> "Frukt";
-            case FLOUR_SUGAR_SALT -> "Mjöl, Socker & Salt";
-            case PASTA -> "Pasta";
-            case POTATO_RICE -> "Potatis & Ris";
-            case NUTS_AND_SEEDS -> "Nötter & Frön";
-            case COLD_DRINKS -> "Kalla Drycker";
-            case HOT_DRINKS -> "Varma Drycker";
-            case MEAT -> "Kött";
-            case VEGETABLE_FRUIT -> "Grönsaker";
-            default -> null;
-        };
     }
 
     private void updateShoppingCart() {
@@ -379,7 +336,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     public void populateDetailView(Product product) {
         detailViewImageView.setImage(iMatDataModel.getFXImage(product));
         detailViewNameLabel.setText(product.getName());
-        detailViewCategoryLabel.setText(getProductCategoryName(product.getCategory()));
+        detailViewCategoryLabel.setText(iMatDataModel.getProductCategoryName(product.getCategory()));
         detailViewUnitSuffixLabel.setText(String.valueOf(product.getPrice()) + product.getUnit());
 
         detailViewAnchorPane.toFront();
@@ -432,6 +389,17 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML
     public void rightNavigationArrowExitHover() {
         rightNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/right-navigation-triangle.png"));
+    }
+
+    @FXML
+    private void navigateToOrderHistory() {
+        System.out.println("Yo");
+        try {
+            AnchorPane root = FXMLLoader.load(getClass().getResource("order_history.fxml"));
+            mainAnchorPane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

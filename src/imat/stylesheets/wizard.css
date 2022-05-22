@@ -78,15 +78,17 @@
     -fx-font-family: 'Sen', sans-serif;
 }
 
+.delivery-card-backdrop:hover {
+    -fx-background-color: #F3F2F3;
+}
+
 .delivery-card-backdrop {
     -fx-background-color: #E3E3E3;
     -fx-background-radius: 8px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
 }
 
-.delivery-card-backdrop:hover {
-    -fx-background-color: #F3F2F3;
-}
+
 
 .navigation-buttons {
     -fx-background-color: #ED254E;
@@ -133,3 +135,18 @@
     -fx-font-weight: bold;
     -fx-font-family: 'Sen', sans-serif;
 }
+
+.escape-patch {
+    -fx-font-size: 48px;
+    -fx-text-fill: #F3F2F3;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.escape-patch:hover {
+    -fx-text-fill: #C0C0C0;
+
+}
+

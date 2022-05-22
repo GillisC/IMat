@@ -16,12 +16,12 @@
             <Label layoutX="80.0" prefHeight="100.0" prefWidth="135.0" styleClass="logo-text" text="iMAT" />
             <AnchorPane layoutX="252.0" layoutY="10.0">
                <children>
-                  <Rectangle fill="DODGERBLUE" height="8.0" layoutX="272.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle-2" width="32.0" />
-                  <Rectangle fill="DODGERBLUE" height="8.0" layoutX="424.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle-2" width="32.0" />
-                  <Rectangle fill="DODGERBLUE" height="8.0" layoutX="120.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle-2" width="32.0" />
+                  <Rectangle fx:id="rec2" fill="DODGERBLUE" height="8.0" layoutX="272.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle-2" width="32.0" />
+                  <Rectangle fx:id="rec3" fill="DODGERBLUE" height="8.0" layoutX="424.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle-2" width="32.0" />
+                  <Rectangle fx:id="rec1" fill="DODGERBLUE" height="8.0" layoutX="120.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle-2" width="32.0" />
                   <AnchorPane>
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="6.0" styleClass="wizard-step-rectangle" width="120.0" />
+                        <Rectangle fx:id="chooseTimeRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="6.0" styleClass="wizard-step-rectangle" width="120.0" />
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/calender.png" />
@@ -32,7 +32,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="152.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle" width="120.0" />
+                        <Rectangle fx:id="chooseDeliveryRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle" width="120.0" />
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/delivery.png" />
@@ -43,18 +43,18 @@
                   </AnchorPane>
                   <AnchorPane layoutX="304.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle" width="120.0" />
+                        <Rectangle fx:id="choosePayRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle" width="120.0" />
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/credit-card.png" />
                            </image>
                         </ImageView>
-                        <Label layoutY="52.0" prefHeight="25.0" prefWidth="120.0" styleClass="wizard-step-text" text="Välj Tid" />
+                        <Label layoutY="52.0" prefHeight="25.0" prefWidth="120.0" styleClass="wizard-step-text" text="Betalning" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="456.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle" width="120.0" />
+                        <Rectangle fx:id="chooseConfirmRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle" width="120.0" />
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/tick-mark.png" />
@@ -89,7 +89,7 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="546.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="190.0" styleClass="navigation-buttons" text="Till Varukorg" />
+            <Button layoutX="14.0" layoutY="546.0" mnemonicParsing="false" onAction="#back1ButtonPressed" prefHeight="60.0" prefWidth="190.0" styleClass="navigation-buttons" text="Till Varukorg" />
             <HBox fx:id="dayCardHBox" layoutX="40.0" layoutY="82.0" prefHeight="140.0" prefWidth="800.0" />
             <HBox fx:id="timeCardHBox" layoutX="40.0" layoutY="316.0" prefHeight="140.0" prefWidth="800.0" />
          </children>

@@ -166,3 +166,12 @@
 .shopping-cart-button:hover {
     -fx-background-color: #F34E70;
 }
+
+.escape-patch {
+    -fx-font-size: 48px;
+    -fx-text-fill: #F3F2F3;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}

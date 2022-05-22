@@ -17,7 +17,7 @@
                           <Font name="Times New Roman Bold" size="48.0" />
                       </font>
                   </Label>
-                  <Label fx:id="confirm" layoutX="201.0" layoutY="101.0" prefHeight="60.0" prefWidth="679.0" styleClass="text-under-title" text="Din order är bekräftad, och levereras hem till dig den 21 Maj mellan 16:00-17:00!" textFill="#062f42" wrapText="true">
+                  <Label fx:id="confirmationLabel" layoutX="201.0" layoutY="101.0" prefHeight="60.0" prefWidth="679.0" styleClass="text-under-title" text="Din order är bekräftad, och levereras hem till dig den 21 Maj mellan 16:00-17:00!" textFill="#062f42" wrapText="true">
                       <font>
                           <Font name="Times New Roman Bold" size="24.0" />
                       </font>
@@ -40,7 +40,7 @@
                   <Rectangle fill="DODGERBLUE" height="8.0" layoutX="120.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle-2" width="32.0" />
                   <AnchorPane>
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
+                        <Rectangle fx:id="chooseTimeRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/calender.png" />
@@ -51,7 +51,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="152.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
+                        <Rectangle fx:id="chooseDeliveryRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/delivery.png" />
@@ -62,18 +62,18 @@
                   </AnchorPane>
                   <AnchorPane layoutX="304.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
+                        <Rectangle fx:id="choosePayRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/credit-card.png" />
                            </image>
                         </ImageView>
-                        <Label layoutY="52.0" prefHeight="25.0" prefWidth="120.0" styleClass="wizard-step-text" text="Välj Tid" />
+                        <Label layoutY="52.0" prefHeight="25.0" prefWidth="120.0" styleClass="wizard-step-text" text="Betalning" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="456.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
+                        <Rectangle fx:id="chooseConfirmRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" stroke="#ed254e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle" width="120.0" />
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="36.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/tick-mark.png" />

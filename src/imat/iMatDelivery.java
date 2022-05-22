@@ -8,6 +8,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Rectangle;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import se.chalmers.cse.dat216.project.CreditCard;
@@ -23,6 +24,7 @@ public class iMatDelivery extends wizard {
     @FXML private AnchorPane deliveryRootAnchorPane;
     @FXML private Button next3,back3,shoppingCart;
     @FXML private TextField firstName,lastName, streetName, zipCode, phoneNum, mailAddress;
+    @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     Customer customer;
@@ -33,6 +35,8 @@ public class iMatDelivery extends wizard {
         creditCard = iMatDataModel.getCreditCard();
 
         updateTextFields();
+
+        updateStepBackground();
 
         firstName.setOnKeyReleased(KeyEvent -> {
             if (KeyEvent.getCode() == KeyCode.ENTER) {
@@ -141,6 +145,25 @@ public class iMatDelivery extends wizard {
         creditCard.setHoldersName(lastName.getText() + firstName.getText());
 
         System.out.println("Customer is complete: " + iMatDataModel.isCustomerComplete());
+    }
+
+    private void updateStepBackground() {
+        if (iMatDataModel.isSelectTimeComplete()) {
+            chooseTimeRec.setStyle("-fx-fill: #C2EABD");
+            if (iMatDataModel.isCustomerComplete()) {
+                rec1.setStyle("-fx-fill: #C2EABD");
+            }
+        }
+        if (iMatDataModel.isCustomerComplete()) {
+            chooseDeliveryRec.setStyle("-fx-fill: #C2EABD");
+            if (iMatDataModel.isCreditCardComplete()) {
+                rec2.setStyle("-fx-fill: #C2EABD");
+            }
+        }
+        System.out.println("check: " + iMatDataModel.isCreditCardComplete());
+        if (iMatDataModel.isCreditCardComplete()) {
+            choosePayRec.setStyle("-fx-fill: #C2EABD");
+        }
     }
 
     private boolean isCellsEmpty() {

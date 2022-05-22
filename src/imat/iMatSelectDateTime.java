@@ -30,6 +30,7 @@ public class iMatSelectDateTime extends wizard {
     @FXML private Label reminder;
     @FXML private Button back1, next1, shoppingCart;
     @FXML private Ellipse selectDateTime,pay,delivery,complete;
+    @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     ArrayList<DateCard> dateCards = new ArrayList<>();
@@ -44,6 +45,8 @@ public class iMatSelectDateTime extends wizard {
         populateTimeHBox();
         updateDayCards();
         updateTimeCards();
+
+        updateStepBackground();
     }
 
     private void populateDayHBox() {
@@ -63,6 +66,25 @@ public class iMatSelectDateTime extends wizard {
             TimeCard timeCard =  new TimeCard(i, this);
             timeCardHBox.getChildren().add(timeCard);
             timeCards.add(timeCard);
+        }
+    }
+
+    private void updateStepBackground() {
+        if (iMatDataModel.isSelectTimeComplete()) {
+            chooseTimeRec.setStyle("-fx-fill: #C2EABD");
+            if (iMatDataModel.isCustomerComplete()) {
+                rec1.setStyle("-fx-fill: #C2EABD");
+            }
+        }
+        if (iMatDataModel.isCustomerComplete()) {
+            chooseDeliveryRec.setStyle("-fx-fill: #C2EABD");
+            if (iMatDataModel.isCreditCardComplete()) {
+                rec2.setStyle("-fx-fill: #C2EABD");
+            }
+        }
+        System.out.println("check: " + iMatDataModel.isCreditCardComplete());
+        if (iMatDataModel.isCreditCardComplete()) {
+            choosePayRec.setStyle("-fx-fill: #C2EABD");
         }
     }
 
@@ -142,7 +164,8 @@ public class iMatSelectDateTime extends wizard {
     }
 
     public void back1ButtonPressed() {
-        navigateTo("imat_main.fxml", dateTimeRootAnchorPane);
+        navigateTo("imat_main-shoppingcart.fxml", dateTimeRootAnchorPane);
+
     }
 
 

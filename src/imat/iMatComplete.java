@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Rectangle;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.Product;
@@ -21,6 +22,8 @@ public class iMatComplete extends wizard implements ShoppingCartManager {
     @FXML private FlowPane completeFlowPane;
     @FXML private Button complete,back4, changeDelivery, changePay;
     @FXML private Label fullNameLabel, emailLabel, addressPostNumLabel, phoneNumLabel, cardNumLabel, expirationLabel, securityCode;
+
+    @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     Customer customer;
@@ -40,6 +43,9 @@ public class iMatComplete extends wizard implements ShoppingCartManager {
         cardNumLabel.setText(creditCard.getCardNumber());
         expirationLabel.setText(creditCard.getValidMonth() + "/" + creditCard.getValidYear());
         securityCode.setText(firstDigit(creditCard.getVerificationCode()) + "xx");
+
+        updateStepBackground();
+        rec3.setStyle("-fx-fill: #C2EABD");
     }
 
 
@@ -66,8 +72,27 @@ public class iMatComplete extends wizard implements ShoppingCartManager {
         navigateTo("iMatEnd.fxml", completeRootAnchorPane);
     }
 
+    private void updateStepBackground() {
+        if (iMatDataModel.isSelectTimeComplete()) {
+            chooseTimeRec.setStyle("-fx-fill: #C2EABD");
+            if (iMatDataModel.isCustomerComplete()) {
+                rec1.setStyle("-fx-fill: #C2EABD");
+            }
+        }
+        if (iMatDataModel.isCustomerComplete()) {
+            chooseDeliveryRec.setStyle("-fx-fill: #C2EABD");
+            if (iMatDataModel.isCreditCardComplete()) {
+                rec2.setStyle("-fx-fill: #C2EABD");
+            }
+        }
+        System.out.println("check: " + iMatDataModel.isCreditCardComplete());
+        if (iMatDataModel.isCreditCardComplete()) {
+            choosePayRec.setStyle("-fx-fill: #C2EABD");
+        }
+    }
+
     public void back4ButtonPressed() {
-        navigateTo("iMatDelivery.fxml", completeRootAnchorPane);
+        navigateTo("iMatPay.fxml", completeRootAnchorPane);
     }
 
     @FXML

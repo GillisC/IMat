@@ -192,7 +192,11 @@ public class IMatDataModel {
     public boolean isCustomerComplete() {
         return iMatDataHandler.isCustomerComplete();
     }
-
+    public boolean isSelectTimeComplete() {return (!Objects.equals(getSelectedDay(), "") && !Objects.equals(getSelectedTime(), ""));}
+    public boolean isCreditCardComplete() {
+        CreditCard creditCard = getCreditCard();
+        return (!Objects.equals(creditCard.getCardNumber(), "") && !String.valueOf(creditCard.getValidYear()).equals("") && !String.valueOf(creditCard.getValidMonth()).equals("") && !Objects.equals(creditCard.getCardType(), ""));
+    }
     public String removeSuffixes(String s) {
         s = s.replace("kg", "");
         s = s.replace("st", "");
@@ -219,5 +223,51 @@ public class IMatDataModel {
 
     public String getDeliveryTime() {
         return (getSelectedDay() +" "+ getSelectedTime());
+    }
+
+    public String getProductCategoryName(ProductCategory category) {
+        return switch (category) {
+            case CABBAGE ->"Kålväxter";
+            case HERB ->"Örter" ;
+            case POD -> "Baljväxter";
+            case ROOT_VEGETABLE -> "Rotfrukter" ;
+            case BERRY -> "Bär";
+            case CITRUS_FRUIT -> "Citrus Frukter";
+            case EXOTIC_FRUIT -> "Exotiska Frukter";
+            case MELONS -> "Meloner";
+            case FRUIT -> "Frukt";
+            case FLOUR_SUGAR_SALT -> "Mjöl, Socker & Salt";
+            case PASTA -> "Pasta";
+            case POTATO_RICE -> "Potatis & Ris";
+            case NUTS_AND_SEEDS -> "Nötter & Frön";
+            case COLD_DRINKS -> "Kalla Drycker";
+            case HOT_DRINKS -> "Varma Drycker";
+            case MEAT -> "Kött";
+            case VEGETABLE_FRUIT -> "Grönsaker";
+            case FISH -> "Fisk & Skaldjur";
+            case DAIRIES -> "Mejeri";
+            default -> null;
+        };
+    }
+
+    public ProductCategory getProductCategory(String subCategory) {
+        return switch (subCategory) {
+            case "Kålväxter" -> ProductCategory.CABBAGE;
+            case "Örter" -> ProductCategory.HERB;
+            case "Baljväxter" -> ProductCategory.POD;
+            case "Rotfrukter" -> ProductCategory.ROOT_VEGETABLE;
+            case "Bär" -> ProductCategory.BERRY;
+            case "Citrus Frukter" -> ProductCategory.CITRUS_FRUIT;
+            case "Exotiska Frukter" -> ProductCategory.EXOTIC_FRUIT;
+            case "Meloner" -> ProductCategory.MELONS;
+            case "Frukt" -> ProductCategory.FRUIT;
+            case "Mjöl, Socker & Salt" -> ProductCategory.FLOUR_SUGAR_SALT;
+            case "Pasta" -> ProductCategory.PASTA;
+            case "Potatis & Ris" -> ProductCategory.POTATO_RICE;
+            case "Nötter & Frön" -> ProductCategory.NUTS_AND_SEEDS;
+            case "Kalla Drycker" -> ProductCategory.COLD_DRINKS;
+            case "Varma Drycker" -> ProductCategory.HOT_DRINKS;
+            default -> null;
+        };
     }
 }

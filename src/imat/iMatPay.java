@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Rectangle;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import se.chalmers.cse.dat216.project.CreditCard;
@@ -30,6 +31,7 @@ public class iMatPay extends wizard {
 
     @FXML private Button next2,back2,shoppingCart;
     @FXML private TextField cardNum1,cardNum2,cardNum3,cardNum4,expirationMonth, expirationYear,cvcCode;
+    @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     CreditCard creditCard;
@@ -38,6 +40,7 @@ public class iMatPay extends wizard {
     public void initialize() {
         creditCard = iMatDataModel.getCreditCard();
         updateTextFields();
+        updateStepBackground();
 
         cardNum1.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
@@ -166,6 +169,26 @@ public class iMatPay extends wizard {
         creditCard.setValidYear(Integer.parseInt(expirationYear.getText()));
         creditCard.setVerificationCode(Integer.parseInt(cvcCode.getText()));
     }
+
+    private void updateStepBackground() {
+        if (iMatDataModel.isSelectTimeComplete()) {
+            chooseTimeRec.setStyle("-fx-fill: #C2EABD");
+            if (iMatDataModel.isCustomerComplete()) {
+                rec1.setStyle("-fx-fill: #C2EABD");
+            }
+        }
+        if (iMatDataModel.isCustomerComplete()) {
+            chooseDeliveryRec.setStyle("-fx-fill: #C2EABD");
+            if (iMatDataModel.isCreditCardComplete()) {
+                rec2.setStyle("-fx-fill: #C2EABD");
+            }
+        }
+        System.out.println("check: " + iMatDataModel.isCreditCardComplete());
+        if (iMatDataModel.isCreditCardComplete()) {
+            choosePayRec.setStyle("-fx-fill: #C2EABD");
+        }
+    }
+
 
     private boolean isCellsEmpty() {
         return (cardNum1.getText().isEmpty() || cardNum2.getText().isEmpty() || cardNum3.getText().isEmpty() || cardNum4.getText().isEmpty() || expirationMonth.getText().isEmpty() || expirationYear.getText().isEmpty() || cvcCode.getText().isEmpty());
