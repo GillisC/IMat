@@ -11,6 +11,8 @@ import java.util.Objects;
 public class IMatDataModel {
     private static IMatDataModel instance = null;
     private IMatDataHandler iMatDataHandler;
+    private static String selectedDay = null;
+    protected String selectedTime = null;
 
     /**
      * Does nothing
@@ -38,6 +40,22 @@ public class IMatDataModel {
     /**
      * Saves stored data to text files in imat folder
      */
+    public String getSelectedDay() {
+        return selectedDay;
+    }
+
+    public String getSelectedTime() {
+        return selectedTime;
+    }
+
+    public void setSelectedDay(String s) {
+        selectedDay = s;
+    }
+
+    public void setSelectedTime(String s) {
+        selectedTime = s;
+    }
+
     public void shutdown() {
         iMatDataHandler.shutDown();
     }
@@ -101,6 +119,7 @@ public class IMatDataModel {
     public void removeFavorite(Product p) {
         iMatDataHandler.removeFavorite(p);
     }
+
     public Image getFXImage(Product p) {
         return iMatDataHandler.getFXImage(p);
     }
@@ -112,11 +131,12 @@ public class IMatDataModel {
     public Image getFXImage(Product p, double requestedWidth, double requestedHeight, boolean preserveRatio) {
         return iMatDataHandler.getFXImage(p, requestedWidth, requestedHeight, preserveRatio);
     }
+
     public Image getImageFromUrl(String url) {
         return new Image(url);
     }
 
-    public double round (double value, int precision) {
+    public double round(double value, int precision) {
         int scale = (int) Math.pow(10, precision);
         return (double) Math.round(value * scale) / scale;
     }
@@ -136,13 +156,13 @@ public class IMatDataModel {
 
             }
         }
-    ShoppingItem shoppingItem = new ShoppingItem(product);
-    if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
-        shoppingItem.setAmount(1);
-    } else {
-        shoppingItem.setAmount(0.1);
-    }
-    IMatDataModel.getInstance().getShoppingCart().addItem(shoppingItem);
+        ShoppingItem shoppingItem = new ShoppingItem(product);
+        if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
+            shoppingItem.setAmount(1);
+        } else {
+            shoppingItem.setAmount(0.1);
+        }
+        IMatDataModel.getInstance().getShoppingCart().addItem(shoppingItem);
     }
 
     public void removeFromShoppingCart(Product product) {
@@ -154,11 +174,9 @@ public class IMatDataModel {
                 if (shoppingItem.getAmount() == 0) {
                     shoppingCart.removeItem(shoppingItem);
                     return;
-                }
-                else if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
+                } else if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
                     shoppingItem.setAmount(shoppingItem.getAmount() - 1);
-                }
-                else {
+                } else {
                     shoppingItem.setAmount(shoppingItem.getAmount() - 0.1);
                 }
 
@@ -197,5 +215,9 @@ public class IMatDataModel {
             value -= 1;
             textField.setText((int) value + "st");
         }
+    }
+
+    public String getDeliveryTime() {
+        return (getSelectedDay() +" "+ getSelectedTime());
     }
 }

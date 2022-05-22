@@ -14,6 +14,13 @@ public class iMatEnd extends wizard {
     @FXML private Button continueShopping,shoppingCart ;
     @FXML private Label confirm;
 
+    IMatDataModel iMatDataModel = IMatDataModel.getInstance();
+
+    @FXML
+    private void initialize() {
+
+    }
+
     public void continueButtonPressed() {
         navigateTo("iMat_main.fxml", endRootAnchorPane);
     }
@@ -24,11 +31,4 @@ public class iMatEnd extends wizard {
 
 
 
-
-    @FXML
-    private void initialize() {
-        confirm.setText("Din bekräftade leverans tid är " + iMatSelectDateTime.selectedDay + " " + iMatSelectDateTime.selectedTime + ". "
-                +"Vi kommer att skicka ett mail till din angivna mailadress när leveransen är redo :)");
-    }
-    //confirmation
 }

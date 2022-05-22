@@ -16,6 +16,8 @@ public class DateCard extends AnchorPane {
 
     iMatSelectDateTime parentController;
 
+    IMatDataModel iMatDataModel = IMatDataModel.getInstance();
+
     public DateCard(String[] dayList, iMatSelectDateTime controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dateCard.fxml"));
         fxmlLoader.setRoot(this);
@@ -34,8 +36,8 @@ public class DateCard extends AnchorPane {
 
     @FXML
     private void handleOnClick() {
-        parentController.updateDayCards(dateCardMonthLabel.getText());
-        this.dayCardAnchorPane.setStyle("-fx-background-color: #C0C0C0");
+        iMatDataModel.setSelectedDay(dateCardMonthLabel.getText());
+        parentController.updateDayCards();
     }
 
 }

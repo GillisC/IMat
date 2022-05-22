@@ -13,6 +13,8 @@ public class TimeCard extends AnchorPane {
     @FXML AnchorPane timeCardAnchorPane;
     iMatSelectDateTime parentController;
 
+    IMatDataModel iMatDataModel = IMatDataModel.getInstance();
+
     public TimeCard(int time, iMatSelectDateTime controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("timeCard.fxml"));
         fxmlLoader.setRoot(this);
@@ -31,7 +33,7 @@ public class TimeCard extends AnchorPane {
 
     @FXML
     private void handleOnClick() {
-        parentController.updateTimeCards(timeCardLabel.getText());
-        this.timeCardAnchorPane.setStyle("-fx-background-color: #C0C0C0");
+        iMatDataModel.setSelectedTime(timeCardLabel.getText());
+        parentController.updateTimeCards();
     }
 }

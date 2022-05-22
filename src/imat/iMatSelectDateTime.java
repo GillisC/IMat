@@ -21,6 +21,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class iMatSelectDateTime extends wizard {
     @FXML private HBox dayCardHBox;
@@ -29,9 +30,6 @@ public class iMatSelectDateTime extends wizard {
     @FXML private Label reminder;
     @FXML private Button back1, next1, shoppingCart;
     @FXML private Ellipse selectDateTime,pay,delivery,complete;
-
-    public static String selectedDay = null;
-    public static String selectedTime = null;
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     ArrayList<DateCard> dateCards = new ArrayList<>();
@@ -44,6 +42,8 @@ public class iMatSelectDateTime extends wizard {
         timeCardHBox.setSpacing(10);
         populateDayHBox();
         populateTimeHBox();
+        updateDayCards();
+        updateTimeCards();
     }
 
     private void populateDayHBox() {
@@ -114,22 +114,29 @@ public class iMatSelectDateTime extends wizard {
         };
     }
 
-    protected void updateDayCards(String day) {
+    protected void updateDayCards() {
         for (DateCard dateCard : dateCards) {
-            dateCard.dayCardAnchorPane.setStyle("-fx-background-color: #E3E3E3");
+            if (Objects.equals(dateCard.dateCardMonthLabel.getText(), iMatDataModel.getSelectedDay())) {
+                dateCard.dayCardAnchorPane.setStyle("-fx-background-color: #C0C0C0");
+            } else {
+                dateCard.dayCardAnchorPane.setStyle("-fx-background-color: #E3E3E3");
+            }
         }
-        selectedDay = day;
     }
 
-    protected void updateTimeCards(String time) {
+    protected void updateTimeCards() {
         for (TimeCard timeCard : timeCards) {
-            timeCard.timeCardAnchorPane.setStyle("-fx-background-color: #E3E3E3");
+            if (Objects.equals(timeCard.timeCardLabel.getText(), iMatDataModel.getSelectedTime())) {
+                timeCard.timeCardAnchorPane.setStyle("-fx-background-color: #C0C0C0");
+            } else {
+                timeCard.timeCardAnchorPane.setStyle("-fx-background-color: #E3E3E3");
+            }
         }
-        selectedTime = time;
     }
 
     public void next1ButtonPressed() {
-        if (selectedDay!= null && selectedTime != null){
+        System.out.println(iMatDataModel.getDeliveryTime());
+        if (iMatDataModel.getSelectedDay()!= null && iMatDataModel.getSelectedTime() != null){
             navigateTo("iMatDelivery.fxml", dateTimeRootAnchorPane);// fixa ett pop upp fönster för felmeddelande eller liknade
         }
     }

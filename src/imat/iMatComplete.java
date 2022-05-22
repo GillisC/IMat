@@ -70,6 +70,16 @@ public class iMatComplete extends wizard implements ShoppingCartManager {
         navigateTo("iMatDelivery.fxml", completeRootAnchorPane);
     }
 
+    @FXML
+    private void handleChangeDelivery() {
+        navigateTo("iMatDelivery.fxml", completeRootAnchorPane);
+    }
+
+    @FXML
+    private void handleChangePayment() {
+        navigateTo("iMatPay.fxml", completeRootAnchorPane);
+    }
+
     public void toSelectDateTime() {
         navigateToSelectDateTime(completeRootAnchorPane);
     }
