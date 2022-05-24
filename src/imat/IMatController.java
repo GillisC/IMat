@@ -25,11 +25,6 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     iMatComplete iMatComplete;
 
-    // Main Category maps to a list of products that belong in that category
-    private final Map<String, List<ProductListItem>> mainCategoryMap = new HashMap<>();
-
-    // Maps A main category to their respective subcategories
-    private final Map<String, List<String>> subCategoryMap = new HashMap<>();
     // Current sub category objects, used to set the backdrop style
     private ArrayList<SubCategoryItem> subCategoryItems = new ArrayList<>();
 
@@ -73,96 +68,19 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
 
 
     /* Populates mainCategoryMap so that a category name maps to a list of products */
-    private void populateMainCategoryMap() {
 
-        // Adds products to "Allt" category
-        List<Product> tempEverything = iMatDataModel.getProducts();
-        List<ProductListItem> everything = new ArrayList<>();
-        for (Product p: tempEverything) {
-            everything.add(new ProductListItem(p, this));
-        }
-        mainCategoryMap.put("Allt", everything);
-        subCategoryMap.put("Allt", null);
-
-        // Adds products to "Grönsaker" Category
-        List<ProductListItem> greens = new ArrayList<>();
-        greens.addAll(findMatchingProducts(CABBAGE));
-        greens.addAll(findMatchingProducts(ProductCategory.HERB));
-        greens.addAll(findMatchingProducts(ProductCategory.POD));
-        greens.addAll(findMatchingProducts(ROOT_VEGETABLE));
-        mainCategoryMap.put("Grönsaker", greens);
-
-        String[] greenSub = {"Kålväxter", "Örter", "Baljväxter", "Rotfrukter"};
-        subCategoryMap.put("Grönsaker", List.of(greenSub));
-
-        // Adds products to "Frukt" Category
-        List<ProductListItem> fruit = new ArrayList<>();
-        fruit.addAll(findMatchingProducts(ProductCategory.BERRY));
-        fruit.addAll(findMatchingProducts(ProductCategory.CITRUS_FRUIT));
-        fruit.addAll(findMatchingProducts(ProductCategory.EXOTIC_FRUIT));
-        fruit.addAll(findMatchingProducts(ProductCategory.MELONS));
-        fruit.addAll(findMatchingProducts(ProductCategory.FRUIT));
-        mainCategoryMap.put("Frukt", fruit);
-
-        String[] fruitSub = {"Bär", "Citrus Frukter", "Exotiska Frukter", "Meloner", "Frukt"};
-        subCategoryMap.put("Frukt", List.of(fruitSub));
-
-        // Adds products to "Mejeri" Category
-        List<ProductListItem> dairy = new ArrayList<>(findMatchingProducts(ProductCategory.DAIRIES));
-        mainCategoryMap.put("Mejeri", dairy);
-
-        subCategoryMap.put("Mejeri", null);
-
-        // Adds products to "Bröd" Category
-        List<ProductListItem> bread = new ArrayList<>(findMatchingProducts(ProductCategory.BREAD));
-        mainCategoryMap.put("Bröd", bread);
-
-        subCategoryMap.put("Bröd", null);
-
-        // Adds products to "Kött" Category
-        List<ProductListItem> meat = new ArrayList<>(findMatchingProducts(ProductCategory.MEAT));
-        mainCategoryMap.put("Kött", meat);
-
-        subCategoryMap.put("Kött", null);
-
-        // Adds products to "Fisk" Category
-        List<ProductListItem> fish = new ArrayList<>(findMatchingProducts(ProductCategory.FISH));
-        mainCategoryMap.put("Fisk", fish);
-
-        subCategoryMap.put("Fisk", null);
-
-        // Adds products to "Skafferi" Category
-        List<ProductListItem> pantry = new ArrayList<>();
-        pantry.addAll(findMatchingProducts(ProductCategory.FLOUR_SUGAR_SALT));
-        pantry.addAll(findMatchingProducts(ProductCategory.PASTA));
-        pantry.addAll(findMatchingProducts(ProductCategory.POTATO_RICE));
-        pantry.addAll(findMatchingProducts(ProductCategory.NUTS_AND_SEEDS));
-        mainCategoryMap.put("Skafferi", pantry);
-
-        String[] pantrySub = {"Mjöl, Socker & Salt", "Pasta", "Potatis & Ris", "Nötter, & Frön"};
-        subCategoryMap.put("Skafferi", List.of(pantrySub));
-
-        // Adds products to "Skafferi" Category
-        List<ProductListItem> drinks = new ArrayList<>();
-        drinks.addAll(findMatchingProducts(ProductCategory.COLD_DRINKS));
-        drinks.addAll(findMatchingProducts(ProductCategory.HOT_DRINKS));
-        mainCategoryMap.put("Drickor", drinks);
-
-        String[] drinksSub = {"Kalla Drycker", "Varma Drycker"};
-        subCategoryMap.put("Drickor", List.of(drinksSub));
-
-        System.out.println("Successfully Loaded all products...");
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (iMatDataModel.mainCategoryMap.isEmpty()) {
+            populateMainCategoryMap();
+        }
         iMatDataModel.getShoppingCart().addShoppingCartListener(this);
 
         selectedCategory = "Allt";
 
-        populateMainCategoryMap();
         updateCategoryImages();
-        updateProductGrid(mainCategoryMap.get(selectedCategory));
+        updateProductGrid(iMatDataModel.mainCategoryMap.get(selectedCategory));
 
         profileImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/receipt.png"));
         shoppingCartImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/icons/shopping-cart.png"));
@@ -179,6 +97,87 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         updateProductItemsAmount();
     }
 
+    private void populateMainCategoryMap() {
+
+        // Adds products to "Allt" category
+        List<Product> tempEverything = iMatDataModel.getProducts();
+        List<ProductListItem> everything = new ArrayList<>();
+        for (Product p: tempEverything) {
+            everything.add(new ProductListItem(p, this));
+        }
+        iMatDataModel.mainCategoryMap.put("Allt", everything);
+        iMatDataModel.subCategoryMap.put("Allt", null);
+
+        // Adds products to "Grönsaker" Category
+        List<ProductListItem> greens = new ArrayList<>();
+        greens.addAll(iMatDataModel.findMatchingProducts(CABBAGE));
+        greens.addAll(iMatDataModel.findMatchingProducts(ProductCategory.HERB));
+        greens.addAll(iMatDataModel.findMatchingProducts(ProductCategory.POD));
+        greens.addAll(iMatDataModel.findMatchingProducts(ROOT_VEGETABLE));
+        iMatDataModel.mainCategoryMap.put("Grönsaker", greens);
+
+        String[] greenSub = {"Kålväxter", "Örter", "Baljväxter", "Rotfrukter"};
+        iMatDataModel.subCategoryMap.put("Grönsaker", List.of(greenSub));
+
+        // Adds products to "Frukt" Category
+        List<ProductListItem> fruit = new ArrayList<>();
+        fruit.addAll(iMatDataModel.findMatchingProducts(ProductCategory.BERRY));
+        fruit.addAll(iMatDataModel.findMatchingProducts(ProductCategory.CITRUS_FRUIT));
+        fruit.addAll(iMatDataModel.findMatchingProducts(ProductCategory.EXOTIC_FRUIT));
+        fruit.addAll(iMatDataModel.findMatchingProducts(ProductCategory.MELONS));
+        fruit.addAll(iMatDataModel.findMatchingProducts(ProductCategory.FRUIT));
+        iMatDataModel.mainCategoryMap.put("Frukt", fruit);
+
+        String[] fruitSub = {"Bär", "Citrus Frukter", "Exotiska Frukter", "Meloner", "Frukt"};
+        iMatDataModel.subCategoryMap.put("Frukt", List.of(fruitSub));
+
+        // Adds products to "Mejeri" Category
+        List<ProductListItem> dairy = new ArrayList<>(iMatDataModel.findMatchingProducts(ProductCategory.DAIRIES));
+        iMatDataModel.mainCategoryMap.put("Mejeri", dairy);
+
+        iMatDataModel.subCategoryMap.put("Mejeri", null);
+
+        // Adds products to "Bröd" Category
+        List<ProductListItem> bread = new ArrayList<>(iMatDataModel.findMatchingProducts(ProductCategory.BREAD));
+        iMatDataModel.mainCategoryMap.put("Bröd", bread);
+
+        iMatDataModel.subCategoryMap.put("Bröd", null);
+
+        // Adds products to "Kött" Category
+        List<ProductListItem> meat = new ArrayList<>(iMatDataModel.findMatchingProducts(ProductCategory.MEAT));
+        iMatDataModel.mainCategoryMap.put("Kött", meat);
+
+        iMatDataModel.subCategoryMap.put("Kött", null);
+
+        // Adds products to "Fisk" Category
+        List<ProductListItem> fish = new ArrayList<>(iMatDataModel.findMatchingProducts(ProductCategory.FISH));
+        iMatDataModel.mainCategoryMap.put("Fisk", fish);
+
+        iMatDataModel.subCategoryMap.put("Fisk", null);
+
+        // Adds products to "Skafferi" Category
+        List<ProductListItem> pantry = new ArrayList<>();
+        pantry.addAll(iMatDataModel.findMatchingProducts(ProductCategory.FLOUR_SUGAR_SALT));
+        pantry.addAll(iMatDataModel.findMatchingProducts(ProductCategory.PASTA));
+        pantry.addAll(iMatDataModel.findMatchingProducts(ProductCategory.POTATO_RICE));
+        pantry.addAll(iMatDataModel.findMatchingProducts(ProductCategory.NUTS_AND_SEEDS));
+        iMatDataModel.mainCategoryMap.put("Skafferi", pantry);
+
+        String[] pantrySub = {"Mjöl, Socker & Salt", "Pasta", "Potatis & Ris", "Nötter, & Frön"};
+        iMatDataModel.subCategoryMap.put("Skafferi", List.of(pantrySub));
+
+        // Adds products to "Skafferi" Category
+        List<ProductListItem> drinks = new ArrayList<>();
+        drinks.addAll(iMatDataModel.findMatchingProducts(ProductCategory.COLD_DRINKS));
+        drinks.addAll(iMatDataModel.findMatchingProducts(ProductCategory.HOT_DRINKS));
+        iMatDataModel.mainCategoryMap.put("Drickor", drinks);
+
+        String[] drinksSub = {"Kalla Drycker", "Varma Drycker"};
+        iMatDataModel.subCategoryMap.put("Drickor", List.of(drinksSub));
+
+        System.out.println("Successfully Loaded all products...");
+    }
+
     @FXML
     public void handleSearchAction() {
         /* Prevents it from creating useless objects */
@@ -186,32 +185,11 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
             return;
         }
         String searchTerm = searchTextField.getText();
-        List<ProductListItem> matches = findMatchingProducts(searchTerm);
+        List<ProductListItem> matches = iMatDataModel.findMatchingProducts(searchTerm);
         updateProductGrid(matches);
     }
 
-    private List<ProductListItem> findMatchingProducts(String s) {
-        String lowS = s.toLowerCase();
-        List<ProductListItem> result = new ArrayList<>();
-        for (ProductListItem p: mainCategoryMap.get("Allt")) {
-            String productName = p.productNameLabel.getText().toLowerCase();
-            if (productName.contains(lowS)) {
-                result.add(p);
-            }
-        }
-        return result;
-    }
 
-    private List<ProductListItem> findMatchingProducts(ProductCategory category) {
-        List<ProductListItem> result = new ArrayList<>();
-        for (ProductListItem p: mainCategoryMap.get("Allt")) {
-            ProductCategory pCategory = p.getProductListItemCategory();
-            if (pCategory == category) {
-                result.add(p);
-            }
-        }
-        return result;
-    }
 
     private void updateCategoryImages() {
         String[] categoryArray = {"Allt", "Grönsaker", "Frukt", "Mejeri", "Bröd", "Kött", "Fisk", "Skafferi", "Drickor"};
@@ -220,10 +198,11 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
             mainCategoryFlowPane.getChildren().add(new CategoryItem(categoryArray[i], selectedCategory, this));
         }
     }
+
     private void populateSubCategory() {
         subCategoryFlowPane.getChildren().clear();
         subCategoryItems.clear();
-        List<String> subCategories = subCategoryMap.get(selectedCategory);
+        List<String> subCategories = iMatDataModel.subCategoryMap.get(selectedCategory);
         if (subCategories == null) {
             return;
         }
@@ -249,14 +228,14 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
             subCategoryItem.backdropAnchorPane.setStyle("-fx-background-color: #E3E3E3");
         }
         ProductCategory category = iMatDataModel.getProductCategory(subCategory);
-        updateProductGrid(findMatchingProducts(category));
+        updateProductGrid(iMatDataModel.findMatchingProducts(category));
     }
     /* Called when main category icon is pressed */
     public void setMainCategory(String categoryName) {
         selectedCategory = categoryName;
         updateCategoryImages();
         populateSubCategory();
-        updateProductGrid(mainCategoryMap.get(selectedCategory));
+        updateProductGrid(iMatDataModel.mainCategoryMap.get(selectedCategory));
     }
 
     private void updateShoppingCart() {
@@ -300,7 +279,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     private void updateProductItemsAmount() {
         List<ShoppingItem> shoppingItems = iMatDataModel.getShoppingCart().getItems();
         for (ShoppingItem shoppingItem : shoppingItems) {
-            ProductListItem productListItem = findMatchingProducts(shoppingItem.getProduct().getName()).get(0);
+            ProductListItem productListItem = iMatDataModel.findMatchingProducts(shoppingItem.getProduct().getName()).get(0);
             if (iMatDataModel.round(shoppingItem.getAmount(), 1) == 0.0) {
                 productListItem.productAmountTextField.setText("0");
             }
@@ -309,12 +288,11 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
             } else {
                 productListItem.productAmountTextField.setText((int) shoppingItem.getAmount() + productListItem.getCorrectSuffix());
             }
-
         }
     }
 
     private void resetProductAmounts() {
-        for (ProductListItem productListItem : mainCategoryMap.get("Allt")) {
+        for (ProductListItem productListItem : iMatDataModel.mainCategoryMap.get("Allt")) {
             productListItem.productAmountTextField.setText("0");
         }
     }

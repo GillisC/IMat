@@ -5,14 +5,22 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import se.chalmers.cse.dat216.project.*;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+
+import static se.chalmers.cse.dat216.project.ProductCategory.CABBAGE;
+import static se.chalmers.cse.dat216.project.ProductCategory.ROOT_VEGETABLE;
 
 public class IMatDataModel {
     private static IMatDataModel instance = null;
     private IMatDataHandler iMatDataHandler;
     private static String selectedDay = null;
     protected String selectedTime = null;
+
+    // Main Category maps to a list of products that belong in that category
+    public final Map<String, List<ProductListItem>> mainCategoryMap = new HashMap<>();
+
+    // Maps A main category to their respective subcategories
+    public final Map<String, List<String>> subCategoryMap = new HashMap<>();
 
     /**
      * Does nothing
@@ -246,5 +254,37 @@ public class IMatDataModel {
             case "Varma Drycker" -> ProductCategory.HOT_DRINKS;
             default -> null;
         };
+    }
+
+    /* Clears items that have an amount of zero in the cart when going from main -> select time */
+    public void sweepShoppingCart() {
+        for (ShoppingItem item : getShoppingCart().getItems()) {
+            if (round(item.getTotal(), 1) == 0.0) {
+                getShoppingCart().removeItem(item);
+            }
+        }
+    }
+
+    public List<ProductListItem> findMatchingProducts(String s) {
+        String lowS = s.toLowerCase();
+        List<ProductListItem> result = new ArrayList<>();
+        for (ProductListItem p: mainCategoryMap.get("Allt")) {
+            String productName = p.productNameLabel.getText().toLowerCase();
+            if (productName.contains(lowS)) {
+                result.add(p);
+            }
+        }
+        return result;
+    }
+
+    public List<ProductListItem> findMatchingProducts(ProductCategory category) {
+        List<ProductListItem> result = new ArrayList<>();
+        for (ProductListItem p: mainCategoryMap.get("Allt")) {
+            ProductCategory pCategory = p.getProductListItemCategory();
+            if (pCategory == category) {
+                result.add(p);
+            }
+        }
+        return result;
     }
 }
