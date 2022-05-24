@@ -57,7 +57,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML private FlowPane shoppingCartFlowPane;
     @FXML private Label shoppingCartButtonTotalLabel;
     @FXML private Label shoppingCartViewTotalLabel;
-    @FXML private ImageView closeButton;
+    @FXML private ImageView shoppingCartCloseImage, clearShoppingCartImage;
     @FXML private Button ShoppingCartPayButton;
 
     /* Detail view */
@@ -265,7 +265,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         for (ShoppingItem shoppingItem : shoppingItemsList){
             shoppingCartFlowPane.getChildren().add(new VarukorgItem(shoppingItem, this));
         }
-        System.out.println("Total: " + iMatDataModel.getShoppingCart().getTotal() + " kr");
+
         shoppingCartButtonTotalLabel.setText(iMatDataModel.round(iMatDataModel.getShoppingCart().getTotal(), 2) + " kr");
         shoppingCartViewTotalLabel.setText("Totalt: " + iMatDataModel.round(iMatDataModel.getShoppingCart().getTotal(), 2) + " kr");
     }
@@ -277,15 +277,6 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         transition.setNode(shoppingCartAnchorPane);
         transition.setByX(-460);
         transition.play();
-    }
-
-    @FXML
-    protected void closeShoppingCartView() {
-        TranslateTransition transition = new TranslateTransition();
-        transition.setNode(shoppingCartAnchorPane);
-        transition.setByX(460);
-        transition.play();
-        mainAnchorPane.toFront();
     }
 
     @Override
@@ -320,7 +311,12 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
             }
 
         }
+    }
 
+    private void resetProductAmounts() {
+        for (ProductListItem productListItem : mainCategoryMap.get("Allt")) {
+            productListItem.productAmountTextField.setText("0");
+        }
     }
 
     @FXML
@@ -393,6 +389,44 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     public void rightNavigationArrowExitHover() {
         rightNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/right-navigation-triangle.png"));
     }
+
+    @FXML
+    protected void closeShoppingCartView() {
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(shoppingCartAnchorPane);
+        transition.setByX(460);
+        transition.play();
+        mainAnchorPane.toFront();
+    }
+
+    @FXML
+    public void closeShoppingCartHover() {
+        shoppingCartCloseImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-white-hover.png"));
+    }
+
+    @FXML
+    public void closeShoppingCartExitHover() {
+        shoppingCartCloseImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-white.png"));
+    }
+
+    @FXML
+    public void handleClearShoppingCart() {
+        iMatDataModel.getShoppingCart().clear();
+        resetProductAmounts();
+        updateShoppingCart();
+    }
+
+    @FXML
+    public void clearShoppingCartHover() {
+        clearShoppingCartImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/delete-hover.png"));
+    }
+
+    @FXML
+    public void clearShoppingCartExitHover() {
+        clearShoppingCartImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/delete.png"));
+    }
+
+
 
     @FXML
     private void navigateToOrderHistory() {
