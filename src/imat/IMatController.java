@@ -28,7 +28,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     // Current sub category objects, used to set the backdrop style
     private ArrayList<SubCategoryItem> subCategoryItems = new ArrayList<>();
 
-    private String selectedCategory;
+    private String selectedCategory = "Allt";
     // Keeps track of where we start to render the carousel
     private int categoryIndex = 0;
 
@@ -76,8 +76,6 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
             populateMainCategoryMap();
         }
         iMatDataModel.getShoppingCart().addShoppingCartListener(this);
-
-        selectedCategory = "Allt";
 
         updateCategoryImages();
         updateProductGrid(iMatDataModel.mainCategoryMap.get(selectedCategory));
@@ -403,8 +401,6 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     public void clearShoppingCartExitHover() {
         clearShoppingCartImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/delete.png"));
     }
-
-
 
     @FXML
     private void navigateToOrderHistory() {

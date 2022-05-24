@@ -85,62 +85,75 @@
                      <children>
                           <AnchorPane prefHeight="720.0" prefWidth="1080.0">
                               <children>
-                                  <Rectangle fill="#052139" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="darkblue-normal" width="1080.0" />
-                              <AnchorPane layoutX="290.0" layoutY="10.0" prefHeight="80.0" prefWidth="500.0" styleClass="main-carousel">
+                                  <Rectangle fill="#052139" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="darkblue-normal" width="1080.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <AnchorPane layoutX="290.0" layoutY="10.0" prefHeight="80.0" prefWidth="500.0" styleClass="main-carousel" AnchorPane.topAnchor="10.0">
                                  <children>
                                     <FlowPane fx:id="mainCategoryFlowPane" alignment="CENTER_LEFT" columnHalignment="CENTER" layoutX="40.0" prefHeight="80.0" prefWidth="420.0" prefWrapLength="500.0" />
                                     <ImageView fx:id="leftNavigationImageView" fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="28.0" onMouseClicked="#handleNavigateLeft" onMouseEntered="#leftNavigationArrowHover" onMouseExited="#leftNavigationArrowExitHover" pickOnBounds="true" preserveRatio="true" />
                                     <ImageView fx:id="rightNavigationImageView" fitHeight="24.0" fitWidth="24.0" layoutX="462.0" layoutY="28.0" onMouseClicked="#handleNavigateRight" onMouseEntered="#rightNavigationArrowHover" onMouseExited="#rightNavigationArrowExitHover" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
-                              <Button layoutX="811.0" layoutY="20.0" mnemonicParsing="false" onAction="#navigateToOrderHistory" prefHeight="60.0" prefWidth="60.0" styleClass="profile-shopping-button">
-                                 <tooltip>
-                                    <Tooltip text="Orderhistorik" />
-                                 </tooltip></Button>
-                              <ImageView fx:id="profileImageView" fitHeight="40.0" fitWidth="40.0" layoutX="821.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@resources/icons/receipt.png" />
-                                 </image></ImageView>
-                              <Button layoutX="887.0" layoutY="20.0" mnemonicParsing="false" onAction="#openShoppingCartView" prefHeight="60.0" prefWidth="180.0" styleClass="profile-shopping-button">
-                                 <tooltip>
-                                    <Tooltip text="Varukorgen" />
-                                 </tooltip></Button>
-                              <ImageView fx:id="shoppingCartImageView" fitHeight="40.0" fitWidth="40.0" layoutX="898.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@resources/icons/shopping-cart.png" />
-                                 </image></ImageView>
-                              <Label fx:id="shoppingCartButtonTotalLabel" layoutX="946.0" layoutY="21.0" mouseTransparent="true" prefHeight="60.0" prefWidth="110.0" styleClass="shopping-cart-label" text="Varukorg" />
+                              <AnchorPane layoutX="811.0" layoutY="20.0" AnchorPane.rightAnchor="209.0" AnchorPane.topAnchor="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#navigateToOrderHistory" prefHeight="60.0" prefWidth="60.0" styleClass="profile-shopping-button">
+                                       <tooltip>
+                                          <Tooltip text="Orderhistorik" />
+                                       </tooltip>
+                                    </Button>
+                                    <ImageView fx:id="profileImageView" fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="11.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/icons/receipt.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="887.0" layoutY="20.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#openShoppingCartView" prefHeight="60.0" prefWidth="180.0" styleClass="profile-shopping-button">
+                                       <tooltip>
+                                          <Tooltip text="Varukorgen" />
+                                       </tooltip>
+                                    </Button>
+                                    <ImageView fx:id="shoppingCartImageView" fitHeight="40.0" fitWidth="40.0" layoutX="11.0" layoutY="11.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/icons/shopping-cart.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="shoppingCartButtonTotalLabel" layoutX="59.0" layoutY="1.0" mouseTransparent="true" prefHeight="60.0" prefWidth="110.0" styleClass="shopping-cart-label" text="Varukorg" />
+                                 </children>
+                              </AnchorPane>
                               <Label layoutX="80.0" prefHeight="100.0" prefWidth="145.0" styleClass="escape-patch" text="iMAT">
                                  <tooltip>
                                     <Tooltip text="iMAT" />
                                  </tooltip></Label>
+                                <SplitPane dividerPositions="0.20686456400742115" layoutY="154.0" prefHeight="566.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                    <items>
+                                        <AnchorPane maxWidth="220.0" minHeight="0.0" minWidth="220.0" prefWidth="220.0">
+                                            <children>
+                                                <FlowPane fx:id="subCategoryFlowPane" layoutY="-1.0" prefHeight="566.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="853.0">
+                                            <children>
+                                                <ScrollPane hbarPolicy="NEVER" prefHeight="562.0" prefWidth="850.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                             <content>
+                                                <FlowPane fx:id="productFlowPane" prefHeight="556.0" prefWidth="840.0" />
+                                             </content>
+                                                </ScrollPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </items>
+                                </SplitPane>
+                                <TextField fx:id="searchTextField" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" styleClass="search-bar" stylesheets="@stylesheets/IMat_main.css" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="109.0" />
+                                <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="732.0" layoutY="114.0" maxHeight="30.0" maxWidth="52.0" minHeight="30.0" minWidth="52.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="52.0" styleClass="search-button" text="Sök" textAlignment="CENTER" AnchorPane.leftAnchor="732.0" AnchorPane.rightAnchor="296.0" AnchorPane.topAnchor="114.0">
+                                 <tooltip>
+                                    <Tooltip text="Sök" />
+                                 </tooltip>
+                              </Button>
                               </children>
                           </AnchorPane>
                      </children>
                   </StackPane>
-                    <TextField fx:id="searchTextField" layoutX="290.0" layoutY="109.0" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" styleClass="search-bar" stylesheets="@stylesheets/IMat_main.css" />
-                    <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" textAlignment="CENTER">
-                     <tooltip>
-                        <Tooltip text="Sök" />
-                     </tooltip></Button>
-                    <SplitPane dividerPositions="0.20686456400742115" layoutY="158.0" prefHeight="566.0" prefWidth="1080.0">
-                        <items>
-                            <AnchorPane maxWidth="220.0" minHeight="0.0" minWidth="220.0" prefWidth="220.0">
-                                <children>
-                                    <FlowPane fx:id="subCategoryFlowPane" layoutY="-1.0" prefHeight="566.0" prefWidth="220.0" />
-                                </children>
-                            </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="853.0">
-                                <children>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="562.0" prefWidth="850.0" vbarPolicy="ALWAYS">
-                                 <content>
-                                    <FlowPane fx:id="productFlowPane" prefHeight="556.0" prefWidth="840.0" />
-                                 </content>
-                                    </ScrollPane>
-                                </children>
-                            </AnchorPane>
-                        </items>
-                    </SplitPane>
                 </children>
             </AnchorPane>
          </children>
