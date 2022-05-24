@@ -100,7 +100,7 @@
                   <Label fx:id="phoneNumLabel" layoutX="8.0" layoutY="208.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="138.0" styleClass="text-input-desc" text="Address" />
                   <Label fx:id="addressPostNumLabel" layoutX="8.0" layoutY="158.0" styleClass="complete-text" />
-                  <Button fx:id="changeDelivery" layoutX="155.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangeDelivery" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
+                  <Button fx:id="changeDelivery" layoutX="145.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangeDelivery" prefHeight="30.0" prefWidth="70.0" styleClass="summary-cards-button" text="Ändra" />
                   <Label layoutX="32.0" layoutY="4.0" styleClass="text-under-title" text="Leveransuppgifter" />
                </children>
             </AnchorPane>
@@ -112,7 +112,7 @@
                   <Label fx:id="expirationLabel" layoutX="8.0" layoutY="108.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="138.0" styleClass="text-input-desc" text="Säkerhetskod" />
                   <Label fx:id="securityCode" layoutX="8.0" layoutY="158.0" styleClass="complete-text" />
-                  <Button fx:id="changePay" layoutX="154.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangePayment" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
+                  <Button fx:id="changePay" layoutX="144.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangePayment" prefHeight="30.0" prefWidth="70.0" styleClass="summary-cards-button" text="Ändra" />
                   <Label layoutX="25.0" layoutY="4.0" styleClass="text-under-title" text="Betalningsuppgifter" />
                </children>
             </AnchorPane>

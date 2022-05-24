@@ -14,7 +14,7 @@
     <children>
       <AnchorPane fx:id="upperAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1080.0" style="-fx-background-color: #062f42;" stylesheets="@stylesheets/wizard.css">
          <children>
-            <Label layoutX="60.0" prefHeight="100.0" prefWidth="135.0" styleClass="escape-patch" text="iMAT" />
+            <Label layoutX="80.0" onMouseClicked="#clickOnEscapePatch" prefHeight="100.0" prefWidth="135.0" styleClass="escape-patch" text="iMAT" />
             <AnchorPane layoutX="252.0" layoutY="10.0">
                <children>
                   <Rectangle fx:id="rec2" fill="DODGERBLUE" height="8.0" layoutX="272.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle-2" width="32.0" />
@@ -100,7 +100,7 @@
                   <Label fx:id="phoneNumLabel" layoutX="8.0" layoutY="208.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="138.0" styleClass="text-input-desc" text="Address" />
                   <Label fx:id="addressPostNumLabel" layoutX="8.0" layoutY="158.0" styleClass="complete-text" />
-                  <Button fx:id="changeDelivery" layoutX="155.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangeDelivery" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
+                  <Button fx:id="changeDelivery" layoutX="145.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangeDelivery" prefHeight="30.0" prefWidth="70.0" styleClass="summary-cards-button" text="Ändra" />
                   <Label layoutX="32.0" layoutY="4.0" styleClass="text-under-title" text="Leveransuppgifter" />
                </children>
             </AnchorPane>
@@ -112,7 +112,7 @@
                   <Label fx:id="expirationLabel" layoutX="8.0" layoutY="108.0" styleClass="complete-text" />
                   <Label layoutX="8.0" layoutY="138.0" styleClass="text-input-desc" text="Säkerhetskod" />
                   <Label fx:id="securityCode" layoutX="8.0" layoutY="158.0" styleClass="complete-text" />
-                  <Button fx:id="changePay" layoutX="154.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangePayment" prefHeight="30.0" prefWidth="60.0" styleClass="summary-cards-button" text="Ändra" />
+                  <Button fx:id="changePay" layoutX="144.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleChangePayment" prefHeight="30.0" prefWidth="70.0" styleClass="summary-cards-button" text="Ändra" />
                   <Label layoutX="25.0" layoutY="4.0" styleClass="text-under-title" text="Betalningsuppgifter" />
                </children>
             </AnchorPane>

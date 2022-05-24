@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -16,8 +17,14 @@
             <Label fx:id="productPriceLabel" layoutY="2.0" prefHeight="18.0" prefWidth="60.0" styleClass="label-text" text="17:95 kr" />
             <Label fx:id="productUnitSuffixLabel" layoutY="18.0" prefHeight="18.0" prefWidth="60.0" styleClass="label-text" text="/ kg" />
             <Label fx:id="productNameLabel" layoutX="5.0" layoutY="131.0" prefHeight="18.0" prefWidth="170.0" styleClass="product-name" stylesheets="@stylesheets/IMatListItem.css" text="Exempel produkt Klass1" />
-            <Button fx:id="addButton" layoutX="138.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="32.0" prefWidth="32.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0" />
-            <Button fx:id="removeButton" layoutX="14.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleRemoveAction" prefHeight="32.0" prefWidth="32.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" />
+            <Button fx:id="addButton" layoutX="138.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="32.0" prefWidth="32.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0">
+               <tooltip>
+                  <Tooltip text="Lägg till vara" />
+               </tooltip></Button>
+            <Button fx:id="removeButton" layoutX="14.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleRemoveAction" prefHeight="32.0" prefWidth="32.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0">
+               <tooltip>
+                  <Tooltip text="Ta bort vara" />
+               </tooltip></Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="24.0" layoutX="154.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" width="4.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="4.0" layoutX="144.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" width="24.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="4.0" layoutX="12.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="small-rectangle" width="24.0" />

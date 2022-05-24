@@ -6,6 +6,7 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -83,24 +84,36 @@
                                     <ImageView fx:id="rightNavigationImageView" fitHeight="24.0" fitWidth="24.0" layoutX="462.0" layoutY="28.0" onMouseClicked="#handleNavigateRight" onMouseEntered="#rightNavigationArrowHover" onMouseExited="#rightNavigationArrowExitHover" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
-                              <Button layoutX="811.0" layoutY="20.0" mnemonicParsing="false" onAction="#navigateToOrderHistory" prefHeight="60.0" prefWidth="60.0" styleClass="profile-shopping-button" />
+                              <Button layoutX="811.0" layoutY="20.0" mnemonicParsing="false" onAction="#navigateToOrderHistory" prefHeight="60.0" prefWidth="60.0" styleClass="profile-shopping-button">
+                                 <tooltip>
+                                    <Tooltip text="Orderhistorik" />
+                                 </tooltip></Button>
                               <ImageView fx:id="profileImageView" fitHeight="40.0" fitWidth="40.0" layoutX="821.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@resources/icons/receipt.png" />
                                  </image></ImageView>
-                              <Button layoutX="887.0" layoutY="20.0" mnemonicParsing="false" onAction="#openShoppingCartView" prefHeight="60.0" prefWidth="180.0" styleClass="profile-shopping-button" />
+                              <Button layoutX="887.0" layoutY="20.0" mnemonicParsing="false" onAction="#openShoppingCartView" prefHeight="60.0" prefWidth="180.0" styleClass="profile-shopping-button">
+                                 <tooltip>
+                                    <Tooltip text="Varukorgen" />
+                                 </tooltip></Button>
                               <ImageView fx:id="shoppingCartImageView" fitHeight="40.0" fitWidth="40.0" layoutX="898.0" layoutY="31.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@resources/icons/shopping-cart.png" />
                                  </image></ImageView>
                               <Label fx:id="shoppingCartButtonTotalLabel" layoutX="946.0" layoutY="21.0" mouseTransparent="true" prefHeight="60.0" prefWidth="110.0" styleClass="shopping-cart-label" text="Varukorg" />
-                              <Label layoutX="80.0" prefHeight="100.0" prefWidth="145.0" styleClass="escape-patch" text="iMAT" />
+                              <Label layoutX="80.0" prefHeight="100.0" prefWidth="145.0" styleClass="escape-patch" text="iMAT">
+                                 <tooltip>
+                                    <Tooltip text="iMAT" />
+                                 </tooltip></Label>
                               </children>
                           </AnchorPane>
                      </children>
                   </StackPane>
                     <TextField fx:id="searchTextField" layoutX="290.0" layoutY="109.0" prefHeight="40.0" prefWidth="500.0" promptText="Sök efter en vara" styleClass="search-bar" stylesheets="@stylesheets/IMat_main.css" />
-                    <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" textAlignment="CENTER" />
+                    <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="734.0" layoutY="114.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="30.0" prefWidth="50.0" styleClass="search-button" text="Sök" textAlignment="CENTER">
+                     <tooltip>
+                        <Tooltip text="Sök" />
+                     </tooltip></Button>
                     <SplitPane dividerPositions="0.20686456400742115" layoutY="158.0" prefHeight="566.0" prefWidth="1080.0">
                         <items>
                             <AnchorPane maxWidth="220.0" minHeight="0.0" minWidth="220.0" prefWidth="220.0">

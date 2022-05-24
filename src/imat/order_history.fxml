@@ -10,31 +10,10 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
 <AnchorPane fx:id="orderHistoryRootPane" prefHeight="720.0" prefWidth="1080.0" stylesheets="@stylesheets/orderHistory.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.OrderHistory">
    <children>
       <StackPane>
          <children>
-            <AnchorPane fx:id="detailViewAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.7);">
-               <children>
-                  <AnchorPane layoutX="280.0" layoutY="64.0" prefHeight="600.0" prefWidth="520.0" styleClass="order-detail-view">
-                     <children>
-                        <Label fx:id="detailedOrderNum" layoutX="166.0" layoutY="14.0" styleClass="detail-title" text="Order: #12345" />
-                        <ScrollPane hbarPolicy="NEVER" layoutX="60.0" layoutY="92.0" prefHeight="400.0" prefWidth="400.0" stylesheets="@stylesheets/scrollPane.css">
-                           <content>
-                              <FlowPane fx:id="detailFlowPane" prefHeight="400.0" prefWidth="385.0" />
-                           </content>
-                        </ScrollPane>
-                        <ImageView fx:id="closeDetailViewImageView" fitHeight="48.0" fitWidth="48.0" layoutX="458.0" layoutY="14.0" onMouseClicked="#closeDetailView" onMouseEntered="#closeButtonHover" onMouseExited="#closeButtonExitHover" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/close-button-blue.png" />
-                           </image>
-                        </ImageView>
-                        <Button layoutX="116.0" layoutY="513.0" mnemonicParsing="false" onAction="#handleAddToShoppingCart" prefHeight="60.0" prefWidth="290.0" styleClass="detail-button" text="Lägg till i Varukorgen" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="orderHistoryAnchorPane">
                <children>
                   <AnchorPane prefHeight="100.0" prefWidth="1080.0" styleClass="anchor-pane-panel" stylesheets="@stylesheets/wizard.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -52,6 +31,26 @@
                               <FlowPane fx:id="orderHistoryFlowPane" prefHeight="620.0" prefWidth="485.0" />
                            </content>
                         </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="detailViewAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.7);">
+               <children>
+                  <AnchorPane layoutX="280.0" layoutY="64.0" prefHeight="600.0" prefWidth="520.0" styleClass="order-detail-view">
+                     <children>
+                        <Label fx:id="detailedOrderNum" layoutX="166.0" layoutY="14.0" styleClass="detail-title" text="Order: #12345" />
+                        <ScrollPane hbarPolicy="NEVER" layoutX="60.0" layoutY="92.0" prefHeight="400.0" prefWidth="400.0" stylesheets="@stylesheets/scrollPane.css">
+                           <content>
+                              <FlowPane fx:id="detailFlowPane" prefHeight="400.0" prefWidth="385.0" />
+                           </content>
+                        </ScrollPane>
+                        <ImageView fx:id="closeDetailViewImageView" fitHeight="48.0" fitWidth="48.0" layoutX="458.0" layoutY="14.0" onMouseClicked="#closeDetailView" onMouseEntered="#closeButtonHover" onMouseExited="#closeButtonExitHover" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/close-button-blue.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="106.0" layoutY="513.0" mnemonicParsing="false" onAction="#handleAddToShoppingCart" prefHeight="60.0" prefWidth="310.0" styleClass="detail-button" text="Lägg till i Varukorgen" />
                      </children>
                   </AnchorPane>
                </children>
