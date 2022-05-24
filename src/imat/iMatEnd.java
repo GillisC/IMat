@@ -28,10 +28,10 @@ public class iMatEnd extends wizard {
         navigateTo("iMat_main.fxml", endRootAnchorPane);
     }
 
-    public void shoppingCartPressed() {
-        shoppingCartPressed(endRootAnchorPane);
+
+    @FXML
+    public void clickOnEscapePatch() {
+        navigateTo("imat_main.fxml", endRootAnchorPane);
     }
-
-
 
 }

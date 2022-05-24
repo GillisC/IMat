@@ -68,8 +68,8 @@ public class iMatComplete extends wizard implements ShoppingCartManager {
     }
 
     public void CompleteButtonPressed() {
-        iMatDataModel.placeOrder(true);
         navigateTo("iMatEnd.fxml", completeRootAnchorPane);
+        iMatDataModel.placeOrder(true);
     }
 
     private void updateStepBackground() {
@@ -124,5 +124,10 @@ public class iMatComplete extends wizard implements ShoppingCartManager {
     public static int firstDigit(int n) {
         while (n < -9 || 9 < n) n /= 10;
         return Math.abs(n);
+    }
+
+    @FXML
+    public void clickOnEscapePatch() {
+        navigateTo("imat_main.fxml", completeRootAnchorPane);
     }
 }

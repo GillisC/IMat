@@ -184,4 +184,14 @@ public class iMatDelivery extends wizard {
     public void toSelectDateTime() {
         navigateToSelectDateTime(deliveryRootAnchorPane);
     }
+
+    @FXML
+    public void clickOnEscapePatch() {
+        try {
+            AnchorPane root = FXMLLoader.load(getClass().getResource("imat_main.fxml"));
+            deliveryRootAnchorPane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

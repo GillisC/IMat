@@ -75,7 +75,6 @@ public class OrderHistory implements Initializable {
 
     @FXML
     public void clickOnEscapePatch() {
-        System.out.println("yo");
         try {
             AnchorPane root = FXMLLoader.load(getClass().getResource("imat_main.fxml"));
             orderHistoryRootPane.getChildren().setAll(root);

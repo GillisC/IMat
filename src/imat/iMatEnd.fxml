@@ -17,12 +17,12 @@
                           <Font name="Times New Roman Bold" size="48.0" />
                       </font>
                   </Label>
-                  <Label fx:id="confirmationLabel" layoutX="201.0" layoutY="101.0" prefHeight="60.0" prefWidth="679.0" styleClass="text-under-title" text="Din order är bekräftad, och levereras hem till dig den 21 Maj mellan 16:00-17:00!" textFill="#062f42" wrapText="true">
+                  <Label fx:id="confirmationLabel" layoutX="201.0" layoutY="88.0" prefHeight="123.0" prefWidth="679.0" styleClass="text-under-title-end" text="Din order är bekräftad, och levereras hem till dig den 21 Maj mellan 16:00-17:00!" textFill="#062f42" wrapText="true">
                       <font>
                           <Font name="Times New Roman Bold" size="24.0" />
                       </font>
                   </Label>
-            <Label fx:id="confirm1" layoutX="201.0" layoutY="189.0" prefHeight="60.0" prefWidth="679.0" styleClass="text-under-title" text="Din beställning och tidigare beställningar sparas automatisk under dina tidigare köp som nås genom att trycka på knappen med ett kvitto på från förstasidan." textFill="#062f42" wrapText="true">
+            <Label fx:id="confirm1" layoutX="201.0" layoutY="213.0" prefHeight="194.0" prefWidth="679.0" styleClass="text-under-title-end" text="Din beställning och tidigare beställningar sparas automatisk under dina tidigare köp som nås genom att trycka på knappen med ett kvitto på från förstasidan." textFill="#062f42" wrapText="true">
                <font>
                   <Font name="Times New Roman Bold" size="24.0" />
                </font>
@@ -32,7 +32,7 @@
           </AnchorPane>
       <AnchorPane fx:id="upperAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1080.0" style="-fx-background-color: #062f42;" stylesheets="@stylesheets/wizard.css">
          <children>
-            <Label layoutX="80.0" prefHeight="100.0" prefWidth="135.0" styleClass="logo-text" text="iMAT" />
+            <Label layoutX="80.0" onMouseClicked="#clickOnEscapePatch" prefHeight="100.0" prefWidth="135.0" styleClass="escape-patch" text="iMAT" />
             <AnchorPane layoutX="252.0" layoutY="10.0">
                <children>
                   <Rectangle fill="DODGERBLUE" height="8.0" layoutX="272.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #C2EABD;" styleClass="wizard-step-rectangle-2" width="32.0" />

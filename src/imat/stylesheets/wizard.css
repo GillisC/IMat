@@ -150,3 +150,12 @@
 
 }
 
+.text-under-title-end {
+    -fx-font-size: 24px;
+    -fx-text-fill: #062F42;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+

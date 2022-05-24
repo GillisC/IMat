@@ -14,7 +14,7 @@
     <children>
       <AnchorPane fx:id="upperAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1080.0" style="-fx-background-color: #062f42;" stylesheets="@stylesheets/wizard.css">
          <children>
-            <Label layoutX="60.0" prefHeight="100.0" prefWidth="135.0" styleClass="escape-patch" text="iMAT" />
+            <Label layoutX="80.0" onMouseClicked="#clickOnEscapePatch" prefHeight="100.0" prefWidth="135.0" styleClass="escape-patch" text="iMAT" />
             <AnchorPane layoutX="252.0" layoutY="10.0">
                <children>
                   <Rectangle fx:id="rec2" fill="DODGERBLUE" height="8.0" layoutX="272.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="wizard-step-rectangle-2" width="32.0" />

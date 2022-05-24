@@ -218,49 +218,9 @@ public class iMatPay extends wizard {
         shoppingCartPressed (payRootAnchorPane);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    public void next2ButtonPressed() {
-        try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("iMatDelivery.fxml"));
-            payRootAnchorPane.getChildren().setAll(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @FXML
+    public void clickOnEscapePatch() {
+        navigateTo("imat_main.fxml", payRootAnchorPane);
     }
-
-    public void back2ButtonPressed() {
-        try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("iMatSelectDateTime.fxml"));
-            payRootAnchorPane.getChildren().setAll(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
-
 }
 

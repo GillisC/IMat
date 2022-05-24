@@ -168,46 +168,9 @@ public class iMatSelectDateTime extends wizard {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*    public void next1ButtonPressed() {
-        try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("iMatPay.fxml"));
-            dateTimeRootAnchorPane.getChildren().setAll(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        navigateTo("iMatPay.fxml", dateTimeRootAnchorPane);
+    @FXML
+    public void clickOnEscapePatch() {
+        navigateTo("imat_main.fxml", dateTimeRootAnchorPane);
     }
 
-    public void back1ButtonPressed() {
-        try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("iMatEnd.fxml"));
-            dateTimeRootAnchorPane.getChildren().setAll(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        navigateTo("iMatEnd.fxml", dateTimeRootAnchorPane);
-    }
-*/
 }

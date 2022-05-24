@@ -147,20 +147,20 @@ public class IMatDataModel {
         List<ShoppingItem> currShoppingItems = shoppingCart.getItems();
         for (ShoppingItem shoppingItem : currShoppingItems) {
             if (Objects.equals(shoppingItem.getProduct().getName(), product.getName())) {
-                if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
-                    shoppingItem.setAmount(shoppingItem.getAmount() + 1);
-                } else {
+                if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
                     shoppingItem.setAmount(shoppingItem.getAmount() + 0.1);
+                } else {
+                    shoppingItem.setAmount(shoppingItem.getAmount() + 1);
                 }
                 return;
 
             }
         }
         ShoppingItem shoppingItem = new ShoppingItem(product);
-        if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
-            shoppingItem.setAmount(1);
-        } else {
+        if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
             shoppingItem.setAmount(0.1);
+        } else {
+            shoppingItem.setAmount(1);
         }
         IMatDataModel.getInstance().getShoppingCart().addItem(shoppingItem);
     }
@@ -171,13 +171,13 @@ public class IMatDataModel {
         for (ShoppingItem shoppingItem : currShoppingItems) {
             if (Objects.equals(shoppingItem.getProduct().getName(), product.getName())) {
 
-                if (shoppingItem.getAmount() == 0) {
+                if (round(shoppingItem.getAmount(), 1) == 0.0) {
                     shoppingCart.removeItem(shoppingItem);
                     return;
-                } else if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "st") || Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "förp")) {
-                    shoppingItem.setAmount(shoppingItem.getAmount() - 1);
-                } else {
+                } else if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
                     shoppingItem.setAmount(shoppingItem.getAmount() - 0.1);
+                } else {
+                    shoppingItem.setAmount(shoppingItem.getAmount() - 1);
                 }
 
 
@@ -196,29 +196,6 @@ public class IMatDataModel {
     public boolean isCreditCardComplete() {
         CreditCard creditCard = getCreditCard();
         return (!Objects.equals(creditCard.getCardNumber(), "") && !String.valueOf(creditCard.getValidYear()).equals("") && !String.valueOf(creditCard.getValidMonth()).equals("") && !Objects.equals(creditCard.getCardType(), ""));
-    }
-    public String removeSuffixes(String s) {
-        s = s.replace("kg", "");
-        s = s.replace("st", "");
-        s = s.replace("förp", "");
-        return s;
-    }
-
-    public void incrementTextField(TextField textField, Product product) {
-        String currentVal = textField.getText();
-        currentVal = removeSuffixes(currentVal);
-        double value = Double.parseDouble(currentVal);
-        String suffix = product.getUnitSuffix();
-        if (value == 0) {
-            return;
-        }
-        if (Objects.equals(suffix, "kg")) {
-            value -= 0.1;
-            textField.setText(round(value, 2) + "kg");
-        } else {
-            value -= 1;
-            textField.setText((int) value + "st");
-        }
     }
 
     public String getDeliveryTime() {

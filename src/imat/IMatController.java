@@ -295,14 +295,14 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
 
     public void handleAddProduct(Product product) {
         iMatDataModel.addToShoppingCart(product);
-        updateProductItemsAmount();
         updateShoppingCart();
+        updateProductItemsAmount();
     }
 
     public void handleRemoveProduct(Product product) {
         iMatDataModel.removeFromShoppingCart(product);
-        updateProductItemsAmount();
         updateShoppingCart();
+        updateProductItemsAmount();
     }
 
     /* Updates the productListItems with the value stored in the shopping cart */
@@ -310,7 +310,10 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         List<ShoppingItem> shoppingItems = iMatDataModel.getShoppingCart().getItems();
         for (ShoppingItem shoppingItem : shoppingItems) {
             ProductListItem productListItem = findMatchingProducts(shoppingItem.getProduct().getName()).get(0);
-            if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
+            if (iMatDataModel.round(shoppingItem.getAmount(), 1) == 0.0) {
+                productListItem.productAmountTextField.setText("0");
+            }
+            else if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
                 productListItem.productAmountTextField.setText(iMatDataModel.round(shoppingItem.getAmount(), 1) + productListItem.getCorrectSuffix());
             } else {
                 productListItem.productAmountTextField.setText((int) shoppingItem.getAmount() + productListItem.getCorrectSuffix());

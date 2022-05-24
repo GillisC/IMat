@@ -43,14 +43,11 @@ public class VarukorgItem extends AnchorPane{
         shoppingItemImageView.setImage(dataModel.getFXImage(shoppingItem.getProduct(), 80, 80));
         shoppingItemNameLabel.setText(shoppingItem.getProduct().getName());
         shoppingItemUnitLabel.setText(shoppingItem.getProduct().getPrice() + (shoppingItem.getProduct().getUnit()));
-        String unit = shoppingItem.getProduct().getUnitSuffix();
-        if (Objects.equals(unit, "förp")) {
-            unit = "st";
-        }
+
         if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
-            shoppingItemAmountLabel.setText((dataModel.round(shoppingItem.getAmount(), 1) + unit));
+            shoppingItemAmountLabel.setText((dataModel.round(shoppingItem.getAmount(), 1) + "kg"));
         } else {
-            shoppingItemAmountLabel.setText((int) shoppingItem.getAmount() + unit);
+            shoppingItemAmountLabel.setText((int) shoppingItem.getAmount() + "st");
         }
 
         shoppingItemTotalLabel.setText(dataModel.round(shoppingItem.getTotal(), 2) + " kr");
