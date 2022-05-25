@@ -32,6 +32,8 @@ public class DateCard extends AnchorPane {
         this.parentController = controller;
         dateCardDayLabel.setText(dayList[0]);
         dateCardMonthLabel.setText(dayList[2] + " " + dayList[1]);
+
+        iMatDataModel.setOnHover(dayCardAnchorPane);
     }
 
     @FXML

@@ -10,7 +10,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="205.0" styleClass="anchor-pane-background" stylesheets="@stylesheets/IMatListItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="13.0" layoutY="13.0" onMouseClicked="#onClick" prefHeight="200.0" prefWidth="180.0" styleClass="anchor-pane-foreground" stylesheets="@stylesheets/IMatListItem.css">
+      <AnchorPane fx:id="listItemAnchorPane" layoutX="13.0" layoutY="13.0" onMouseClicked="#onClick" prefHeight="200.0" prefWidth="180.0" styleClass="anchor-pane-foreground" stylesheets="@stylesheets/IMatListItem.css">
          <children>
             <ImageView fx:id="productImageView" fitHeight="120.0" fitWidth="160.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="8.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-rec" width="60.0" />

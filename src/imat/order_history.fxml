@@ -14,27 +14,6 @@
    <children>
       <StackPane>
          <children>
-            <AnchorPane fx:id="orderHistoryAnchorPane">
-               <children>
-                  <AnchorPane prefHeight="100.0" prefWidth="1080.0" styleClass="anchor-pane-panel" stylesheets="@stylesheets/wizard.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <Rectangle fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #062F42;" width="1080.0" />
-                        <Label layoutX="323.0" layoutY="15.0" prefHeight="70.0" prefWidth="434.0" styleClass="title-text" stylesheets="@stylesheets/orderHistory.css" text="Orderhistorik" AnchorPane.leftAnchor="323.0" AnchorPane.rightAnchor="323.0" />
-                        <Label layoutX="100.0" onMouseClicked="#clickOnEscapePatch" prefHeight="100.0" prefWidth="145.0" styleClass="escape-patch" text="iMAT" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutY="100.0" prefHeight="620.0" prefWidth="1080.0" styleClass="anchor-pane-background">
-                     <children>
-                        <Rectangle fill="DODGERBLUE" height="620.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #C0C0C0;" width="1080.0" />
-                        <ScrollPane hbarPolicy="NEVER" layoutX="290.0" prefHeight="620.0" prefWidth="500.0" stylesheets="@stylesheets/scrollPane.css">
-                           <content>
-                              <FlowPane fx:id="orderHistoryFlowPane" prefHeight="620.0" prefWidth="485.0" />
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="detailViewAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.7);">
                <children>
                   <AnchorPane layoutX="280.0" layoutY="64.0" prefHeight="600.0" prefWidth="520.0" styleClass="order-detail-view">
@@ -50,7 +29,28 @@
                               <Image url="@resources/close-button-blue.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="106.0" layoutY="513.0" mnemonicParsing="false" onAction="#handleAddToShoppingCart" prefHeight="60.0" prefWidth="310.0" styleClass="detail-button" text="Lägg till i Varukorgen" />
+                        <Button fx:id="addOrderToCartButton" layoutX="106.0" layoutY="513.0" mnemonicParsing="false" onAction="#handleAddToShoppingCart" prefHeight="60.0" prefWidth="310.0" styleClass="detail-button" text="Lägg till i Varukorgen" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="orderHistoryAnchorPane">
+               <children>
+                  <AnchorPane prefHeight="100.0" prefWidth="1080.0" styleClass="anchor-pane-panel" stylesheets="@stylesheets/wizard.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Rectangle fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #062F42;" width="1080.0" />
+                        <Label layoutX="323.0" layoutY="15.0" prefHeight="70.0" prefWidth="434.0" styleClass="title-text" stylesheets="@stylesheets/orderHistory.css" text="Orderhistorik" AnchorPane.leftAnchor="323.0" AnchorPane.rightAnchor="323.0" />
+                        <Label fx:id="escapeHatch" layoutX="100.0" onMouseClicked="#clickOnEscapePatch" prefHeight="100.0" prefWidth="145.0" styleClass="escape-patch" text="iMAT" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutY="100.0" prefHeight="620.0" prefWidth="1080.0" styleClass="anchor-pane-background">
+                     <children>
+                        <Rectangle fill="DODGERBLUE" height="620.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #C0C0C0;" width="1080.0" />
+                        <ScrollPane hbarPolicy="NEVER" layoutX="290.0" prefHeight="620.0" prefWidth="500.0" stylesheets="@stylesheets/scrollPane.css">
+                           <content>
+                              <FlowPane fx:id="orderHistoryFlowPane" prefHeight="620.0" prefWidth="485.0" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                </children>

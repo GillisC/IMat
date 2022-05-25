@@ -1,24 +1,17 @@
 package imat;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -28,7 +21,7 @@ public class iMatSelectDateTime extends wizard {
     @FXML private HBox timeCardHBox;
     @FXML private AnchorPane dateTimeRootAnchorPane;
     @FXML private Label reminder;
-    @FXML private Button back1, next1, shoppingCart;
+    @FXML private Button toCartButton, next1;
     @FXML private Ellipse selectDateTime,pay,delivery,complete;
     @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
 
@@ -46,6 +39,8 @@ public class iMatSelectDateTime extends wizard {
         updateDayCards();
         updateTimeCards();
 
+        iMatDataModel.setOnHover(toCartButton);
+        iMatDataModel.setOnHover(next1);
         updateStepBackground();
     }
 
@@ -70,20 +65,20 @@ public class iMatSelectDateTime extends wizard {
     }
 
     private void updateStepBackground() {
-        if (iMatDataModel.isSelectTimeComplete()) {
+        if (iMatDataModel.selectTimeComplete) {
             chooseTimeRec.setStyle("-fx-fill: #C2EABD");
-            if (iMatDataModel.isCustomerComplete()) {
+            if (iMatDataModel.selectDeliveryComplete) {
                 rec1.setStyle("-fx-fill: #C2EABD");
             }
         }
-        if (iMatDataModel.isCustomerComplete()) {
+        if (iMatDataModel.selectDeliveryComplete) {
             chooseDeliveryRec.setStyle("-fx-fill: #C2EABD");
-            if (iMatDataModel.isCreditCardComplete()) {
+            if (iMatDataModel.selectPayComplete) {
                 rec2.setStyle("-fx-fill: #C2EABD");
             }
         }
         System.out.println("check: " + iMatDataModel.isCreditCardComplete());
-        if (iMatDataModel.isCreditCardComplete()) {
+        if (iMatDataModel.selectPayComplete) {
             choosePayRec.setStyle("-fx-fill: #C2EABD");
         }
     }
@@ -139,7 +134,12 @@ public class iMatSelectDateTime extends wizard {
     protected void updateDayCards() {
         for (DateCard dateCard : dateCards) {
             if (Objects.equals(dateCard.dateCardMonthLabel.getText(), iMatDataModel.getSelectedDay())) {
-                dateCard.dayCardAnchorPane.setStyle("-fx-background-color: #C0C0C0");
+                dateCard.dayCardAnchorPane.setStyle(
+                        "-fx-background-color: #C0C0C0;" +
+                                "-fx-border-color: #ED254E;" +
+                                "-fx-border-width: 4px;" +
+                                "-fx-border-radius: 8px;"
+                );
             } else {
                 dateCard.dayCardAnchorPane.setStyle("-fx-background-color: #E3E3E3");
             }
@@ -149,28 +149,44 @@ public class iMatSelectDateTime extends wizard {
     protected void updateTimeCards() {
         for (TimeCard timeCard : timeCards) {
             if (Objects.equals(timeCard.timeCardLabel.getText(), iMatDataModel.getSelectedTime())) {
-                timeCard.timeCardAnchorPane.setStyle("-fx-background-color: #C0C0C0");
+                timeCard.timeCardAnchorPane.setStyle(
+                        "-fx-background-color: #C0C0C0;" +
+                        "-fx-border-color: #ED254E;" +
+                        "-fx-border-width: 4px;" +
+                        "-fx-border-radius: 8px"
+                );
             } else {
                 timeCard.timeCardAnchorPane.setStyle("-fx-background-color: #E3E3E3");
             }
         }
     }
 
+
     public void next1ButtonPressed() {
         System.out.println(iMatDataModel.getDeliveryTime());
         if (iMatDataModel.getSelectedDay()!= null && iMatDataModel.getSelectedTime() != null){
+            iMatDataModel.selectTimeComplete = true;
             navigateTo("iMatDelivery.fxml", dateTimeRootAnchorPane);// fixa ett pop upp fönster för felmeddelande eller liknade
         }
     }
 
     public void back1ButtonPressed() {
-        navigateTo("imat_main-shoppingcart.fxml", dateTimeRootAnchorPane);
-
+        try {
+            AnchorPane root = FXMLLoader.load(getClass().getClassLoader().getResource("imat/imat_main_shoppingcart.fxml"));
+            dateTimeRootAnchorPane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void clickOnEscapePatch() {
-        navigateTo("imat_main.fxml", dateTimeRootAnchorPane);
+        try {
+            AnchorPane root = FXMLLoader.load(getClass().getClassLoader().getResource("imat/imat_main.fxml"));
+            dateTimeRootAnchorPane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

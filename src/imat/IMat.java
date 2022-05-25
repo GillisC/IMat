@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 public class IMat extends Application {
 
     public static IMatDataModel iMatDataModel = IMatDataModel.getInstance();
+    public static Scene scene;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -18,7 +19,7 @@ public class IMat extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("imat_main.fxml"), bundle);
 
-        Scene scene = new Scene(root, 1080, 720);
+        scene = new Scene(root, 1080, 720);
         stage.setTitle(bundle.getString("application.name"));
         stage.setScene(scene);
         stage.show();
@@ -37,5 +38,8 @@ public class IMat extends Application {
         }));
     }
 
+    public Scene getScene() {
+        return scene;
+    }
 
 }

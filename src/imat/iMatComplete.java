@@ -45,7 +45,11 @@ public class iMatComplete extends wizard implements ShoppingCartManager {
         securityCode.setText(firstDigit(creditCard.getVerificationCode()) + "xx");
 
         updateStepBackground();
-        rec3.setStyle("-fx-fill: #C2EABD");
+
+        iMatDataModel.setOnHover(complete);
+        iMatDataModel.setOnHover(back4);
+        iMatDataModel.setOnHover(changeDelivery);
+        iMatDataModel.setOnHover(changePay);
     }
 
 

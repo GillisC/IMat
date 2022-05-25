@@ -13,6 +13,7 @@ import java.util.List;
 public class OrderItem extends AnchorPane {
 
     @FXML private Label orderNum, orderDate, orderTotal;
+    @FXML private AnchorPane orderItemAnchorPane;
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     OrderHistory parentController;
@@ -34,6 +35,8 @@ public class OrderItem extends AnchorPane {
         orderNum.setText("Order: #" + order.getOrderNumber());
         orderDate.setText("Datum: " + order.getDate());
         orderTotal.setText("Totalt: " + getOrderTotal(order) + " kr");
+
+        iMatDataModel.setOnHover(orderItemAnchorPane);
     }
 
     public int getOrderTotal(Order order) {

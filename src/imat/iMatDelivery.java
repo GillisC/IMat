@@ -35,7 +35,8 @@ public class iMatDelivery extends wizard {
         creditCard = iMatDataModel.getCreditCard();
 
         updateTextFields();
-
+        iMatDataModel.setOnHover(back3);
+        iMatDataModel.setOnHover(next3);
         updateStepBackground();
 
         firstName.setOnKeyReleased(KeyEvent -> {
@@ -148,20 +149,20 @@ public class iMatDelivery extends wizard {
     }
 
     private void updateStepBackground() {
-        if (iMatDataModel.isSelectTimeComplete()) {
+        if (iMatDataModel.selectTimeComplete) {
             chooseTimeRec.setStyle("-fx-fill: #C2EABD");
-            if (iMatDataModel.isCustomerComplete()) {
+            if (iMatDataModel.selectDeliveryComplete) {
                 rec1.setStyle("-fx-fill: #C2EABD");
             }
         }
-        if (iMatDataModel.isCustomerComplete()) {
+        if (iMatDataModel.selectDeliveryComplete) {
             chooseDeliveryRec.setStyle("-fx-fill: #C2EABD");
-            if (iMatDataModel.isCreditCardComplete()) {
+            if (iMatDataModel.selectPayComplete) {
                 rec2.setStyle("-fx-fill: #C2EABD");
             }
         }
         System.out.println("check: " + iMatDataModel.isCreditCardComplete());
-        if (iMatDataModel.isCreditCardComplete()) {
+        if (iMatDataModel.selectPayComplete) {
             choosePayRec.setStyle("-fx-fill: #C2EABD");
         }
     }
@@ -173,6 +174,7 @@ public class iMatDelivery extends wizard {
     public void next3ButtonPressed() {
         if (!isCellsEmpty()) {
             updateDeliveryDetails();
+            iMatDataModel.selectDeliveryComplete = true;
             navigateTo("iMatPay.fxml", deliveryRootAnchorPane);
         }
     }

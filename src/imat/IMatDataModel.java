@@ -1,8 +1,12 @@
 package imat;
 
 
+import javafx.event.EventHandler;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import se.chalmers.cse.dat216.project.*;
 
 import java.util.*;
@@ -21,6 +25,10 @@ public class IMatDataModel {
 
     // Maps A main category to their respective subcategories
     public final Map<String, List<String>> subCategoryMap = new HashMap<>();
+
+    public boolean selectTimeComplete;
+    public boolean selectDeliveryComplete;
+    public boolean selectPayComplete;
 
     /**
      * Does nothing
@@ -43,11 +51,19 @@ public class IMatDataModel {
 
     private void init() {
         iMatDataHandler = IMatDataHandler.getInstance();
+        selectTimeComplete = false;
+        selectDeliveryComplete = false;
+        selectPayComplete = false;
     }
 
     /**
      * Saves stored data to text files in imat folder
      */
+    public void resetProgressIndicator() {
+        selectTimeComplete = false;
+        selectDeliveryComplete = false;
+        selectPayComplete = false;
+    }
     public String getSelectedDay() {
         return selectedDay;
     }
@@ -88,8 +104,9 @@ public class IMatDataModel {
         return iMatDataHandler.placeOrder();
     }
 
-    public Order placeOrder(boolean clearShoppingCart) {
-        return iMatDataHandler.placeOrder(clearShoppingCart);
+    public void placeOrder(boolean clearShoppingCart) {
+        iMatDataHandler.placeOrder(clearShoppingCart);
+        resetProgressIndicator();
     }
 
     public List<Order> getOrders() {
@@ -286,5 +303,21 @@ public class IMatDataModel {
             }
         }
         return result;
+    }
+
+    public void setOnHover(Node node) {
+        node.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                node.getScene().setCursor(Cursor.HAND);
+            }
+        });
+
+        node.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                node.getScene().setCursor(Cursor.DEFAULT);
+            }
+        });
     }
 }

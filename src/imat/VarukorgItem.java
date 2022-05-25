@@ -26,6 +26,7 @@ public class VarukorgItem extends AnchorPane{
     @FXML Button shoppingCartItemRemoveButton;
     @FXML Label shoppingItemAmountLabel;
     @FXML Label shoppingItemTotalLabel;
+    @FXML AnchorPane shoppingItemAnchorPane;
 
     public VarukorgItem(ShoppingItem shoppingItem, ShoppingCartManager controller){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("varukorgItem.fxml"));
@@ -51,6 +52,10 @@ public class VarukorgItem extends AnchorPane{
         }
 
         shoppingItemTotalLabel.setText(dataModel.round(shoppingItem.getTotal(), 2) + " kr");
+
+        dataModel.setOnHover(shoppingCartItemAddButton);
+        dataModel.setOnHover(shoppingCartItemRemoveButton);
+        dataModel.setOnHover(shoppingItemAnchorPane);
     }
 
     @FXML

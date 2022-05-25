@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 public class iMatPay extends wizard {
     @FXML private AnchorPane payRootAnchorPane;
 
-    @FXML private Button next2,back2,shoppingCart;
+    @FXML private Button next2,back2;
     @FXML private TextField cardNum1,cardNum2,cardNum3,cardNum4,expirationMonth, expirationYear,cvcCode;
     @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
 
@@ -41,6 +41,9 @@ public class iMatPay extends wizard {
         creditCard = iMatDataModel.getCreditCard();
         updateTextFields();
         updateStepBackground();
+
+        iMatDataModel.setOnHover(next2);
+        iMatDataModel.setOnHover(back2);
 
         cardNum1.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
@@ -171,20 +174,20 @@ public class iMatPay extends wizard {
     }
 
     private void updateStepBackground() {
-        if (iMatDataModel.isSelectTimeComplete()) {
+        if (iMatDataModel.selectTimeComplete) {
             chooseTimeRec.setStyle("-fx-fill: #C2EABD");
-            if (iMatDataModel.isCustomerComplete()) {
+            if (iMatDataModel.selectDeliveryComplete) {
                 rec1.setStyle("-fx-fill: #C2EABD");
             }
         }
-        if (iMatDataModel.isCustomerComplete()) {
+        if (iMatDataModel.selectDeliveryComplete) {
             chooseDeliveryRec.setStyle("-fx-fill: #C2EABD");
-            if (iMatDataModel.isCreditCardComplete()) {
+            if (iMatDataModel.selectPayComplete) {
                 rec2.setStyle("-fx-fill: #C2EABD");
             }
         }
         System.out.println("check: " + iMatDataModel.isCreditCardComplete());
-        if (iMatDataModel.isCreditCardComplete()) {
+        if (iMatDataModel.selectPayComplete) {
             choosePayRec.setStyle("-fx-fill: #C2EABD");
         }
     }
@@ -197,6 +200,7 @@ public class iMatPay extends wizard {
     public void next2ButtonPressed() {
         if (!isCellsEmpty()) {
             updatePaymentDetails();
+            iMatDataModel.selectPayComplete = true;
             navigateTo("iMatComplete.fxml", payRootAnchorPane);
         }
 

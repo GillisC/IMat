@@ -57,6 +57,12 @@
     -fx-background-color: #F34E70;
 }
 
+.button:hover:pressed {
+    -fx-background-color: #ED254E;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
 .small-rectangle {
     -fx-fill: #F3F2F3;
     -fx-background-radius: 2px;

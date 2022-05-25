@@ -89,7 +89,7 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="546.0" mnemonicParsing="false" onAction="#back1ButtonPressed" prefHeight="60.0" prefWidth="190.0" styleClass="navigation-buttons" text="Till Varukorg" />
+            <Button fx:id="toCartButton" layoutX="14.0" layoutY="546.0" mnemonicParsing="false" onAction="#back1ButtonPressed" prefHeight="60.0" prefWidth="190.0" styleClass="navigation-buttons" text="Till Varukorg" />
             <HBox fx:id="dayCardHBox" layoutX="40.0" layoutY="82.0" prefHeight="140.0" prefWidth="800.0" />
             <HBox fx:id="timeCardHBox" layoutX="40.0" layoutY="316.0" prefHeight="140.0" prefWidth="800.0" />
          </children>

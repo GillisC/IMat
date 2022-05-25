@@ -54,6 +54,12 @@
     -fx-background-color: #F34E70;
 }
 
+.profile-shopping-button:hover:pressed {
+    -fx-background-color: #F34E70;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
 .shopping-cart-label {
     -fx-font-size: 22px;
     -fx-text-fill: #F3F2F3;
@@ -140,6 +146,12 @@
     -fx-background-color: #F34E70;
 }
 
+.list-item-buttons:hover:pressed {
+    -fx-background-color: #F34E70;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
 .small-rectangle {
     -fx-fill: #F3F2F3;
     -fx-background-radius: 2px;
@@ -165,6 +177,12 @@
 
 .shopping-cart-button:hover {
     -fx-background-color: #F34E70;
+}
+
+.shopping-cart-button:hover:pressed {
+    -fx-background-color: #F34E70;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
 }
 
 .escape-patch {

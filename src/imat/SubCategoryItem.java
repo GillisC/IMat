@@ -32,6 +32,8 @@ public class SubCategoryItem extends AnchorPane {
         this.parentController = controller;
 
         subCategoryItemLabel.setText(subCategoryName);
+
+        iMatDataModel.setOnHover(backdropAnchorPane);
         }
 
     @FXML

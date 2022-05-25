@@ -29,6 +29,8 @@ public class TimeCard extends AnchorPane {
         this.parentController = controller;
         int timePlus = time + 1;
         timeCardLabel.setText(time + "-" + timePlus);
+
+        iMatDataModel.setOnHover(timeCardAnchorPane);
     }
 
     @FXML

@@ -2,15 +2,21 @@ package imat;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.*;
 
 import java.io.IOException;
@@ -22,21 +28,12 @@ import static se.chalmers.cse.dat216.project.ProductCategory.ROOT_VEGETABLE;
 
 public class IMatController implements Initializable, ShoppingCartListener, ShoppingCartManager {
 
-    private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
-    iMatComplete iMatComplete;
-
-    // Current sub category objects, used to set the backdrop style
-    private ArrayList<SubCategoryItem> subCategoryItems = new ArrayList<>();
-
-    private String selectedCategory = "Allt";
-    // Keeps track of where we start to render the carousel
-    private int categoryIndex = 0;
 
     /* Main view */
     @FXML private ImageView profileImageView;
     @FXML private ImageView shoppingCartImageView;
     @FXML private TextField searchTextField;
-    @FXML private Button searchButton;
+    @FXML private Button searchButton, orderHistoryButton, openShoppingCartButton, shoppingCartPayButton;
     @FXML private FlowPane productFlowPane;
     @FXML private FlowPane subCategoryFlowPane;
     @FXML private ScrollPane mainCategoryScrollPane;
@@ -66,8 +63,15 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML private Button detailViewRemoveButton;
     @FXML private Button detailViewAddButton;
 
+    private IMatDataModel iMatDataModel = IMatDataModel.getInstance();
+    iMatComplete iMatComplete;
 
-    /* Populates mainCategoryMap so that a category name maps to a list of products */
+    // Current sub category objects, used to set the backdrop style
+    private ArrayList<SubCategoryItem> subCategoryItems = new ArrayList<>();
+
+    private String selectedCategory = "Allt";
+    // Keeps track of where we start to render the carousel
+    private int categoryIndex = 0;
 
 
     @Override
@@ -93,6 +97,17 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         });
         updateShoppingCart();
         updateProductItemsAmount();
+        updateProductGridWithSub(selectedCategory);
+
+        iMatDataModel.setOnHover(openShoppingCartButton);
+        iMatDataModel.setOnHover(orderHistoryButton);
+        iMatDataModel.setOnHover(searchButton);
+        iMatDataModel.setOnHover(shoppingCartPayButton);
+
+        /* Makes sure that everything resets once an order has been placed */
+        if (iMatDataModel.getShoppingCart().getItems().size() == 0) {
+            resetProductAmounts();
+        }
     }
 
     private void populateMainCategoryMap() {
@@ -103,8 +118,10 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         for (Product p: tempEverything) {
             everything.add(new ProductListItem(p, this));
         }
+        String[] AllSub = {"Grönsaker", "Frukt", "Mejeri", "Bröd", "Kött", "Fisk", "Skafferi", "Drickor"};
+        iMatDataModel.subCategoryMap.put("Allt", List.of(AllSub));
+
         iMatDataModel.mainCategoryMap.put("Allt", everything);
-        iMatDataModel.subCategoryMap.put("Allt", null);
 
         // Adds products to "Grönsaker" Category
         List<ProductListItem> greens = new ArrayList<>();
@@ -225,9 +242,14 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         for (SubCategoryItem subCategoryItem : subCategoryItems) {
             subCategoryItem.backdropAnchorPane.setStyle("-fx-background-color: #E3E3E3");
         }
-        ProductCategory category = iMatDataModel.getProductCategory(subCategory);
-        updateProductGrid(iMatDataModel.findMatchingProducts(category));
+        if (Objects.equals(selectedCategory, "Allt")) {
+            setMainCategory(subCategory);
+        } else {
+            ProductCategory category = iMatDataModel.getProductCategory(subCategory);
+            updateProductGrid(iMatDataModel.findMatchingProducts(category));
+        }
     }
+
     /* Called when main category icon is pressed */
     public void setMainCategory(String categoryName) {
         selectedCategory = categoryName;
@@ -298,6 +320,11 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML
     public void payButtonPressed() {
         if (iMatDataModel.getShoppingCart().getTotal() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.CLOSE);
+            alert.setHeaderText("Tom Varukorg");
+            alert.setContentText("Var vänlig och lägg till produkter innan du går vidare till nästa steg.");
+
+            alert.show();
             return;
         }
         try {
@@ -325,6 +352,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML
     public void closeButtonHover() {
         closeButtonImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-blue-hover.png"));
+        closeButtonImageView.getScene().setCursor(Cursor.HAND);
     }
     @FXML
     public void handleNavigateRight() {
@@ -341,29 +369,35 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
             updateCategoryImages();
         }
     }
+
     @FXML
     public void closeButtonExitHover() {
         closeButtonImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-blue.png"));
+        closeButtonImageView.getScene().setCursor(Cursor.DEFAULT);
     }
 
     @FXML
     public void leftNavigationArrowHover() {
         leftNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/left-navigation-triangle-hover.png"));
+        leftNavigationImageView.getScene().setCursor(Cursor.HAND);
     }
 
     @FXML
     public void leftNavigationArrowExitHover() {
         leftNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/left-navigation-triangle.png"));
+        leftNavigationImageView.getScene().setCursor(Cursor.DEFAULT);
     }
 
     @FXML
     public void rightNavigationArrowHover() {
         rightNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/right-navigation-triangle-hover.png"));
+        rightNavigationImageView.getScene().setCursor(Cursor.HAND);
     }
 
     @FXML
     public void rightNavigationArrowExitHover() {
         rightNavigationImageView.setImage(iMatDataModel.getImageFromUrl("imat/resources/right-navigation-triangle.png"));
+        rightNavigationImageView.getScene().setCursor(Cursor.DEFAULT);
     }
 
     @FXML
@@ -378,11 +412,13 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML
     public void closeShoppingCartHover() {
         shoppingCartCloseImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-white-hover.png"));
+        shoppingCartCloseImage.getScene().setCursor(Cursor.HAND);
     }
 
     @FXML
     public void closeShoppingCartExitHover() {
         shoppingCartCloseImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/close-button-white.png"));
+        shoppingCartCloseImage.getScene().setCursor(Cursor.DEFAULT);
     }
 
     @FXML
@@ -395,16 +431,17 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML
     public void clearShoppingCartHover() {
         clearShoppingCartImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/delete-hover.png"));
+        clearShoppingCartImage.getScene().setCursor(Cursor.HAND);
     }
 
     @FXML
     public void clearShoppingCartExitHover() {
         clearShoppingCartImage.setImage(iMatDataModel.getImageFromUrl("imat/resources/delete.png"));
+        clearShoppingCartImage.getScene().setCursor(Cursor.DEFAULT);
     }
 
     @FXML
     private void navigateToOrderHistory() {
-        System.out.println("Yo");
         try {
             AnchorPane root = FXMLLoader.load(getClass().getResource("order_history.fxml"));
             mainAnchorPane.getChildren().setAll(root);

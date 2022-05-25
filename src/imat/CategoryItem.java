@@ -44,6 +44,8 @@ public class CategoryItem extends AnchorPane {
 
         categoryItemImageView.setImage(image);
         categoryItemLabel.setText(name);
+
+        iMatDataModel.setOnHover(categoryItemImageView);
     }
 
     @FXML
