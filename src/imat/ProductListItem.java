@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
@@ -59,6 +60,22 @@ public class ProductListItem extends AnchorPane {
         iMatDataModel.setOnHover(addButton);
         iMatDataModel.setOnHover(removeButton);
         iMatDataModel.setOnHover(listItemAnchorPane);
+
+        productAmountTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                System.out.println("Hello");
+                iMatDataModel.manualAddToShoppingCart(product, Integer.parseInt(productAmountTextField.getText()));
+                parentController.updateProductItemsAmount();
+                parentController.updateShoppingCart();
+            }
+        });
+
+        productAmountTextField.setOnKeyReleased(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                productPriceLabel.requestFocus();
+            }
+        });
+
     }
     protected String getCorrectSuffix() {
         String suffix = product.getUnitSuffix();

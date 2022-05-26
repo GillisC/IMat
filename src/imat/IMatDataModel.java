@@ -168,8 +168,7 @@ public class IMatDataModel {
 
     /* Added Method. Checks if the product already is a shoppingItem, if yes increment amount otherwise make a new shopping item and add it to the cart */
     public void addToShoppingCart(Product product) {
-        ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
-        List<ShoppingItem> currShoppingItems = shoppingCart.getItems();
+        List<ShoppingItem> currShoppingItems = getShoppingCart().getItems();
         for (ShoppingItem shoppingItem : currShoppingItems) {
             if (Objects.equals(shoppingItem.getProduct().getName(), product.getName())) {
                 if (Objects.equals(shoppingItem.getProduct().getUnitSuffix(), "kg")) {
@@ -187,11 +186,23 @@ public class IMatDataModel {
         } else {
             shoppingItem.setAmount(1);
         }
-        IMatDataModel.getInstance().getShoppingCart().addItem(shoppingItem);
+        getShoppingCart().addItem(shoppingItem);
+    }
+
+    public void manualAddToShoppingCart(Product product, int amount) {
+        for (ShoppingItem item : getShoppingCart().getItems()) {
+            if (Objects.equals(item.getProduct().getName(), product.getName())) {
+                item.setAmount(amount);
+                return;
+            }
+        }
+        ShoppingItem shoppingItem = new ShoppingItem(product);
+        shoppingItem.setAmount(amount);
+        getShoppingCart().addItem(shoppingItem);
     }
 
     public void removeFromShoppingCart(Product product) {
-        ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
+        ShoppingCart shoppingCart = getShoppingCart();
         List<ShoppingItem> currShoppingItems = shoppingCart.getItems();
         for (ShoppingItem shoppingItem : currShoppingItems) {
             if (Objects.equals(shoppingItem.getProduct().getName(), product.getName())) {

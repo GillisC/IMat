@@ -19,6 +19,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.*;
 
+import javax.management.Notification;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -95,6 +96,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
                 handleSearchAction();
             }
         });
+
         updateShoppingCart();
         updateProductItemsAmount();
         updateProductGridWithSub(selectedCategory);
@@ -107,6 +109,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         /* Makes sure that everything resets once an order has been placed */
         if (iMatDataModel.getShoppingCart().getItems().size() == 0) {
             resetProductAmounts();
+
         }
     }
 
@@ -258,7 +261,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         updateProductGrid(iMatDataModel.mainCategoryMap.get(selectedCategory));
     }
 
-    private void updateShoppingCart() {
+    protected void updateShoppingCart() {
         shoppingCartFlowPane.getChildren().clear();
         List<ShoppingItem> shoppingItemsList = iMatDataModel.getShoppingCart().getItems();
         for (ShoppingItem shoppingItem : shoppingItemsList){
@@ -296,7 +299,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     }
 
     /* Updates the productListItems with the value stored in the shopping cart */
-    private void updateProductItemsAmount() {
+    protected void updateProductItemsAmount() {
         List<ShoppingItem> shoppingItems = iMatDataModel.getShoppingCart().getItems();
         for (ShoppingItem shoppingItem : shoppingItems) {
             ProductListItem productListItem = iMatDataModel.findMatchingProducts(shoppingItem.getProduct().getName()).get(0);
