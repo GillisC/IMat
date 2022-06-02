@@ -16,6 +16,7 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
+import javax.swing.event.ChangeListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,8 +25,8 @@ public class OrderHistory implements Initializable {
 
     @FXML private FlowPane orderHistoryFlowPane, detailFlowPane;
     @FXML private AnchorPane detailViewAnchorPane, orderHistoryAnchorPane, orderHistoryRootPane;
-    @FXML private ImageView closeDetailViewImageView;
-    @FXML private Label detailedOrderNum, escapeHatch;
+    @FXML private ImageView closeDetailViewImageView, backArrow;
+    @FXML private Label detailedOrderNum, escapeHatch, alertText;
     @FXML private Button addOrderToCartButton;
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
@@ -37,6 +38,8 @@ public class OrderHistory implements Initializable {
 
         iMatDataModel.setOnHover(addOrderToCartButton);
         iMatDataModel.setOnHover(escapeHatch);
+
+        alertText.setText("");
     }
 
     private void populateOrderHistory() {
@@ -78,15 +81,33 @@ public class OrderHistory implements Initializable {
     }
 
     @FXML
+    public void backArrowHover() {
+        backArrow.setImage(iMatDataModel.getImageFromUrl("imat/resources/arrow-white-hover.png"));
+        backArrow.getScene().setCursor(Cursor.HAND);
+    }
+
+    @FXML
+    public void backArrowExitHover() {
+        backArrow.setImage(iMatDataModel.getImageFromUrl("imat/resources/arrow-white.png"));
+        backArrow.getScene().setCursor(Cursor.DEFAULT);
+    }
+
+    @FXML
+    public void backArrowAction() {
+        try {
+            AnchorPane root = FXMLLoader.load(getClass().getResource("imat_main.fxml"));
+            orderHistoryRootPane.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void handleAddToShoppingCart() {
         for (ShoppingItem item : currentOrder.getItems()) {
             iMatDataModel.getShoppingCart().addItem(item);
         }
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.CLOSE);
-        alert.setHeaderText("Varukorg uppdaterad!");
-        alert.setContentText("Artiklarna ovan har nu lagts till i din varukorg!");
-        alert.show();
+        alertText.setText("Varorna har lagts till!");
     }
 
     @FXML

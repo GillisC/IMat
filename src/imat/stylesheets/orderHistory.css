@@ -60,6 +60,15 @@
     -fx-font-family: 'Sen', sans-serif;
 }
 
+.detail-title-under {
+    -fx-font-size: 24px;
+    -fx-text-fill: #295B73;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
 .order-item-title-right {
     -fx-font-size: 14px;
     -fx-text-fill: #062F42;

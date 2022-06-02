@@ -30,6 +30,7 @@
                            </image>
                         </ImageView>
                         <Button fx:id="addOrderToCartButton" layoutX="106.0" layoutY="513.0" mnemonicParsing="false" onAction="#handleAddToShoppingCart" prefHeight="60.0" prefWidth="310.0" styleClass="detail-button" text="Lägg till i Varukorgen" />
+                        <Label fx:id="alertText" layoutX="141.0" layoutY="54.0" styleClass="detail-title-under" text="Varorna har lagts till!" />
                      </children>
                   </AnchorPane>
                </children>
@@ -41,6 +42,11 @@
                         <Rectangle fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #062F42;" width="1080.0" />
                         <Label layoutX="323.0" layoutY="15.0" prefHeight="70.0" prefWidth="434.0" styleClass="title-text" stylesheets="@stylesheets/orderHistory.css" text="Orderhistorik" AnchorPane.leftAnchor="323.0" AnchorPane.rightAnchor="323.0" />
                         <Label fx:id="escapeHatch" layoutX="100.0" onMouseClicked="#clickOnEscapePatch" prefHeight="100.0" prefWidth="145.0" styleClass="escape-patch" text="iMAT" />
+                        <ImageView fx:id="backArrow" fitHeight="48.0" fitWidth="48.0" layoutX="30.0" layoutY="29.0" onMouseClicked="#backArrowAction" onMouseEntered="#backArrowHover" onMouseExited="#backArrowExitHover" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/arrow-white.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutY="100.0" prefHeight="620.0" prefWidth="1080.0" styleClass="anchor-pane-background">

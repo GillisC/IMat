@@ -73,6 +73,16 @@
     -fx-text-fill: #F3F2F3;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-font-family: 'Sen', sans-serif;
+}
+
+.shopping-cart-name-under {
+    -fx-font-size: 24px;
+    -fx-text-fill: #F3F2F3;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
     -fx-font-family: 'Sen', sans-serif;
 }
 

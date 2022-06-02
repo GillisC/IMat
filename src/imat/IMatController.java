@@ -48,8 +48,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML private AnchorPane shoppingCartAnchorPane;
     @FXML private AnchorPane shoppingCartBackAnchorPane;
     @FXML private FlowPane shoppingCartFlowPane;
-    @FXML private Label shoppingCartButtonTotalLabel;
-    @FXML private Label shoppingCartViewTotalLabel;
+    @FXML private Label shoppingCartButtonTotalLabel, shoppingCartViewTotalLabel, shoppingCartAlert;
     @FXML private ImageView shoppingCartCloseImage, clearShoppingCartImage;
     @FXML private Button ShoppingCartPayButton;
 
@@ -109,8 +108,8 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         /* Makes sure that everything resets once an order has been placed */
         if (iMatDataModel.getShoppingCart().getItems().size() == 0) {
             resetProductAmounts();
-
         }
+        shoppingCartAlert.setText("");
     }
 
     private void populateMainCategoryMap() {
@@ -279,6 +278,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
         transition.setNode(shoppingCartAnchorPane);
         transition.setByX(-460);
         transition.play();
+        shoppingCartAlert.setText("");
     }
 
     @Override
@@ -323,11 +323,7 @@ public class IMatController implements Initializable, ShoppingCartListener, Shop
     @FXML
     public void payButtonPressed() {
         if (iMatDataModel.getShoppingCart().getTotal() == 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.CLOSE);
-            alert.setHeaderText("Tom Varukorg");
-            alert.setContentText("Var vänlig och lägg till produkter innan du går vidare till nästa steg.");
-
-            alert.show();
+            shoppingCartAlert.setText("Din varukorg är tom!");
             return;
         }
         try {
