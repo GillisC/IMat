@@ -20,7 +20,7 @@ public class iMatSelectDateTime extends wizard {
     @FXML private HBox dayCardHBox;
     @FXML private HBox timeCardHBox;
     @FXML private AnchorPane dateTimeRootAnchorPane;
-    @FXML private Label reminder;
+    @FXML private Label reminderText;
     @FXML private Button toCartButton, next1;
     @FXML private Ellipse selectDateTime,pay,delivery,complete;
     @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
@@ -42,6 +42,8 @@ public class iMatSelectDateTime extends wizard {
         iMatDataModel.setOnHover(toCartButton);
         iMatDataModel.setOnHover(next1);
         updateStepBackground();
+
+        reminderText.setText("");
     }
 
     private void populateDayHBox() {
@@ -167,6 +169,8 @@ public class iMatSelectDateTime extends wizard {
         if (iMatDataModel.getSelectedDay()!= null && iMatDataModel.getSelectedTime() != null){
             iMatDataModel.selectTimeComplete = true;
             navigateTo("iMatDelivery.fxml", dateTimeRootAnchorPane);// fixa ett pop upp fönster för felmeddelande eller liknade
+        } else {
+            reminderText.setText("Var vänlig och välj en dag & tid");
         }
     }
 

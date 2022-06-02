@@ -3,6 +3,7 @@ package imat;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
@@ -25,7 +26,7 @@ public class iMatDelivery extends wizard {
     @FXML private Button next3,back3,shoppingCart;
     @FXML private TextField firstName,lastName, streetName, zipCode, phoneNum, mailAddress;
     @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
-
+    @FXML private Label reminderText;
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     Customer customer;
     CreditCard creditCard;
@@ -38,7 +39,7 @@ public class iMatDelivery extends wizard {
         iMatDataModel.setOnHover(back3);
         iMatDataModel.setOnHover(next3);
         updateStepBackground();
-
+        reminderText.setText("");
         firstName.setOnKeyReleased(KeyEvent -> {
             if (KeyEvent.getCode() == KeyCode.ENTER) {
                 lastName.requestFocus();
@@ -176,6 +177,8 @@ public class iMatDelivery extends wizard {
             updateDeliveryDetails();
             iMatDataModel.selectDeliveryComplete = true;
             navigateTo("iMatPay.fxml", deliveryRootAnchorPane);
+        } else {
+            reminderText.setText("Var vänlig och fyll i samtliga uppgifter");
         }
     }
 

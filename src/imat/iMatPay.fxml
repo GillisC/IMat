@@ -144,6 +144,7 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
+            <Label fx:id="reminderText" layoutX="596.0" layoutY="565.0" styleClass="reminder-text" text="Var vänlig och fyll i samtliga uppgifter" />
               </children>
           </AnchorPane>
     </children>

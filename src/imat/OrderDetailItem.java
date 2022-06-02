@@ -32,9 +32,9 @@ public class OrderDetailItem extends AnchorPane {
         this.shoppingItem = item;
         this.parentController = controller;
         if (item.getProduct().getUnitSuffix().equals("kg")) {
-            itemTitle.setText(item.getAmount() + "kg " + item.getProduct().getName());
+            itemTitle.setText(iMatDataModel.round(item.getAmount(), 1) + "kg " + item.getProduct().getName());
         } else {
-            itemTitle.setText(item.getAmount() + "st " + item.getProduct().getName());
+            itemTitle.setText((int) item.getAmount() + "st " + item.getProduct().getName());
         }
         itemCategory.setText(iMatDataModel.getProductCategoryName(item.getProduct().getCategory()));
         itemTotal.setText("Totalt: " + iMatDataModel.round(item.getTotal(), 2) + " kr");

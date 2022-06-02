@@ -174,3 +174,12 @@
     -fx-font-family: 'Sen', sans-serif;
 }
 
+.reminder-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #295B73;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sen', sans-serif;
+}
+

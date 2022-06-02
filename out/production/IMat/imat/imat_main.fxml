@@ -51,30 +51,31 @@
                <children>
                   <AnchorPane fx:id="shoppingCartAnchorPane" layoutX="1090.0" maxHeight="720.0" maxWidth="-Infinity" minHeight="720.0" prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #F3F2F3;">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" vbarPolicy="ALWAYS">
+                        <ScrollPane hbarPolicy="NEVER" layoutX="1.0" layoutY="80.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="450.0" vbarPolicy="ALWAYS">
                            <content>
-                              <FlowPane fx:id="shoppingCartFlowPane" prefHeight="600.0" prefWidth="435.0" />
+                              <FlowPane fx:id="shoppingCartFlowPane" prefHeight="580.0" prefWidth="435.0" />
                            </content>
                         </ScrollPane>
-                        <Rectangle fill="#062f42" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="450.0" />
+                        <Rectangle fill="#062f42" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="450.0" />
                         <Rectangle fill="#062f42" height="60.0" layoutX="-1.0" layoutY="660.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="450.0" />
-                        <Label layoutX="148.0" layoutY="5.0" styleClass="shopping-cart-name" text="Varukorg" />
-                        <Label fx:id="shoppingCartViewTotalLabel" layoutX="51.0" layoutY="665.0" prefHeight="51.0" prefWidth="392.0" styleClass="shopping-cart-total" text="Totalt: 0 kr" />
+                        <Label layoutX="124.0" layoutY="3.0" prefHeight="51.0" prefWidth="200.0" styleClass="shopping-cart-name" text="Varukorg" />
+                        <Label fx:id="shoppingCartViewTotalLabel" layoutX="56.0" layoutY="669.0" prefHeight="51.0" prefWidth="392.0" styleClass="shopping-cart-total" text="Totalt: 0 kr" />
                         <Button fx:id="shoppingCartPayButton" layoutX="252.0" layoutY="593.0" mnemonicParsing="false" onAction="#payButtonPressed" prefHeight="60.0" prefWidth="180.0" styleClass="shopping-cart-button" text="Till Kassan">
                            <tooltip>
                               <Tooltip text="Till Kassan" />
                            </tooltip>
                         </Button>
-                        <ImageView fx:id="shoppingCartCloseImage" fitHeight="150.0" fitWidth="40.0" layoutX="7.0" layoutY="7.0" onMouseClicked="#closeShoppingCartView" onMouseEntered="#closeShoppingCartHover" onMouseExited="#closeShoppingCartExitHover" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="shoppingCartCloseImage" fitHeight="150.0" fitWidth="40.0" layoutX="8.0" layoutY="7.0" onMouseClicked="#closeShoppingCartView" onMouseEntered="#closeShoppingCartHover" onMouseExited="#closeShoppingCartExitHover" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/close-button-white.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="clearShoppingCartImage" fitHeight="150.0" fitWidth="40.0" layoutX="404.0" layoutY="7.0" onMouseClicked="#handleClearShoppingCart" onMouseEntered="#clearShoppingCartHover" onMouseExited="#clearShoppingCartExitHover" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="clearShoppingCartImage" fitHeight="150.0" fitWidth="40.0" layoutX="401.0" layoutY="8.0" onMouseClicked="#handleClearShoppingCart" onMouseEntered="#clearShoppingCartHover" onMouseExited="#clearShoppingCartExitHover" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/delete.png" />
                            </image>
                         </ImageView>
+                        <Label fx:id="shoppingCartAlert" layoutX="63.0" layoutY="43.0" prefHeight="35.0" prefWidth="323.0" styleClass="shopping-cart-name-under" text="Din varukorg är tom!" />
                      </children>
                   </AnchorPane>
                </children>

@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -32,6 +33,7 @@ public class iMatPay extends wizard {
     @FXML private Button next2,back2;
     @FXML private TextField cardNum1,cardNum2,cardNum3,cardNum4,expirationMonth, expirationYear,cvcCode;
     @FXML private Rectangle chooseTimeRec, chooseDeliveryRec, choosePayRec, chooseConfirmRec, rec1, rec2, rec3;
+    @FXML private Label reminderText;
 
     IMatDataModel iMatDataModel = IMatDataModel.getInstance();
     CreditCard creditCard;
@@ -41,7 +43,7 @@ public class iMatPay extends wizard {
         creditCard = iMatDataModel.getCreditCard();
         updateTextFields();
         updateStepBackground();
-
+        reminderText.setText("");
         iMatDataModel.setOnHover(next2);
         iMatDataModel.setOnHover(back2);
 
@@ -202,6 +204,8 @@ public class iMatPay extends wizard {
             updatePaymentDetails();
             iMatDataModel.selectPayComplete = true;
             navigateTo("iMatComplete.fxml", payRootAnchorPane);
+        } else {
+            reminderText.setText("Var vänlig och fyll i samtliga uppgifter");
         }
 
     }

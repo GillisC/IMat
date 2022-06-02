@@ -13,9 +13,12 @@
       <AnchorPane fx:id="listItemAnchorPane" layoutX="13.0" layoutY="13.0" onMouseClicked="#onClick" prefHeight="200.0" prefWidth="180.0" styleClass="anchor-pane-foreground" stylesheets="@stylesheets/IMatListItem.css">
          <children>
             <ImageView fx:id="productImageView" fitHeight="120.0" fitWidth="160.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="8.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-rec" width="60.0" />
-            <Label fx:id="productPriceLabel" layoutY="2.0" prefHeight="18.0" prefWidth="60.0" styleClass="label-text" text="17:95 kr" />
-            <Label fx:id="productUnitSuffixLabel" layoutY="18.0" prefHeight="18.0" prefWidth="60.0" styleClass="label-text" text="/ kg" />
+            <AnchorPane maxHeight="50.0" maxWidth="70.0" minHeight="50.0" minWidth="70.0" prefHeight="50.0" prefWidth="70.0" styleClass="price-rec">
+               <children>
+                  <Label fx:id="productPriceLabel" layoutY="2.0" prefHeight="25.0" prefWidth="70.0" styleClass="label-text" text="17:95 kr" />
+                  <Label fx:id="productUnitSuffixLabel" layoutY="22.0" prefHeight="25.0" prefWidth="70.0" styleClass="label-text" text="/ kg" />
+               </children>
+            </AnchorPane>
             <Label fx:id="productNameLabel" layoutX="5.0" layoutY="131.0" prefHeight="18.0" prefWidth="170.0" styleClass="product-name" stylesheets="@stylesheets/IMatListItem.css" text="Exempel produkt Klass1" />
             <Button fx:id="addButton" layoutX="138.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="32.0" prefWidth="32.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0">
                <tooltip>
